@@ -108,6 +108,11 @@ void MainView::initializeGL() {
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(vertex), (void *)0);
     glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(vertex), (void *)(sizeof(point)) );
 
+    transformCube.translate(2, 0, -6);
+    transformPyramid.translate(-2, 0, -6);
+
+    transformProjection.perspective(60, 1, 2, 10);
+
 }
 
 void MainView::createShaderProgram()
@@ -118,6 +123,9 @@ void MainView::createShaderProgram()
     shaderProgram.addShaderFromSourceFile(QOpenGLShader::Fragment,
                                            ":/shaders/fragshader.glsl");
     shaderProgram.link();
+
+    uniformModel = shaderProgram.uniformLocation("modelTransform");
+    uniformProjection = shaderProgram.uniformLocation("projection");
 }
 
 // --- OpenGL drawing
@@ -134,9 +142,14 @@ void MainView::paintGL() {
 
     shaderProgram.bind();
 
+    glUniformMatrix4fv(uniformModel, 1, GL_FALSE, transformCube.data());
+    glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, transformProjection.data());
+
     // Draw here
     glBindVertexArray(VAO_a);
     glDrawArrays(GL_TRIANGLES, 0, 36);
+
+    glUniformMatrix4fv(uniformModel, 1, GL_FALSE, transformPyramid.data());
 
     glBindVertexArray(VAO_b);
     glDrawArrays(GL_TRIANGLES, 0, 18);
@@ -154,9 +167,9 @@ void MainView::paintGL() {
  */
 void MainView::resizeGL(int newWidth, int newHeight) 
 {
-    // TODO: Update projection to fit the new aspect ratio
-    Q_UNUSED(newWidth)
-    Q_UNUSED(newHeight)
+    transformProjection.setToIdentity();
+    transformProjection.perspective(60, (float)newWidth / newHeight, 2, 10);
+
 }
 
 // --- Public interface

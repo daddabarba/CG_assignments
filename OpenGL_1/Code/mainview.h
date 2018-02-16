@@ -39,6 +39,14 @@ class MainView : public QOpenGLWidget, protected QOpenGLFunctions_3_3_Core {
         void setScale(int scale);
         void setShadingMode(ShadingMode shading);
 
+        QMatrix4x4 transformCube;
+        QMatrix4x4 transformPyramid;
+
+        QMatrix4x4 transformProjection;
+
+        GLint uniformModel;
+        GLint uniformProjection;
+
     protected:
         void initializeGL();
         void resizeGL(int newWidth, int newHeight);
