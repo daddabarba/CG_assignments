@@ -182,8 +182,10 @@ void MainView::setRotation(int rotateX, int rotateY, int rotateZ)
 
 void MainView::setScale(int scale)
 {
+    transformCube.scale(scale / 100.0f);
     qDebug() << "Scale changed to " << scale;
-    Q_UNIMPLEMENTED();
+    //Q_UNIMPLEMENTED();
+    update();
 }
 
 void MainView::setShadingMode(ShadingMode shading)
