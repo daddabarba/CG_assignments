@@ -16,9 +16,6 @@
 MainView::MainView(QWidget *parent) : QOpenGLWidget(parent) {
     qDebug() << "MainView constructor";
 
-    (this->figure_cube) = set_cube(2, red, green, blue, brown , yellow, light_blue, white, black);
-    (this->figure_pyramid) = set_pyramid(2, 2, red, green, blue, white, black);
-
     connect(&timer, SIGNAL(timeout()), this, SLOT(update()));
 }
 
@@ -79,6 +76,27 @@ void MainView::initializeGL() {
 
     createShaderProgram();
 
+
+    cube figure_cube = set_cube(2, red, green, blue, brown , yellow, light_blue, white, black);
+    pyramid figure_pyramid = set_pyramid(2, 2, red, green, blue, white, black);
+
+
+    Model mesh_sphere(":/models/sphere.obj");
+    QVector <QVector3D> sphere_vertices = mesh_sphere.getVertices();
+
+    size_sphere = sphere_vertices.length();
+    QVector3D *vertices = sphere_vertices.data();
+
+    vertex *figure_sphere = (vertex *)malloc(size_sphere*sizeof(vertex));
+
+    for(int i=0; i<size_sphere; i++){
+        point p = set_point(vertices[i].x(), vertices[i].y(), vertices[i].z());
+        RGB_color col = set_color((float)rand() / RAND_MAX, (float)rand() / RAND_MAX, (float)rand() / RAND_MAX);
+
+        figure_sphere[i] = set_vertex(p,col);
+
+    }
+
     //STARTING VAO and VBO
     glGenBuffers(1, &VBO_cube);
     glGenVertexArrays(1, &VAO_cube);
@@ -94,6 +112,11 @@ void MainView::initializeGL() {
 
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(vertex), (void *)0);
     glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(vertex), (void *)(sizeof(point)) );
+
+    transformCube.setPosition(2.0f, 0.0f, -6.0f);
+
+
+
 
     //STARTING VAO and VBO
     glGenBuffers(1, &VBO_pyramid);
@@ -111,8 +134,31 @@ void MainView::initializeGL() {
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(vertex), (void *)0);
     glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(vertex), (void *)(sizeof(point)) );
 
-    transformCube.setPosition(2.0f, 0.0f, -6.0f);
     transformPyramid.setPosition(-2, 0, -6);
+
+
+
+
+    //STARTING VAO and VBO
+    glGenBuffers(1, &VBO_sphere);
+    glGenVertexArrays(1, &VAO_sphere);
+
+    glBindVertexArray(VAO_sphere);
+    glBindBuffer(GL_ARRAY_BUFFER, VBO_sphere);
+
+    glBufferData(GL_ARRAY_BUFFER, size_sphere*sizeof(vertex), figure_sphere, GL_STATIC_DRAW);
+    free(figure_sphere);
+
+    //DEFINING ATTRIBUTES
+    glEnableVertexAttribArray(0);
+    glEnableVertexAttribArray(1);
+
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(vertex), (void *)0);
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(vertex), (void *)(sizeof(point)) );
+
+    transformSphere.setPosition(0, 0, -10);
+    transformSphere.setScale(0.04f);
+
 
     transformProjection.perspective(60, 1, 2, 10);
 
@@ -145,17 +191,24 @@ void MainView::paintGL() {
 
     shaderProgram.bind();
 
+    // Draw here
     glUniformMatrix4fv(uniformModel, 1, GL_FALSE, transformCube.getMatrix().data());
     glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, transformProjection.data());
 
-    // Draw here
     glBindVertexArray(VAO_cube);
     glDrawArrays(GL_TRIANGLES, 0, 36);
+
 
     glUniformMatrix4fv(uniformModel, 1, GL_FALSE, transformPyramid.getMatrix().data());
 
     glBindVertexArray(VAO_pyramid);
     glDrawArrays(GL_TRIANGLES, 0, 18);
+
+
+    glUniformMatrix4fv(uniformModel, 1, GL_FALSE, transformSphere.getMatrix().data());
+
+    glBindVertexArray(VAO_sphere);
+    glDrawArrays(GL_TRIANGLES, 0, size_sphere);
 
     shaderProgram.release();
 }
@@ -181,6 +234,8 @@ void MainView::setRotation(int rotateX, int rotateY, int rotateZ)
 {
     transformCube.setRotation(rotateX, rotateY, rotateZ);
     transformPyramid.setRotation(rotateX, rotateY, rotateZ);
+    transformSphere.setRotation(rotateX, rotateY, rotateZ);
+
     qDebug() << "Rotation changed to (" << rotateX << "," << rotateY << "," << rotateZ << ")";
     //Q_UNIMPLEMENTED();
     update();
@@ -190,6 +245,8 @@ void MainView::setScale(int scale)
 {
     transformCube.setScale(scale / 100.0f);
     transformPyramid.setScale(scale / 100.0f);
+    transformSphere.setScale(scale / 100.0f * 0.04f);
+
     qDebug() << "Scale changed to " << scale;
     //Q_UNIMPLEMENTED();
     update();

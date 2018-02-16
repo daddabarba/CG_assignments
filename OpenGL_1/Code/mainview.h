@@ -24,7 +24,7 @@ class MainView : public QOpenGLWidget, protected QOpenGLFunctions_3_3_Core {
 
     QOpenGLShaderProgram shaderProgram;
 
-    cube *solidCube;
+    //cube *solidCube;
 
     public:
         enum ShadingMode : GLuint
@@ -42,6 +42,7 @@ class MainView : public QOpenGLWidget, protected QOpenGLFunctions_3_3_Core {
 
         Transform transformCube;
         Transform transformPyramid;
+        Transform transformSphere;
 
         QMatrix4x4 transformProjection;
 
@@ -68,11 +69,11 @@ class MainView : public QOpenGLWidget, protected QOpenGLFunctions_3_3_Core {
         void onMessageLogged( QOpenGLDebugMessage Message );
 
     private:
-        cube figure_cube;
-        pyramid figure_pyramid;
 
-        GLuint VBO_cube, VBO_pyramid;
-        GLuint VAO_cube, VAO_pyramid;
+        int size_sphere;
+
+        GLuint VBO_cube, VBO_pyramid, VBO_sphere;
+        GLuint VAO_cube, VAO_pyramid, VAO_sphere;
 
         void createShaderProgram();
 
