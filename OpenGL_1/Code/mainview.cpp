@@ -16,8 +16,8 @@
 MainView::MainView(QWidget *parent) : QOpenGLWidget(parent) {
     qDebug() << "MainView constructor";
 
-    (this->figure_a) = set_cube(2, red, green, blue, brown , yellow, light_blue, white, black);
-    (this->figure_b) = set_pyramid(2, 2, red, green, blue, white, black);
+    (this->figure_cube) = set_cube(2, red, green, blue, brown , yellow, light_blue, white, black);
+    (this->figure_pyramid) = set_pyramid(2, 2, red, green, blue, white, black);
 
     connect(&timer, SIGNAL(timeout()), this, SLOT(update()));
 }
@@ -32,7 +32,10 @@ MainView::MainView(QWidget *parent) : QOpenGLWidget(parent) {
  */
 MainView::~MainView() {
     debugLogger->stopLogging();
-
+    glDeleteBuffers(1, &VBO_cube);
+    glDeleteBuffers(1, &VBO_pyramid);
+    glDeleteVertexArrays(1, &VAO_cube);
+    glDeleteVertexArrays(1, &VAO_pyramid);
     qDebug() << "MainView destructor";
 }
 
@@ -77,13 +80,13 @@ void MainView::initializeGL() {
     createShaderProgram();
 
     //STARTING VAO and VBO
-    glGenBuffers(1, &VBO_a);
-    glGenVertexArrays(1, &VAO_a);
+    glGenBuffers(1, &VBO_cube);
+    glGenVertexArrays(1, &VAO_cube);
 
-    glBindVertexArray(VAO_a);
-    glBindBuffer(GL_ARRAY_BUFFER, VBO_a);
+    glBindVertexArray(VAO_cube);
+    glBindBuffer(GL_ARRAY_BUFFER, VBO_cube);
 
-    glBufferData(GL_ARRAY_BUFFER, sizeof(cube), &figure_a, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(cube), &figure_cube, GL_STATIC_DRAW);
 
     //DEFINING ATTRIBUTES
     glEnableVertexAttribArray(0);
@@ -93,13 +96,13 @@ void MainView::initializeGL() {
     glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(vertex), (void *)(sizeof(point)) );
 
     //STARTING VAO and VBO
-    glGenBuffers(1, &VBO_b);
-    glGenVertexArrays(1, &VAO_b);
+    glGenBuffers(1, &VBO_pyramid);
+    glGenVertexArrays(1, &VAO_pyramid);
 
-    glBindVertexArray(VAO_b);
-    glBindBuffer(GL_ARRAY_BUFFER, VBO_b);
+    glBindVertexArray(VAO_pyramid);
+    glBindBuffer(GL_ARRAY_BUFFER, VBO_pyramid);
 
-    glBufferData(GL_ARRAY_BUFFER, sizeof(pyramid), &figure_b, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(pyramid), &figure_pyramid, GL_STATIC_DRAW);
 
     //DEFINING ATTRIBUTES
     glEnableVertexAttribArray(0);
@@ -108,8 +111,8 @@ void MainView::initializeGL() {
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(vertex), (void *)0);
     glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(vertex), (void *)(sizeof(point)) );
 
-    transformCube.translate(2, 0, -6);
-    transformPyramid.translate(-2, 0, -6);
+    transformCube.setPosition(2.0f, 0.0f, -6.0f);
+    transformPyramid.setPosition(-2, 0, -6);
 
     transformProjection.perspective(60, 1, 2, 10);
 
@@ -142,16 +145,16 @@ void MainView::paintGL() {
 
     shaderProgram.bind();
 
-    glUniformMatrix4fv(uniformModel, 1, GL_FALSE, transformCube.data());
+    glUniformMatrix4fv(uniformModel, 1, GL_FALSE, transformCube.getMatrix().data());
     glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, transformProjection.data());
 
     // Draw here
-    glBindVertexArray(VAO_a);
+    glBindVertexArray(VAO_cube);
     glDrawArrays(GL_TRIANGLES, 0, 36);
 
-    glUniformMatrix4fv(uniformModel, 1, GL_FALSE, transformPyramid.data());
+    glUniformMatrix4fv(uniformModel, 1, GL_FALSE, transformPyramid.getMatrix().data());
 
-    glBindVertexArray(VAO_b);
+    glBindVertexArray(VAO_pyramid);
     glDrawArrays(GL_TRIANGLES, 0, 18);
 
     shaderProgram.release();
@@ -176,13 +179,17 @@ void MainView::resizeGL(int newWidth, int newHeight)
 
 void MainView::setRotation(int rotateX, int rotateY, int rotateZ)
 {
+    transformCube.setRotation(rotateX, rotateY, rotateZ);
+    transformPyramid.setRotation(rotateX, rotateY, rotateZ);
     qDebug() << "Rotation changed to (" << rotateX << "," << rotateY << "," << rotateZ << ")";
-    Q_UNIMPLEMENTED();
+    //Q_UNIMPLEMENTED();
+    update();
 }
 
 void MainView::setScale(int scale)
 {
-    transformCube.scale(scale / 100.0f);
+    transformCube.setScale(scale / 100.0f);
+    transformPyramid.setScale(scale / 100.0f);
     qDebug() << "Scale changed to " << scale;
     //Q_UNIMPLEMENTED();
     update();

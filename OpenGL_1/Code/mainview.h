@@ -14,6 +14,7 @@
 #include <memory>
 
 #include "geoms.h"
+#include "transform.h"
 
 class MainView : public QOpenGLWidget, protected QOpenGLFunctions_3_3_Core {
     Q_OBJECT
@@ -39,8 +40,8 @@ class MainView : public QOpenGLWidget, protected QOpenGLFunctions_3_3_Core {
         void setScale(int scale);
         void setShadingMode(ShadingMode shading);
 
-        QMatrix4x4 transformCube;
-        QMatrix4x4 transformPyramid;
+        Transform transformCube;
+        Transform transformPyramid;
 
         QMatrix4x4 transformProjection;
 
@@ -67,11 +68,11 @@ class MainView : public QOpenGLWidget, protected QOpenGLFunctions_3_3_Core {
         void onMessageLogged( QOpenGLDebugMessage Message );
 
     private:
-        cube figure_a;
-        pyramid figure_b;
+        cube figure_cube;
+        pyramid figure_pyramid;
 
-        GLuint VBO_a, VBO_b;
-        GLuint VAO_a, VAO_b;
+        GLuint VBO_cube, VBO_pyramid;
+        GLuint VAO_cube, VAO_pyramid;
 
         void createShaderProgram();
 

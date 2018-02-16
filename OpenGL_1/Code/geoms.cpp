@@ -58,7 +58,7 @@ cube set_cube(float side_length, RGB_color c1, RGB_color c2, RGB_color c3, RGB_c
     ret.f21 = set_traingle(v3,v4,v1);
     ret.f22 = set_traingle(v4,v2,v1);
     ret.f31 = set_traingle(v2,v4,v8);
-    ret.f32 = set_traingle(v8,v1,v2);
+    ret.f32 = set_traingle(v8,v6,v2);
     ret.f41 = set_traingle(v6,v8,v7);
     ret.f42 = set_traingle(v6,v7,v5);
     ret.f51 = set_traingle(v5,v1,v6);

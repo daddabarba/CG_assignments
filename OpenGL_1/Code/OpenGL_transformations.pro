@@ -17,13 +17,15 @@ SOURCES += main.cpp\
     mainview.cpp \
     user_input.cpp \
     model.cpp \
-    geoms.cpp
+    geoms.cpp \
+    transform.cpp
 
 HEADERS  += mainwindow.h \
     mainview.h \
     model.h \
     geoms.h \
-    colors.h
+    colors.h \
+    transform.h
 
 FORMS    += mainwindow.ui
 
