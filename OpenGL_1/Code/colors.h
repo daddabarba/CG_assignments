@@ -3,6 +3,7 @@
 
 #include "geoms.h"
 
+//A set of constants for some pre-defined RGB colors
 const RGB_color red = set_color( 1.0,  0.0,  0.0);
 const RGB_color green = set_color( 0.0,  1.0,  0.0);
 const RGB_color blue = set_color( 0.0,  0.0,  1.0);

@@ -40,15 +40,6 @@ class MainView : public QOpenGLWidget, protected QOpenGLFunctions_3_3_Core {
         void setScale(int scale);
         void setShadingMode(ShadingMode shading);
 
-        Transform transformCube;
-        Transform transformPyramid;
-        Transform transformSphere;
-
-        QMatrix4x4 transformProjection;
-
-        GLint uniformModel;
-        GLint uniformProjection;
-
     protected:
         void initializeGL();
         void resizeGL(int newWidth, int newHeight);
@@ -69,11 +60,19 @@ class MainView : public QOpenGLWidget, protected QOpenGLFunctions_3_3_Core {
         void onMessageLogged( QOpenGLDebugMessage Message );
 
     private:
+        Transform transformCube;     //Cube transformation matrix (rotation, scaling, translation)
+        Transform transformPyramid;  //Pyramid transformation matrix (rotation, scaling, translation)
+        Transform transformSphere;   //Sphere transformation matrix (rotation, scaling, translation)
 
-        int size_sphere;
+        QMatrix4x4 transformProjection; //Matrix for projection transformation
 
-        GLuint VBO_cube, VBO_pyramid, VBO_sphere;
-        GLuint VAO_cube, VAO_pyramid, VAO_sphere;
+        GLint uniformModel;          //model transform (rotate, scale, translate) uniform's location in shader
+        GLint uniformProjection;     //projection transform uniform's location in shader
+
+        int size_sphere;             //Number of sphere's mesh vertices
+
+        GLuint VBO_cube, VBO_pyramid, VBO_sphere;  //VBO's for cube, pyramid and sphere
+        GLuint VAO_cube, VAO_pyramid, VAO_sphere;  //VAO's for cube, pyramid and sphere
 
         void createShaderProgram();
 
