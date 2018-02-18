@@ -1,8 +1,8 @@
-This is a README file
+First we added some new types (in "geoms.h"), defining both basic geometrical components (RGB color, points and vertices), and polygons (triangles in 3D, pyramids and cubes). In the file "geoms.cpp" functions to easily (and especially in 1 row) generate the struct representing instances of these polynoms, are specified.
 
-When submitting your assignment, describe (briefly) the changes you made and what difficulties you encountered in this file.
+Then we added a new class "transform", to store (and easily change) a tranformation's rotation angles, translation (with respect to x,y, and z axis), and uniform scaling. This class is then also able to return a QMatrix4x4 which computes the aforementioned tranformation.
 
-Also describe what controls (key short-cuts, mouse clicks, mouse movement etc) and possible bonus assignments you implemented, so we can check them more easily.
+At last in "colors.h" some constants for RGB colors have been defined.
 
-If you have any suggestions/feedback for improving the practical assignments or support from teaching assistants, you may include it here OR post in anonymously on Nestor under Feedback.
-
+Then in the "mainview.h" file, in the mainview class declaration, we added some private arguments string the solid's tranformations, the VBOs and VAOs of the rendered objects, and the model and projection tranformation's uniform's location. At last in te "mainview.cpp" file we modified the "initializeGL" method, so that at the end it would compute the vertices of the sphere, pyramid, and cube, their respective VAOs and VBOs, store said vertices in their VBOs, and define the attributes of position and color in the VAO.
+The "createShaderProgram" method was also modified so that at the end the location of the model and projection transformation uniform would be stored. The "paintGL" method was was changed so that it would also render the cube, triangle and sphere (with relative tranformations). At last, the methods "resizeGl", "setScale", and "serRotation" were modified to respectively update projection tranformation (according to window's size), update scaling of object's tranformation, and updating rotation of object's tranformation.
