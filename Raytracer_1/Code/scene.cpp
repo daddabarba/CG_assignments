@@ -51,11 +51,11 @@ Color Scene::trace(Ray const &ray)
     *        pow(a,b)           a to the power of b
     ****************************************************/
 
+	Color color;
     //color = N.normalized() * 0.5 + 0.5; // Normals
     Light *l = lights[0].get();
     double diff = material.kd * N.normalized().dot((l->position - hit).normalized());
-    Color color = material.color * max(diff, material.ka);
-
+    color = material.color * max(diff, material.ka);
     return color;
 }
 
