@@ -115,6 +115,12 @@
 		<Unit filename="/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/scene.h">
 			<Option target="ray"/>
 		</Unit>
+		<Unit filename="/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/shapes/cylinder.cpp">
+			<Option target="ray"/>
+		</Unit>
+		<Unit filename="/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/shapes/cylinder.h">
+			<Option target="ray"/>
+		</Unit>
 		<Unit filename="/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/shapes/example.cpp">
 			<Option target="ray"/>
 		</Unit>

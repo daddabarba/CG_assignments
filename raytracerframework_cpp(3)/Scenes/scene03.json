@@ -10,7 +10,7 @@
         {
             "type": "plane",
             "comment": "mid plain in view",
-            "normal": [0.0,1.0,0.0],
+            "normal": [0.4,1.0,0.0],
             "origin": -180,
             "material":
             {
@@ -79,13 +79,29 @@
         },
         {
             "type": "triangle",
-            "comment": "Red triangle",
+            "comment": "white triangle",
             "point1": [290, 230, 150],
             "point2": [210, 270, 300],
             "point3": [90, 230, 150],
             "material":
             {
                 "color": [1.0, 1.0, 1.0],
+                "ka": 0.2,
+                "kd": 0.7,
+                "ks": 0.8,
+                "n": 32
+            }
+        },
+        {
+            "type": "cylinder",
+            "comment": "Red cylinder",
+            "origin": [190, 220, 250],
+            "direction": [0.4,1.0,-0.5],
+            "height": 80,
+            "radius": 20,
+            "material":
+            {
+                "color": [1.0, 0.2, 1.2],
                 "ka": 0.2,
                 "kd": 0.7,
                 "ks": 0.8,

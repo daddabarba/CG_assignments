@@ -399,6 +399,8 @@ shapes/plane.h
 /home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/shapes/plane.h
 shapes/triangle.h
 /home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/shapes/triangle.h
+shapes/cylinder.h
+/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/shapes/cylinder.h
 json/json.h
 /home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/json/json.h
 exception
@@ -441,6 +443,16 @@ triple.h
 /home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/triple.h
 vector
 -
+
+/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/shapes/cylinder.cpp
+cylinder.h
+/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/shapes/cylinder.h
+cmath
+-
+
+/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/shapes/cylinder.h
+../object.h
+/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/object.h
 
 /home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/shapes/example.cpp
 example.h
