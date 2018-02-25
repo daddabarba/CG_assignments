@@ -33,39 +33,21 @@ Color Scene::trace(Ray const &ray)
     Vector N = min_hit.N;                          //the normal at hit point
     Vector V = -ray.D;                             //the view vector
 
-    /****************************************************
-    * This is where you should insert the color
-    * calculation (Phong model).
-    *
-    * Given: material, hit, N, V, lights[]
-    * Sought: color
-    *
-    * Hints: (see triple.h)
-    *        Triple.dot(Vector) dot product
-    *        Vector + Vector    vector sum
-    *        Vector - Vector    vector difference
-    *        Point - Point      yields vector
-    *        Vector.normalize() normalizes vector, returns length
-    *        double * Color     scales each color component (r,g,b)
-    *        Color * Color      dito
-    *        pow(a,b)           a to the power of b
-    ****************************************************/
-    
     Color I_A(0.0,0.0,0.0);
     Color I_D(0.0,0.0,0.0);
     Color I_S(0.0,0.0,0.0);
     
     I_A = material.color*material.ka;
     
-    for (unsigned idx = 0; idx != lights.size(); ++idx){
-			Vector L = (lights[idx]->position - hit).normalized();
-			Vector R = 2*(N.dot(L))*N - L;
-			
-			I_D += material.color*(lights[idx]->color)*(material.kd)*(max(0.0,L.dot(N)));
-			I_S += (lights[idx]->color)*(material.ks)*pow(max(0.0,V.dot(R)),material.n);
+    for (unsigned idx = 0; idx != lights.size(); ++idx) {
+		Vector L = (lights[idx]->position - hit).normalized();
+		Vector R = 2*(N.dot(L))*N - L;
+		
+		I_D += material.color*(lights[idx]->color)*(material.kd)*(max(0.0,L.dot(N)));
+		I_S += (lights[idx]->color)*(material.ks)*pow(max(0.0,V.dot(R)),material.n);
 	}
 
-    Color color = I_A + I_D + I_S;                  // place holder
+    Color color = I_A + I_D + I_S;
 
     return color;
 }
@@ -85,6 +67,18 @@ void Scene::render(Image &img)
             img(x, y) = col;
         }
     }
+	/*// Anti-Aliasing (16 samples)
+	for (float y = 0; y < h; y += 0.25f)
+	{
+		for (float x = 0; x < w; x += 0.25f)
+		{
+			Point pixel(x, h - 1 - y, 0);
+			Ray ray(eye, (pixel - eye).normalized());
+			Color col = trace(ray);
+			col.clamp();
+			img((int)x, (int)y) += col / 16;
+		}
+	}*/
 }
 
 // --- Misc functions ----------------------------------------------------------

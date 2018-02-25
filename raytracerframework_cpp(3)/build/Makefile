@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)"
+CMAKE_SOURCE_DIR = "/home/tux/CG/raytracerframework_cpp(3)"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/build"
+CMAKE_BINARY_DIR = "/home/tux/CG/raytracerframework_cpp(3)/build"
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/build/CMakeFiles" "/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/build/CMakeFiles/progress.marks"
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/tux/CG/raytracerframework_cpp(3)/build/CMakeFiles" "/home/tux/CG/raytracerframework_cpp(3)/build/CMakeFiles/progress.marks"
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/build/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/tux/CG/raytracerframework_cpp(3)/build/CMakeFiles" 0
 .PHONY : all
 
 # The main clean target
@@ -339,6 +339,33 @@ Code/shapes/example.cpp.s:
 	$(MAKE) -f CMakeFiles/ray.dir/build.make CMakeFiles/ray.dir/Code/shapes/example.cpp.s
 .PHONY : Code/shapes/example.cpp.s
 
+Code/shapes/mesh.o: Code/shapes/mesh.cpp.o
+
+.PHONY : Code/shapes/mesh.o
+
+# target to build an object file
+Code/shapes/mesh.cpp.o:
+	$(MAKE) -f CMakeFiles/ray.dir/build.make CMakeFiles/ray.dir/Code/shapes/mesh.cpp.o
+.PHONY : Code/shapes/mesh.cpp.o
+
+Code/shapes/mesh.i: Code/shapes/mesh.cpp.i
+
+.PHONY : Code/shapes/mesh.i
+
+# target to preprocess a source file
+Code/shapes/mesh.cpp.i:
+	$(MAKE) -f CMakeFiles/ray.dir/build.make CMakeFiles/ray.dir/Code/shapes/mesh.cpp.i
+.PHONY : Code/shapes/mesh.cpp.i
+
+Code/shapes/mesh.s: Code/shapes/mesh.cpp.s
+
+.PHONY : Code/shapes/mesh.s
+
+# target to generate assembly for a file
+Code/shapes/mesh.cpp.s:
+	$(MAKE) -f CMakeFiles/ray.dir/build.make CMakeFiles/ray.dir/Code/shapes/mesh.cpp.s
+.PHONY : Code/shapes/mesh.cpp.s
+
 Code/shapes/plane.o: Code/shapes/plane.cpp.o
 
 .PHONY : Code/shapes/plane.o
@@ -480,6 +507,9 @@ help:
 	@echo "... Code/shapes/example.o"
 	@echo "... Code/shapes/example.i"
 	@echo "... Code/shapes/example.s"
+	@echo "... Code/shapes/mesh.o"
+	@echo "... Code/shapes/mesh.i"
+	@echo "... Code/shapes/mesh.s"
 	@echo "... Code/shapes/plane.o"
 	@echo "... Code/shapes/plane.i"
 	@echo "... Code/shapes/plane.s"

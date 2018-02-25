@@ -9,7 +9,7 @@
     "Objects": [
         {
             "type": "plane",
-            "comment": "mid plain in view",
+            "comment": "mid plane in view",
             "normal": [0.4,1.0,0.0],
             "origin": -180,
             "material":
@@ -65,7 +65,7 @@
         },
         {
             "type": "sphere",
-            "comment": "test sphere",
+            "comment": "white sphere",
             "position": [290, 250, 225],
             "radius": 6,
             "material":
@@ -102,6 +102,21 @@
             "material":
             {
                 "color": [1.0, 0.2, 1.2],
+                "ka": 0.2,
+                "kd": 0.7,
+                "ks": 0.8,
+                "n": 32
+            }
+        },
+	{
+            "type": "mesh",
+            "comment": "yellow icosahedron",
+            "model": "../Code/models/icosahedron.obj",
+            "position": [250, 170, 250],
+            "scale": 40,
+            "material":
+            {
+                "color": [1.0, 1.0, 0.0],
                 "ka": 0.2,
                 "kd": 0.7,
                 "ks": 0.8,
