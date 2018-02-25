@@ -14,9 +14,7 @@ public:
     Vector D;
     double r;
     double h;
-
-private:
-    bool in_tube(Vector intersect);
+    
 };
 
 #endif
