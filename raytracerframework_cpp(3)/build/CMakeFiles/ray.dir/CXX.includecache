@@ -401,6 +401,8 @@ shapes/triangle.h
 /home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/shapes/triangle.h
 shapes/cylinder.h
 /home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/shapes/cylinder.h
+shapes/cone.h
+/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/shapes/cone.h
 shapes/mesh.h
 /home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/shapes/mesh.h
 json/json.h
@@ -445,6 +447,16 @@ triple.h
 /home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/triple.h
 vector
 -
+
+/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/shapes/cone.cpp
+cone.h
+/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/shapes/cone.h
+cmath
+-
+
+/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/shapes/cone.h
+../object.h
+/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/object.h
 
 /home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/shapes/cylinder.cpp
 cylinder.h

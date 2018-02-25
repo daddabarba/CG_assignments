@@ -13,6 +13,7 @@
 #include "shapes/plane.h"
 #include "shapes/triangle.h"
 #include "shapes/cylinder.h"
+#include "shapes/cone.h"
 #include "shapes/mesh.h"
 
 // =============================================================================
@@ -62,6 +63,14 @@ bool Raytracer::parseObjectNode(json const &node)
         double r = node["radius"];
         double h = node["height"];
         obj = ObjectPtr(new Cylinder(o,d,h,r));
+    }
+    else if (node["type"] == "cone")
+    {
+        Vector o(node["origin"]);
+        Vector d(node["direction"]);
+        double r = node["radius"];
+        double h = node["height"];
+        obj = ObjectPtr(new Cone(o,d,h,r));
     }
     else if (node["type"] == "mesh")
     {

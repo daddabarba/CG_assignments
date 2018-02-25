@@ -285,6 +285,33 @@ Code/scene.cpp.s:
 	$(MAKE) -f CMakeFiles/ray.dir/build.make CMakeFiles/ray.dir/Code/scene.cpp.s
 .PHONY : Code/scene.cpp.s
 
+Code/shapes/cone.o: Code/shapes/cone.cpp.o
+
+.PHONY : Code/shapes/cone.o
+
+# target to build an object file
+Code/shapes/cone.cpp.o:
+	$(MAKE) -f CMakeFiles/ray.dir/build.make CMakeFiles/ray.dir/Code/shapes/cone.cpp.o
+.PHONY : Code/shapes/cone.cpp.o
+
+Code/shapes/cone.i: Code/shapes/cone.cpp.i
+
+.PHONY : Code/shapes/cone.i
+
+# target to preprocess a source file
+Code/shapes/cone.cpp.i:
+	$(MAKE) -f CMakeFiles/ray.dir/build.make CMakeFiles/ray.dir/Code/shapes/cone.cpp.i
+.PHONY : Code/shapes/cone.cpp.i
+
+Code/shapes/cone.s: Code/shapes/cone.cpp.s
+
+.PHONY : Code/shapes/cone.s
+
+# target to generate assembly for a file
+Code/shapes/cone.cpp.s:
+	$(MAKE) -f CMakeFiles/ray.dir/build.make CMakeFiles/ray.dir/Code/shapes/cone.cpp.s
+.PHONY : Code/shapes/cone.cpp.s
+
 Code/shapes/cylinder.o: Code/shapes/cylinder.cpp.o
 
 .PHONY : Code/shapes/cylinder.o
@@ -501,6 +528,9 @@ help:
 	@echo "... Code/scene.o"
 	@echo "... Code/scene.i"
 	@echo "... Code/scene.s"
+	@echo "... Code/shapes/cone.o"
+	@echo "... Code/shapes/cone.i"
+	@echo "... Code/shapes/cone.s"
 	@echo "... Code/shapes/cylinder.o"
 	@echo "... Code/shapes/cylinder.i"
 	@echo "... Code/shapes/cylinder.s"

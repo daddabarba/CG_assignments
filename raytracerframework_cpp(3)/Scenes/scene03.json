@@ -14,7 +14,7 @@
             "origin": -180,
             "material":
             {
-                "color": [1.0, 0.2, 0.2],
+                "color": [0.2, 1.0, 0.6],
                 "ka": 0.2,
                 "kd": 0.7,
                 "ks": 0.5,
@@ -38,7 +38,7 @@
         {
             "type": "sphere",
             "comment": "Green sphere",
-            "position": [210, 270, 300],
+            "position": [210, 300, 250],
             "radius": 4,
             "material":
             {
@@ -52,7 +52,7 @@
         {
             "type": "sphere",
             "comment": "Red sphere",
-            "position": [290, 230, 150],
+            "position": [290, 200, 250],
             "radius": 4,
             "material":
             {
@@ -64,24 +64,10 @@
             }
         },
         {
-            "type": "sphere",
-            "comment": "white sphere",
-            "position": [290, 250, 225],
-            "radius": 6,
-            "material":
-            {
-                "color": [1.0, 1.0, 1.0],
-                "ka": 0.2,
-                "kd": 0.7,
-                "ks": 0.8,
-                "n": 32
-            }
-        },
-        {
             "type": "triangle",
             "comment": "white triangle",
-            "point1": [290, 230, 150],
-            "point2": [210, 270, 300],
+            "point1": [290, 200, 250],
+            "point2": [210, 300, 250],
             "point3": [90, 230, 150],
             "material":
             {
@@ -93,12 +79,12 @@
             }
         },
         {
-            "type": "cylinder",
+            "type": "cone",
             "comment": "Red cylinder",
             "origin": [190, 220, 250],
             "direction": [0.4,1.0,-0.5],
-            "height": 80,
-            "radius": 20,
+            "height": 110,
+            "radius": 30,
             "material":
             {
                 "color": [1.0, 0.2, 1.2],
@@ -108,7 +94,23 @@
                 "n": 32
             }
         },
-	{
+        {
+            "type": "cylinder",
+            "comment": "Red cylinder",
+            "origin": [160, 100, 20],
+            "direction": [-0.7,1.0,-0.3],
+            "height": 200,
+            "radius": 30,
+            "material":
+            {
+                "color": [1.0, 0.2, 1.2],
+                "ka": 0.2,
+                "kd": 0.7,
+                "ks": 0.8,
+                "n": 32
+            }
+        },
+	    {
             "type": "mesh",
             "comment": "yellow tetrahedron",
             "model": "../Code/models/tetrahedron.obj",

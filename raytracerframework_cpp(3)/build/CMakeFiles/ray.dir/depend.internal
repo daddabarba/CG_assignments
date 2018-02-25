@@ -37,6 +37,7 @@ CMakeFiles/ray.dir/Code/raytracer.cpp.o
  /home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/raytracer.cpp
  /home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/raytracer.h
  /home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/scene.h
+ /home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/shapes/cone.h
  /home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/shapes/cylinder.h
  /home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/shapes/mesh.h
  /home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/shapes/plane.h
@@ -53,6 +54,15 @@ CMakeFiles/ray.dir/Code/scene.cpp.o
  /home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/ray.h
  /home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/scene.cpp
  /home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/scene.h
+ /home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/triple.h
+CMakeFiles/ray.dir/Code/shapes/cone.cpp.o
+ /home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/hit.h
+ /home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/json/json_fwd.h
+ /home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/material.h
+ /home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/object.h
+ /home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/ray.h
+ /home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/shapes/cone.cpp
+ /home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/shapes/cone.h
  /home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/triple.h
 CMakeFiles/ray.dir/Code/shapes/cylinder.cpp.o
  /home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/hit.h

@@ -285,6 +285,33 @@ Code/scene.cpp.s:
 	$(MAKE) -f CMakeFiles/ray.dir/build.make CMakeFiles/ray.dir/Code/scene.cpp.s
 .PHONY : Code/scene.cpp.s
 
+Code/shapes/cone.o: Code/shapes/cone.cpp.o
+
+.PHONY : Code/shapes/cone.o
+
+# target to build an object file
+Code/shapes/cone.cpp.o:
+	$(MAKE) -f CMakeFiles/ray.dir/build.make CMakeFiles/ray.dir/Code/shapes/cone.cpp.o
+.PHONY : Code/shapes/cone.cpp.o
+
+Code/shapes/cone.i: Code/shapes/cone.cpp.i
+
+.PHONY : Code/shapes/cone.i
+
+# target to preprocess a source file
+Code/shapes/cone.cpp.i:
+	$(MAKE) -f CMakeFiles/ray.dir/build.make CMakeFiles/ray.dir/Code/shapes/cone.cpp.i
+.PHONY : Code/shapes/cone.cpp.i
+
+Code/shapes/cone.s: Code/shapes/cone.cpp.s
+
+.PHONY : Code/shapes/cone.s
+
+# target to generate assembly for a file
+Code/shapes/cone.cpp.s:
+	$(MAKE) -f CMakeFiles/ray.dir/build.make CMakeFiles/ray.dir/Code/shapes/cone.cpp.s
+.PHONY : Code/shapes/cone.cpp.s
+
 Code/shapes/cylinder.o: Code/shapes/cylinder.cpp.o
 
 .PHONY : Code/shapes/cylinder.o
@@ -338,6 +365,33 @@ Code/shapes/example.s: Code/shapes/example.cpp.s
 Code/shapes/example.cpp.s:
 	$(MAKE) -f CMakeFiles/ray.dir/build.make CMakeFiles/ray.dir/Code/shapes/example.cpp.s
 .PHONY : Code/shapes/example.cpp.s
+
+Code/shapes/mesh.o: Code/shapes/mesh.cpp.o
+
+.PHONY : Code/shapes/mesh.o
+
+# target to build an object file
+Code/shapes/mesh.cpp.o:
+	$(MAKE) -f CMakeFiles/ray.dir/build.make CMakeFiles/ray.dir/Code/shapes/mesh.cpp.o
+.PHONY : Code/shapes/mesh.cpp.o
+
+Code/shapes/mesh.i: Code/shapes/mesh.cpp.i
+
+.PHONY : Code/shapes/mesh.i
+
+# target to preprocess a source file
+Code/shapes/mesh.cpp.i:
+	$(MAKE) -f CMakeFiles/ray.dir/build.make CMakeFiles/ray.dir/Code/shapes/mesh.cpp.i
+.PHONY : Code/shapes/mesh.cpp.i
+
+Code/shapes/mesh.s: Code/shapes/mesh.cpp.s
+
+.PHONY : Code/shapes/mesh.s
+
+# target to generate assembly for a file
+Code/shapes/mesh.cpp.s:
+	$(MAKE) -f CMakeFiles/ray.dir/build.make CMakeFiles/ray.dir/Code/shapes/mesh.cpp.s
+.PHONY : Code/shapes/mesh.cpp.s
 
 Code/shapes/plane.o: Code/shapes/plane.cpp.o
 
@@ -474,12 +528,18 @@ help:
 	@echo "... Code/scene.o"
 	@echo "... Code/scene.i"
 	@echo "... Code/scene.s"
+	@echo "... Code/shapes/cone.o"
+	@echo "... Code/shapes/cone.i"
+	@echo "... Code/shapes/cone.s"
 	@echo "... Code/shapes/cylinder.o"
 	@echo "... Code/shapes/cylinder.i"
 	@echo "... Code/shapes/cylinder.s"
 	@echo "... Code/shapes/example.o"
 	@echo "... Code/shapes/example.i"
 	@echo "... Code/shapes/example.s"
+	@echo "... Code/shapes/mesh.o"
+	@echo "... Code/shapes/mesh.i"
+	@echo "... Code/shapes/mesh.s"
 	@echo "... Code/shapes/plane.o"
 	@echo "... Code/shapes/plane.i"
 	@echo "... Code/shapes/plane.s"
