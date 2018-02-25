@@ -110,8 +110,8 @@
         },
 	{
             "type": "mesh",
-            "comment": "yellow icosahedron",
-            "model": "../Code/models/icosahedron.obj",
+            "comment": "yellow tetrahedron",
+            "model": "../Code/models/tetrahedron.obj",
             "position": [250, 170, 250],
             "scale": 40,
             "material":

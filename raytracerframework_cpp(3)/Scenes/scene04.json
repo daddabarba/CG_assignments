@@ -111,7 +111,7 @@
         },
 	{
             "type": "mesh",
-            "comment": "",
+            "comment": "green icosahedron",
             "model": "../Code/models/icosahedron.obj",
             "position": [80, 240, 150],
             "scale": 90,

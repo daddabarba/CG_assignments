@@ -1,0 +1,44 @@
+{
+    "Eye": [200, 200, 500],
+    "Lights": [
+        {
+            "position": [-600, 500, 1000],
+            "color": [1.0, 1.0, 1.0]
+        },
+	{
+            "position": [800, -200, 1000],
+            "color": [0.5, 0.5, 0.5]
+        }
+    ],
+    "Objects": [
+        {
+            "type": "plane",
+            "comment": "background",
+            "normal": [0.0, 0.0, -1.0],
+            "origin": -100,
+            "material":
+            {
+                "color": [0.1, 0.3, 0.6],
+                "ka": 0.2,
+                "kd": 1.0,
+                "ks": 0.1,
+                "n": 4
+            }
+        },
+	{
+            "type": "mesh",
+            "comment": "teapot",
+            "model": "../Code/models/teapot.obj",
+            "position": [200, 200, 200],
+            "scale": 100,
+            "material":
+            {
+                "color": [0.8, 0.8, 0.8],
+                "ka": 0.2,
+                "kd": 0.8,
+                "ks": 1.0,
+                "n": 64
+            }
+        }
+    ]
+}
