@@ -3,13 +3,13 @@
 Hit Triangle::intersect(Ray const &ray)
 {
 
-    //Triangle's plain intersection
+    //Triangle's plane intersection
 
-    //check if ray is parallel to plain on which triangle lays
+    //check if ray is parallel to plane on which triangle lays
     if((ray.D.normalized()).dot(N) == 0)
         return Hit::NO_HIT();
 
-    //get intersection point between ray and triangle's plain
+    //get intersection point between ray and triangle's plane
     double t = (-O - (ray.O).dot(N))/((ray.D).dot(N));
 
     if (t<0.0)
@@ -18,7 +18,7 @@ Hit Triangle::intersect(Ray const &ray)
 
     //Checking that intersection is also in triangle
 
-    //get intersection coordinates (with plain)
+    //get intersection coordinates (with plane)
     Vector P = ray.at(t);
 
     //triangle is intersection area of 2 angles
@@ -58,9 +58,9 @@ Triangle::Triangle(Vector vertex1, Vector vertex2, Vector vertex3)
         P2(vertex2), //vertex 2 of triangle
         P3(vertex3), //vertex 3 of triangle
 
-        //triangle's normal (constant). Also triangle's plain coefficients
+        //triangle's normal (constant). Also triangle's plane coefficients
         N(((P2-P1).cross(P3-P1)).normalized()),
-        //triangle's plain free term
+        //triangle's plane free term
         O(-(N.dot(P1))),
 
         //normalized vector for P1-P2 side

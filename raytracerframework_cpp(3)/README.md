@@ -1,5 +1,36 @@
 # Raytracer C++ framework for Introduction to Computer Graphics
 
+#############
+#DESCRIPTION#
+#############
+
+To run the code please refer to the assignment instructions (## Compiling the code
+and ## Running the Raytracer). When running the raytracer there are 5 different scenes
+which can be rendered: scene01.json,scene02.json (given for the assignment),
+scene03.json (showing most of the shapes implemented),scene04.json (showing shapes and
+meshes), and scene05.json (mesh of a tea-pot).
+
+In this assignment 5 shapes have been added (in Code/shapes). These have been implemented
+as c++ classes, therefore having both an header and a cpp file.
+The added classes are the following:
+·cone [center of base, direction of axis (to rotate), radius, and height]
+·cylinder [center of base, direction of axis (to rotate), radius, and height]
+·plane [normal of plane/abc coefficients, free term/translation]
+·triangle [3 vertices]
+·mesh [array of triangles]
+
+In addition the shape sphere was modified (more precisely the intersection method,
+computing intersection point and normal at intersection).
+
+In the file scene.cpp Phong illumination was added, while in the raytracer.cpp the procedure
+to read shapes where included (for each of the aforementioned shapes).
+
+
+
+#########################
+#ASSIGNMENT INSTRUCTIONS#
+#########################
+
 This is a C++ framework for a raytracer. It is created for the Computer
 Science course "Introduction to Computer Graphics" taught at the
 University of Groningen.
