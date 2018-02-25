@@ -31,26 +31,28 @@ Hit Sphere::intersect(Ray const &ray)
     double t = 1000;*/
     
     Triple dist = ray.O - position;
-    
+
+    //quadratic equation coefficents
     double a = (ray.D).dot(ray.D);
     double b = 2*(ray.D).dot(dist);
     double c = dist.dot(dist) - r*r;
-    
+
+    //abc formula nominator terms
     double term_first  = -b;
     double term_second = b*b -4*a*c;
-    
+
+    //check if solution exist (no intersection)
     if(term_second<0)
 		return Hit::NO_HIT();
-    
+
+    //compute two intersections
     double t1 = (term_first+sqrt(term_second))/2;
     double t2 = (term_first-sqrt(term_second))/2;
-    
-    double low = min(t1,t2);
-    double high = max(t1,t2);
-    
-    double t = low;
+
+    //discard later and negative intersections
+    double t = min(t1,t2);
     if(t<0){
-			t = high;
+			t = max(t1,t2);
 			if(t<0){
 					return Hit::NO_HIT();
 			}
@@ -65,6 +67,7 @@ Hit Sphere::intersect(Ray const &ray)
     * Insert calculation of the sphere's normal at the intersection point.
     ****************************************************/
 
+    //normal is normalized vector from center to intersection
     Vector N = (ray.at(t) - position).normalized();
 
     return Hit(t,N);

@@ -14,7 +14,7 @@ public:
     Vector D;
     double r;
     double h;
-    
+
 };
 
 #endif

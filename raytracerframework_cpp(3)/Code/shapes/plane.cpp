@@ -6,7 +6,8 @@ Hit Plane::intersect(Ray const &ray)
     if((ray.D.normalized()).dot(N) == 0)
         return Hit::NO_HIT();
 
-	// if they're not parallel, there is always a point t at which the ray meets the plane
+	//if they're not parallel, there is always a point t at which the ray meets the plane
+    //plug rays x,y, and z in plane equation, solve for t
     double t = (-O - (ray.O).dot(N))/((ray.D).dot(N));
 
 	// check if intersection point is behind the observer

@@ -33,20 +33,28 @@ Color Scene::trace(Ray const &ray)
     Vector N = min_hit.N;                          //the normal at hit point
     Vector V = -ray.D;                             //the view vector
 
+    //initializing ambient, diffuse and specular illumination to black
     Color I_A(0.0,0.0,0.0);
     Color I_D(0.0,0.0,0.0);
     Color I_S(0.0,0.0,0.0);
-    
+
+    //ambient illumination is constant
     I_A = material.color*material.ka;
-    
+
+    //for every light source
     for (unsigned idx = 0; idx != lights.size(); ++idx) {
-		Vector L = (lights[idx]->position - hit).normalized();
+		//compute vector from intersection point to light
+        Vector L = (lights[idx]->position - hit).normalized();
+        //compute reflected vector
 		Vector R = 2*(N.dot(L))*N - L;
-		
+
+        //add diffusion illumination for this light
 		I_D += material.color*(lights[idx]->color)*(material.kd)*(max(0.0,L.dot(N)));
+        //add specular illumination for this light
 		I_S += (lights[idx]->color)*(material.ks)*pow(max(0.0,V.dot(R)),material.n);
 	}
 
+    //compute final color
     Color color = I_A + I_D + I_S;
 
     return color;
@@ -67,6 +75,7 @@ void Scene::render(Image &img)
             img(x, y) = col;
         }
     }
+
 	/*// Anti-Aliasing (16 samples)
 	for (float y = 0; y < h; y += 0.25f)
 	{
