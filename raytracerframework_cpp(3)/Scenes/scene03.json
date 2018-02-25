@@ -112,8 +112,8 @@
             "type": "mesh",
             "comment": "yellow tetrahedron",
             "model": "../Code/models/tetrahedron.obj",
-            "position": [250, 170, 250],
-            "scale": 40,
+            "position": [220, 120, 250],
+            "scale": 60,
             "material":
             {
                 "color": [1.0, 1.0, 0.0],
