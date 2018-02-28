@@ -11,6 +11,7 @@ layout (location = 1) in vec3 vertNorm_in;
 // uniform mat4 modelTransform; for example
 uniform mat4 modelTransform;  //uniform for model transformation matrix (rotation, translation, and scaling)
 uniform mat4 projection; //uniform for projection transformation matrix
+uniform mat3 normalMatrix;
 
 // Specify the output of the vertex stage
 out vec3 vertNorm;
@@ -22,5 +23,5 @@ void main()
 
     //first apply model tranfromation, then project on window
     gl_Position = projection * modelTransform * vec4(vertCoordinates_in, 1.0);
-    vertNorm = vertNorm_in;
+    vertNorm = normalMatrix*vertNorm_in;
 }

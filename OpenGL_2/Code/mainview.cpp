@@ -13,7 +13,10 @@
  *
  * @param parent
  */
-MainView::MainView(QWidget *parent) : QOpenGLWidget(parent) {
+MainView::MainView(QWidget *parent) :
+    QOpenGLWidget(parent),
+    sphere(":/models/sphere.obj")
+{
     qDebug() << "MainView constructor";
 
     connect(&timer, SIGNAL(timeout()), this, SLOT(update()));
@@ -130,52 +133,8 @@ void MainView::initializeGL() {
     //Setting pyramid's model transformation (translation)
     transformPyramid.setPosition(-2, 0, -6);
 
-
-
     //SETTING SPHERE FIGURE ON GPU
-
-    //Computing vertices
-    Model mesh_sphere(":/models/sphere.obj"); //Loading mesh from file
-    QVector <QVector3D> sphere_vertices = mesh_sphere.getVertices(); //Storing QVEctor of QVector3D (vertices' locations)
-
-    size_sphere = sphere_vertices.length();       //Getting number of vertices
-    QVector3D *vertices = sphere_vertices.data(); //Getting array of QVector3D (vertices' locations)
-
-    vertex *figure_sphere = (vertex *)malloc(size_sphere*sizeof(vertex));  //Allocating array of vertices (as defined in geoms.h)
-
-    for(int i=0; i<size_sphere; i++){ //for every vertex
-        //take position
-        point p = set_point(vertices[i].x(), vertices[i].y(), vertices[i].z());
-        //generate random RGB color
-        RGB_color col = set_color((float)rand() / RAND_MAX, (float)rand() / RAND_MAX, (float)rand() / RAND_MAX);
-
-        //Store vertex (as defined in geoms.h)
-        figure_sphere[i] = set_vertex(p,col);
-
-    }
-
-    //Starting VAO and VBO
-    glGenBuffers(1, &VBO_sphere);
-    glGenVertexArrays(1, &VAO_sphere);
-
-    glBindVertexArray(VAO_sphere);
-    glBindBuffer(GL_ARRAY_BUFFER, VBO_sphere);
-
-    //Sending sphere to VBO
-    glBufferData(GL_ARRAY_BUFFER, size_sphere*sizeof(vertex), figure_sphere, GL_STATIC_DRAW);
-    free(figure_sphere);
-
-    //Defining attributes
-    glEnableVertexAttribArray(0);
-    glEnableVertexAttribArray(1);
-
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(vertex), (void *)0);
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(vertex), (void *)(sizeof(point)) );
-
-    //Setting sphere's model transformation (translation and scaling)
-    transformSphere.setPosition(0, 0, -10);
-    transformSphere.setScale(0.04f);
-
+    setBuffer(&sphere, set_point(0.0,0.0,-10.0),0.04f);
 
     //SETTING PROJECTION TRANSFORMATION MATRIX
     transformProjection.perspective(60, 1, 2, 10);
@@ -194,6 +153,9 @@ void MainView::createShaderProgram()
     //Getting shader's locations for model and projection's uniforms
     uniformModel = shaderProgram.uniformLocation("modelTransform");
     uniformProjection = shaderProgram.uniformLocation("projection");
+    uniformNormal = shaderProgram.uniformLocation("normalMatrix");
+
+    qDebug() << uniformNormal;
 }
 
 // --- OpenGL drawing
@@ -236,14 +198,7 @@ void MainView::paintGL() {
     glDrawArrays(GL_TRIANGLES, 0, 18);
 
     //RENDERING SPHERE
-
-    //Setting model transformation uniform to sphere transformation
-    glUniformMatrix4fv(uniformModel, 1, GL_FALSE, transformSphere.getMatrix().data());
-
-    //Binding buffer containing sphere
-    glBindVertexArray(VAO_sphere);
-    //drawing sphere from buffer
-    glDrawArrays(GL_TRIANGLES, 0, size_sphere);
+    renderBuffer(&sphere, uniformModel, uniformNormal);
 
 
     shaderProgram.release();
@@ -273,7 +228,7 @@ void MainView::setRotation(int rotateX, int rotateY, int rotateZ)
     //Change solid's rotation value
     transformCube.setRotation(rotateX, rotateY, rotateZ);
     transformPyramid.setRotation(rotateX, rotateY, rotateZ);
-    transformSphere.setRotation(rotateX, rotateY, rotateZ);
+    sphere.transformation.setRotation(rotateX, rotateY, rotateZ);
 
     qDebug() << "Rotation changed to (" << rotateX << "," << rotateY << "," << rotateZ << ")";
     //Q_UNIMPLEMENTED();
@@ -285,7 +240,7 @@ void MainView::setScale(int scale)
     //Change solid's (uniform) scaling value
     transformCube.setScale(scale / 100.0f);
     transformPyramid.setScale(scale / 100.0f);
-    transformSphere.setScale(scale / 100.0f * 0.04f);
+    sphere.transformation.setScale(scale / 100.0f * 0.04f);
 
     qDebug() << "Scale changed to " << scale;
     //Q_UNIMPLEMENTED();
@@ -309,4 +264,41 @@ void MainView::setShadingMode(ShadingMode shading)
  */
 void MainView::onMessageLogged( QOpenGLDebugMessage Message ) {
     qDebug() << " → Log:" << Message;
+}
+
+void MainView::setBuffer(solid_mesh *mesh, point position, float scale){
+    //Starting VAO and VBO
+    glGenBuffers(1, &(mesh->VBO));
+    glGenVertexArrays(1, &(mesh->VAO));
+
+    glBindVertexArray(mesh->VAO);
+    glBindBuffer(GL_ARRAY_BUFFER, mesh->VBO);
+
+    //Sending solid to VBO
+    glBufferData(GL_ARRAY_BUFFER, (mesh->size_solid)*sizeof(vertex), mesh->figure_solid, GL_STATIC_DRAW);
+    mesh->discard_vertices();
+
+    //Defining attributes
+    glEnableVertexAttribArray(0);
+    glEnableVertexAttribArray(1);
+
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(vertex), (void *)0);
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(vertex), (void *)(sizeof(point)) );
+
+    //Setting solid's model transformation (translation and scaling)
+    (mesh->transformation).setPosition(position.x, position.y, position.z);
+    (mesh->transformation).setScale(scale);
+
+}
+
+void MainView::renderBuffer(solid_mesh *mesh, GLint transform_uniform, GLint normal_uniform){
+
+    //Setting model transformation uniform to solid transformation
+    glUniformMatrix4fv(transform_uniform, 1, GL_FALSE, (mesh->transformation).getMatrix().data());
+    glUniformMatrix3fv(normal_uniform, 1, GL_FALSE, (mesh->getNormalMatrix()).data());
+
+    //Binding buffer containing solid
+    glBindVertexArray(mesh->VAO);
+    //drawing solid from buffer
+    glDrawArrays(GL_TRIANGLES, 0, mesh->size_solid);
 }

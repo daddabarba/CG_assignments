@@ -18,14 +18,16 @@ SOURCES += main.cpp\
     user_input.cpp \
     model.cpp \
     geoms.cpp \
-    transform.cpp
+    transform.cpp \
+    solid_mesh.cpp
 
 HEADERS  += mainwindow.h \
     mainview.h \
     model.h \
     geoms.h \
     colors.h \
-    transform.h
+    transform.h \
+    solid_mesh.h
 
 FORMS    += mainwindow.ui
 
