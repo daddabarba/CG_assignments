@@ -1,9 +1,12 @@
 #include "solid_mesh.h"
 
-solid_mesh::solid_mesh(const char* file, point position, float scale)
+solid_mesh::solid_mesh(const char* file, point position, float scale, RGB_color col, RGB_color kPar)
 {
     base_scale = scale;
     base_translation = position;
+
+    color = col;
+    material = kPar;
 
     Model mesh_solid(file); //Loading mesh from file
     QVector <QVector3D> solid_vertices = mesh_solid.getVertices(); //Storing QVEctor of QVector3D (vertices' locations)

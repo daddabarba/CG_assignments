@@ -15,11 +15,18 @@
  */
 MainView::MainView(QWidget *parent) :
     QOpenGLWidget(parent),
-    cat(":/models/cat.obj", set_point(0.0,-1.0,-4.0), 4.0f)
+    cat(":/models/cat.obj", set_point(0.0,-1.0,-4.0), 4.0f, set_color(0.3,0.2,0.6), set_color(0.2,0.3,0.8)),
+    shaderProgram_Normal(),
+    shaderProgram_Gouraud(),
+    shaderProgram_Phong()
 {
     qDebug() << "MainView constructor";
 
+    //Setting light source (position and color)
+    lightSource = set_vertex(set_point(0.0,5.0,30.0), set_color(1.0,0.0,0.0));
+
     connect(&timer, SIGNAL(timeout()), this, SLOT(update()));
+    qDebug() << "Connected";
 }
 
 /**
@@ -78,31 +85,26 @@ void MainView::initializeGL() {
 
     createShaderProgram();
 
-
     //SETTING CAT FIGURE ON GPU
     setBuffer(&cat);
-
+    qDebug() << "cat mesh uploaded";
 
     //SETTING PROJECTION TRANSFORMATION MATRIX
     transformProjection.perspective(60, 1, 2, 10);
 
 }
 
+
 void MainView::createShaderProgram()
 {
-    // Create shader program
-    shaderProgram.addShaderFromSourceFile(QOpenGLShader::Vertex,
-                                           ":/shaders/vertshader.glsl");
-    shaderProgram.addShaderFromSourceFile(QOpenGLShader::Fragment,
-                                           ":/shaders/fragshader.glsl");
-    shaderProgram.link();
+    qDebug() << "Loading normal shader";
+    shaderProgram_Normal.create(":/shaders/vertshader_normal.glsl", ":/shaders/fragshader_normal.glsl");
 
-    //Getting shader's locations for model and projection's uniforms
-    uniformModel = shaderProgram.uniformLocation("modelTransform");
-    uniformProjection = shaderProgram.uniformLocation("projection");
-    uniformNormal = shaderProgram.uniformLocation("normalMatrix");
+    qDebug() << "Loading gouraud shader";
+    shaderProgram_Gouraud.create(":/shaders/vertshader_gouraud.glsl", ":/shaders/fragshader_gouraud.glsl");
 
-    qDebug() << uniformNormal;
+    qDebug() << "Loading phong shader";
+    shaderProgram_Phong.create(":/shaders/vertshader_phong.glsl", ":/shaders/fragshader_phong.glsl");
 }
 
 // --- OpenGL drawing
@@ -117,17 +119,24 @@ void MainView::paintGL() {
     // Clear the screen before rendering
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    shaderProgram.bind();
+    getShader()->bind();
 
     // Draw here
 
     //Setting PROJECTION transformation matrix (in shader's uniform)
-    glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, transformProjection.data());
+    glUniformMatrix4fv(getShader()->uniformProjection, 1, GL_FALSE, transformProjection.data());
+
+
+    if((getShader()->uniformLightCol)>=0 && (getShader()->uniformLightPos)>=0 ){
+        qDebug()<<"sent light";
+        glUniform3f(getShader()->uniformLightPos, (lightSource.position).x, (lightSource.position).y, (lightSource.position).z);
+        glUniform3f(getShader()->uniformLightCol, (lightSource.color).r, (lightSource.color).g, (lightSource.color).b);
+    }
 
     //RENDERING CAT
-    renderBuffer(&cat, uniformModel, uniformNormal);
+    renderBuffer(&cat);
 
-    shaderProgram.release();
+    getShader()->release();
 }
 
 /**
@@ -171,8 +180,8 @@ void MainView::setScale(int scale)
 
 void MainView::setShadingMode(ShadingMode shading)
 {
+    currentShader = shading;
     qDebug() << "Changed shading to" << shading;
-    Q_UNIMPLEMENTED();
 }
 
 // --- Private helpers
@@ -209,11 +218,17 @@ void MainView::setBuffer(solid_mesh *mesh){
 
 }
 
-void MainView::renderBuffer(solid_mesh *mesh, GLint transform_uniform, GLint normal_uniform){
+void MainView::renderBuffer(solid_mesh *mesh){
 
     //Setting model transformation uniform to solid transformation
-    glUniformMatrix4fv(transform_uniform, 1, GL_FALSE, (mesh->transformation).getMatrix().data());
-    glUniformMatrix3fv(normal_uniform, 1, GL_FALSE, (mesh->getNormalMatrix()).data());
+    glUniformMatrix4fv(getShader()->uniformModel, 1, GL_FALSE, (mesh->transformation).getMatrix().data());
+    glUniformMatrix3fv(getShader()->uniformNormal, 1, GL_FALSE, (mesh->getNormalMatrix()).data());
+
+    if((getShader()->uniformMaterial)>=0 && (getShader()->uniformObjCol)>=0){
+        qDebug()<<"sent object";
+        glUniform3f(getShader()->uniformMaterial,(mesh->material).r,(mesh->material).g,(mesh->material).b);
+        glUniform3f(getShader()->uniformObjCol,(mesh->color).r,(mesh->color).g,(mesh->color).b);
+    }
 
     //Binding buffer containing solid
     glBindVertexArray(mesh->VAO);
@@ -224,4 +239,19 @@ void MainView::renderBuffer(solid_mesh *mesh, GLint transform_uniform, GLint nor
 void MainView::destroyMesh(solid_mesh *mesh){
     glDeleteBuffers(1, &(mesh->VBO));
     glDeleteVertexArrays(1, &(mesh->VAO));
+}
+
+shaderWrapper *MainView::getShader(){
+    switch (currentShader) {
+    case NORMAL:
+        return &shaderProgram_Normal;
+        break;
+    case GOURAUD:
+        return &shaderProgram_Gouraud;
+    case PHONG:
+        return &shaderProgram_Phong;
+    default:
+        return &shaderProgram_Normal;
+        break;
+    }
 }

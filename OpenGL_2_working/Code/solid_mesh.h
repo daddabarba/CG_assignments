@@ -4,6 +4,8 @@
 #include "geoms.h"
 #include "transform.h"
 
+#include "colors.h"
+
 #include "model.h"
 
 #include <QOpenGLShaderProgram>
@@ -12,7 +14,7 @@
 class solid_mesh
 {
 public:
-    solid_mesh(const char* file, point positon, float scale);
+    solid_mesh(const char* file, point positon, float scale, RGB_color col=blue, RGB_color kPar=set_color(1.0,1.0,1.0));
 
     QMatrix3x3 getNormalMatrix();
 
@@ -28,6 +30,8 @@ public:
 
     GLuint VAO, VBO;
     int size_solid;
+
+    RGB_color color, material;
 
     vertex *figure_solid;
 

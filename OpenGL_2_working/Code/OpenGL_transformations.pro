@@ -19,7 +19,8 @@ SOURCES += main.cpp\
     model.cpp \
     geoms.cpp \
     transform.cpp \
-    solid_mesh.cpp
+    solid_mesh.cpp \
+    shaderwrapper.cpp
 
 HEADERS  += mainwindow.h \
     mainview.h \
@@ -27,7 +28,8 @@ HEADERS  += mainwindow.h \
     geoms.h \
     colors.h \
     transform.h \
-    solid_mesh.h
+    solid_mesh.h \
+    shaderwrapper.h
 
 FORMS    += mainwindow.ui
 

@@ -17,6 +17,8 @@
 #include "transform.h"
 #include "solid_mesh.h"
 
+#include "shaderwrapper.h"
+
 class MainView : public QOpenGLWidget, protected QOpenGLFunctions_3_3_Core {
     Q_OBJECT
 
@@ -59,21 +61,24 @@ class MainView : public QOpenGLWidget, protected QOpenGLFunctions_3_3_Core {
     private:
         solid_mesh cat;
 
+        shaderWrapper shaderProgram_Normal;
+        shaderWrapper shaderProgram_Gouraud;
+        shaderWrapper shaderProgram_Phong;
+
+        vertex lightSource;
+
+        shaderWrapper *getShader();
+        ShadingMode currentShader;
+
         QOpenGLDebugLogger *debugLogger;
         QTimer timer; // timer used for animation
 
-        QOpenGLShaderProgram shaderProgram;
-
         QMatrix4x4 transformProjection; //Matrix for projection transformation
-
-        GLint uniformModel;          //model transform (rotate, scale, translate) uniform's location in shader
-        GLint uniformProjection;     //projection transform uniform's location in shader
-        GLint uniformNormal;
 
         void createShaderProgram();
 
         void setBuffer(solid_mesh *mesh);
-        void renderBuffer(solid_mesh *mesh, GLint transform_uniform, GLint normal_uniform);
+        void renderBuffer(solid_mesh *mesh);
 
         void destroyMesh(solid_mesh *mesh);
 

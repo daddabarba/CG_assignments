@@ -33,7 +33,7 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = OpenGL_transformations1.0.0
-DISTDIR = /home/s3210812/Downloads/OpenGL_2/build-OpenGL_transformations-Desktop-Debug/.tmp/OpenGL_transformations1.0.0
+DISTDIR = /home/s3090078/Documents/CG_assignments/OpenGL_2_working/build-OpenGL_transformations-Desktop-Debug/.tmp/OpenGL_transformations1.0.0
 LINK          = g++
 LFLAGS        = -m64
 LIBS          = $(SUBLIBS) -L/usr/X11R6/lib64 -lQt5Widgets -lQt5Gui -lQt5Core -lGL -lpthread 
@@ -55,7 +55,8 @@ SOURCES       = ../Code/main.cpp \
 		../Code/model.cpp \
 		../Code/geoms.cpp \
 		../Code/transform.cpp \
-		../Code/solid_mesh.cpp qrc_resources.cpp \
+		../Code/solid_mesh.cpp \
+		../Code/shaderwrapper.cpp qrc_resources.cpp \
 		moc_mainwindow.cpp \
 		moc_mainview.cpp
 OBJECTS       = main.o \
@@ -66,6 +67,7 @@ OBJECTS       = main.o \
 		geoms.o \
 		transform.o \
 		solid_mesh.o \
+		shaderwrapper.o \
 		qrc_resources.o \
 		moc_mainwindow.o \
 		moc_mainview.o
@@ -133,14 +135,16 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		../Code/geoms.h \
 		../Code/colors.h \
 		../Code/transform.h \
-		../Code/solid_mesh.h ../Code/main.cpp \
+		../Code/solid_mesh.h \
+		../Code/shaderwrapper.h ../Code/main.cpp \
 		../Code/mainwindow.cpp \
 		../Code/mainview.cpp \
 		../Code/user_input.cpp \
 		../Code/model.cpp \
 		../Code/geoms.cpp \
 		../Code/transform.cpp \
-		../Code/solid_mesh.cpp
+		../Code/solid_mesh.cpp \
+		../Code/shaderwrapper.cpp
 QMAKE_TARGET  = OpenGL_transformations
 DESTDIR       = #avoid trailing-slash linebreak
 TARGET        = OpenGL_transformations
@@ -313,8 +317,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../Code/resources.qrc $(DISTDIR)/
-	$(COPY_FILE) --parents ../Code/mainwindow.h ../Code/mainview.h ../Code/model.h ../Code/geoms.h ../Code/colors.h ../Code/transform.h ../Code/solid_mesh.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../Code/main.cpp ../Code/mainwindow.cpp ../Code/mainview.cpp ../Code/user_input.cpp ../Code/model.cpp ../Code/geoms.cpp ../Code/transform.cpp ../Code/solid_mesh.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../Code/mainwindow.h ../Code/mainview.h ../Code/model.h ../Code/geoms.h ../Code/colors.h ../Code/transform.h ../Code/solid_mesh.h ../Code/shaderwrapper.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../Code/main.cpp ../Code/mainwindow.cpp ../Code/mainview.cpp ../Code/user_input.cpp ../Code/model.cpp ../Code/geoms.cpp ../Code/transform.cpp ../Code/solid_mesh.cpp ../Code/shaderwrapper.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../Code/mainwindow.ui $(DISTDIR)/
 
 
@@ -340,8 +344,12 @@ compiler_rcc_make_all: qrc_resources.cpp
 compiler_rcc_clean:
 	-$(DEL_FILE) qrc_resources.cpp
 qrc_resources.cpp: ../Code/resources.qrc \
-		../Code/shaders/fragshader.glsl \
-		../Code/shaders/vertshader.glsl \
+		../Code/shaders/fragshader_normal.glsl \
+		../Code/shaders/vertshader_normal.glsl \
+		../Code/shaders/fragshader_gouraud.glsl \
+		../Code/shaders/vertshader_phong.glsl \
+		../Code/shaders/fragshader_phong.glsl \
+		../Code/shaders/vertshader_gouraud.glsl \
 		../Code/models/flat_surface.obj \
 		../Code/models/cube.obj \
 		../Code/models/cat.obj \
@@ -356,14 +364,15 @@ compiler_moc_header_make_all: moc_mainwindow.cpp moc_mainview.cpp
 compiler_moc_header_clean:
 	-$(DEL_FILE) moc_mainwindow.cpp moc_mainview.cpp
 moc_mainwindow.cpp: ../Code/mainwindow.h
-	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/s3210812/Downloads/OpenGL_2/Code -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../Code/mainwindow.h -o moc_mainwindow.cpp
+	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/s3090078/Documents/CG_assignments/OpenGL_2_working/Code -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../Code/mainwindow.h -o moc_mainwindow.cpp
 
 moc_mainview.cpp: ../Code/model.h \
 		../Code/geoms.h \
 		../Code/transform.h \
 		../Code/solid_mesh.h \
+		../Code/shaderwrapper.h \
 		../Code/mainview.h
-	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/s3210812/Downloads/OpenGL_2/Code -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../Code/mainview.h -o moc_mainview.cpp
+	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/s3090078/Documents/CG_assignments/OpenGL_2_working/Code -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../Code/mainview.h -o moc_mainview.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -375,7 +384,8 @@ ui_mainwindow.h: ../Code/mainwindow.ui \
 		../Code/model.h \
 		../Code/geoms.h \
 		../Code/transform.h \
-		../Code/solid_mesh.h
+		../Code/solid_mesh.h \
+		../Code/shaderwrapper.h
 	/usr/lib/x86_64-linux-gnu/qt5/bin/uic ../Code/mainwindow.ui -o ui_mainwindow.h
 
 compiler_yacc_decl_make_all:
@@ -397,7 +407,8 @@ mainwindow.o: ../Code/mainwindow.cpp ../Code/mainwindow.h \
 		../Code/model.h \
 		../Code/geoms.h \
 		../Code/transform.h \
-		../Code/solid_mesh.h
+		../Code/solid_mesh.h \
+		../Code/shaderwrapper.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../Code/mainwindow.cpp
 
 mainview.o: ../Code/mainview.cpp ../Code/mainview.h \
@@ -405,6 +416,7 @@ mainview.o: ../Code/mainview.cpp ../Code/mainview.h \
 		../Code/geoms.h \
 		../Code/transform.h \
 		../Code/solid_mesh.h \
+		../Code/shaderwrapper.h \
 		../Code/colors.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainview.o ../Code/mainview.cpp
 
@@ -412,7 +424,8 @@ user_input.o: ../Code/user_input.cpp ../Code/mainview.h \
 		../Code/model.h \
 		../Code/geoms.h \
 		../Code/transform.h \
-		../Code/solid_mesh.h
+		../Code/solid_mesh.h \
+		../Code/shaderwrapper.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o user_input.o ../Code/user_input.cpp
 
 model.o: ../Code/model.cpp ../Code/model.h
@@ -429,6 +442,9 @@ solid_mesh.o: ../Code/solid_mesh.cpp ../Code/solid_mesh.h \
 		../Code/transform.h \
 		../Code/model.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o solid_mesh.o ../Code/solid_mesh.cpp
+
+shaderwrapper.o: ../Code/shaderwrapper.cpp ../Code/shaderwrapper.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o shaderwrapper.o ../Code/shaderwrapper.cpp
 
 qrc_resources.o: qrc_resources.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_resources.o qrc_resources.cpp
