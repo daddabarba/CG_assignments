@@ -15,7 +15,7 @@
  */
 MainView::MainView(QWidget *parent) :
     QOpenGLWidget(parent),
-    cat(":/models/cat.obj", set_point(0.0,-1.0,-4.0), 3.0f)
+    cat(":/models/cat.obj", set_point(0.0,-1.0,-4.0), 4.0f)
 {
     qDebug() << "MainView constructor";
 
