@@ -15,7 +15,7 @@
  */
 MainView::MainView(QWidget *parent) :
     QOpenGLWidget(parent),
-    cat(":/models/cat.obj", set_point(0.0,-1.0,-4.0), 4.0f, set_color(1.0,1.0,1.0), set_color(0.0,1.0,0.0)),
+    cat(":/models/cat.obj", set_point(0.0,-1.0,-4.0), 4.0f, set_color(1.0,1.0,1.0), set_color(0.1,1.0,0.2)),
     shaderProgram_Normal(),
     shaderProgram_Gouraud(),
     shaderProgram_Phong()
@@ -23,7 +23,7 @@ MainView::MainView(QWidget *parent) :
     qDebug() << "MainView constructor";
 
     //Setting light source (position and color)
-    lightSource = set_vertex(set_point(0.0,5.0,30.0), set_color(1.0,1.0,1.0));
+    lightSource = set_vertex(set_point(5.0,5.0,0.0), set_color(1.0,1.0,1.0));
 
     connect(&timer, SIGNAL(timeout()), this, SLOT(update()));
     qDebug() << "Connected";

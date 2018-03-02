@@ -5,6 +5,7 @@
 
 // Specify the inputs to the fragment shader
 // These must have the same type and name!
+in vec3 vertCoord;
 in vec3 vertNorm;
 
 // Specify the Uniforms of the fragment shaders
@@ -21,7 +22,7 @@ out vec4 fNorm;
 
 void main()
 {
-    vec3 P = vec3(gl_FragCoord);
+    vec3 P = vec3(vertCoord);
 
     vec3 IA = objCol*material.x;
 

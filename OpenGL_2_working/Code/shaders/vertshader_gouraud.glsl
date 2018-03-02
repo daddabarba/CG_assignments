@@ -26,18 +26,16 @@ void main()
     // gl_Position is the output (a vec4) of the vertex shader
     // Currently without any transformation
 
-    vec3 N = normalize(normalMatrix*vertNorm_in);
+    vec3 N = vertNorm_in;
     vec4 newCoordinates = modelTransform * vec4(vertCoordinates_in, 1.0);
-    vec3 P = vec3(newCoordinates);
-    //P = vertCoordinates_in; // Should make light move with model, but only seems to affect specular
 
     vec3 IA = objCol*material.x;
 
-    vec3 L = normalize(lightPos-P);
+    vec3 L = normalize(lightPos-vertCoordinates_in);
     vec3 ID = objCol*lightCol*material.y*max(0.0,dot(L,N));
 
     vec3 R = 2*dot(N,L)*N - L;
-    vec3 V = normalize(vec3(0.0,0.0,0.0) - P);
+    vec3 V = normalize(vec3(0.0,0.0,0.0) - vertCoordinates_in);
     vec3 IS = lightCol*material.z*max(0.0,dot(R,V));
 
     gl_Position = projection*newCoordinates;

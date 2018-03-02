@@ -119,12 +119,13 @@ public:
         verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
         PhongButton = new QRadioButton(shadingBox);
         PhongButton->setObjectName(QStringLiteral("PhongButton"));
-        PhongButton->setChecked(true);
+        PhongButton->setChecked(false);
 
         verticalLayout_2->addWidget(PhongButton);
 
         NormalButton = new QRadioButton(shadingBox);
         NormalButton->setObjectName(QStringLiteral("NormalButton"));
+        NormalButton->setChecked(true);
 
         verticalLayout_2->addWidget(NormalButton);
 
