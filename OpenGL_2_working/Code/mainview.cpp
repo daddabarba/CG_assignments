@@ -15,7 +15,7 @@
  */
 MainView::MainView(QWidget *parent) :
     QOpenGLWidget(parent),
-    cat(":/models/cat.obj", set_point(0.0,-1.0,-4.0), 4.0f, set_color(1.0,1.0,1.0), set_color(0.1,1.0,0.2)),
+    cat(":/models/cat.obj", set_point(0.0,-2.0,-10.0), 10.0f, set_color(1.0f,1.0f,1.0f), set_color(0.1f,1.0f,0.0f)),
     shaderProgram_Normal(),
     shaderProgram_Gouraud(),
     shaderProgram_Phong()
@@ -85,12 +85,18 @@ void MainView::initializeGL() {
 
     createShaderProgram();
 
+    QImage im_cat("textures/cat_diff.png");
+    QVector<quint8> diff_cat = imageToBytes(im_cat); // throwing unresolved external error
+    //glGenTextures(1, &tex);
+    //glBindTexture(GL_TEXTURE_2D, tex);
+    //glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, 1024, 1024, 0, GL_RGBA, GL_UNSIGNED_BYTE, &diff_cat);
+
     //SETTING CAT FIGURE ON GPU
     setBuffer(&cat);
     qDebug() << "cat mesh uploaded";
 
     //SETTING PROJECTION TRANSFORMATION MATRIX
-    transformProjection.perspective(60, 1, 0.1, 100);
+    transformProjection.perspective(60, 1, 0.1f, 100.0);
 
 }
 
@@ -128,7 +134,7 @@ void MainView::paintGL() {
 
 
     if((getShader()->uniformLightCol)>=0 && (getShader()->uniformLightPos)>=0 ){
-        qDebug()<<"sent light";
+        //qDebug()<<"sent light";
         glUniform3f(getShader()->uniformLightPos, (lightSource.position).x, (lightSource.position).y, (lightSource.position).z);
         glUniform3f(getShader()->uniformLightCol, (lightSource.color).r, (lightSource.color).g, (lightSource.color).b);
     }
@@ -152,7 +158,7 @@ void MainView::resizeGL(int newWidth, int newHeight)
     //Re-setting matrix, otherwise both projection (old and new) transformation are applied consecutively
     transformProjection.setToIdentity();
     //Updating projection matrix (according to new window ratio)
-    transformProjection.perspective(60, (float)newWidth / newHeight, 2, 10);
+    transformProjection.perspective(60, (float)newWidth / newHeight, 0.1f, 100);
 
 }
 
@@ -225,7 +231,7 @@ void MainView::renderBuffer(solid_mesh *mesh){
     glUniformMatrix3fv(getShader()->uniformNormal, 1, GL_FALSE, (mesh->getNormalMatrix()).data());
 
     if((getShader()->uniformMaterial)>=0 && (getShader()->uniformObjCol)>=0){
-        qDebug()<<"sent object";
+        //qDebug()<<"sent object";
         glUniform3f(getShader()->uniformMaterial,(mesh->material).r,(mesh->material).g,(mesh->material).b);
         glUniform3f(getShader()->uniformObjCol,(mesh->color).r,(mesh->color).g,(mesh->color).b);
     }

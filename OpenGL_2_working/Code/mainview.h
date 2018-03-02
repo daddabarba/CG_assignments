@@ -22,9 +22,6 @@
 class MainView : public QOpenGLWidget, protected QOpenGLFunctions_3_3_Core {
     Q_OBJECT
 
-
-    //cube *solidCube;
-
     public:
         enum ShadingMode : GLuint
         {
@@ -75,12 +72,16 @@ class MainView : public QOpenGLWidget, protected QOpenGLFunctions_3_3_Core {
 
         QMatrix4x4 transformProjection; //Matrix for projection transformation
 
+        GLuint tex;
+
         void createShaderProgram();
 
         void setBuffer(solid_mesh *mesh);
         void renderBuffer(solid_mesh *mesh);
 
         void destroyMesh(solid_mesh *mesh);
+
+        QVector<quint8> imageToBytes(QImage image);
 
 };
 
