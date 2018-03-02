@@ -15,8 +15,7 @@
  */
 MainView::MainView(QWidget *parent) :
     QOpenGLWidget(parent),
-    sphere(":/models/sphere.obj"),
-    cat(":/models/cat.obj")
+    cat(":/models/cat.obj", set_point(0.0,-1.0,-4.0), 3.0f)
 {
     qDebug() << "MainView constructor";
 
@@ -33,10 +32,9 @@ MainView::MainView(QWidget *parent) :
  */
 MainView::~MainView() {
     debugLogger->stopLogging();
-    glDeleteBuffers(1, &VBO_cube);
-    glDeleteBuffers(1, &VBO_pyramid);
-    glDeleteVertexArrays(1, &VAO_cube);
-    glDeleteVertexArrays(1, &VAO_pyramid);
+
+    destroyMesh(&cat);
+
     qDebug() << "MainView destructor";
 }
 
@@ -81,63 +79,10 @@ void MainView::initializeGL() {
     createShaderProgram();
 
 
-
-    //SETTING CUBE FIGURE ON GPU
-
-    //Computing vertices
-    cube figure_cube = set_cube(2, red, green, blue, brown , yellow, light_blue, white, black);
-
-    //Starting VAO and VBO
-    glGenBuffers(1, &VBO_cube);
-    glGenVertexArrays(1, &VAO_cube);
-
-    glBindVertexArray(VAO_cube);
-    glBindBuffer(GL_ARRAY_BUFFER, VBO_cube);
-
-    //Sending cube to VBO
-    glBufferData(GL_ARRAY_BUFFER, sizeof(cube), &figure_cube, GL_STATIC_DRAW);
-
-    //Defining attributes (position and color)
-    glEnableVertexAttribArray(0);
-    glEnableVertexAttribArray(1);
-
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(vertex), (void *)0);
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(vertex), (void *)(sizeof(point)) );
-
-    //Setting cube's model transformation (translation)
-    transformCube.setPosition(2.0f, 0.0f, -6.0f);
+    //SETTING CAT FIGURE ON GPU
+    setBuffer(&cat);
 
 
-
-    //SETTING PYRAMID FIGURE ON GPU
-
-    //Computing vertices
-     pyramid figure_pyramid = set_pyramid(2, 2, red, green, blue, white, black);
-
-    //Staring VAO and VBO
-    glGenBuffers(1, &VBO_pyramid);
-    glGenVertexArrays(1, &VAO_pyramid);
-
-    glBindVertexArray(VAO_pyramid);
-    glBindBuffer(GL_ARRAY_BUFFER, VBO_pyramid);
-
-    //Sending pyramid to VBO
-    glBufferData(GL_ARRAY_BUFFER, sizeof(pyramid), &figure_pyramid, GL_STATIC_DRAW);
-
-    //Defining attributes (position and color)
-    glEnableVertexAttribArray(0);
-    glEnableVertexAttribArray(1);
-
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(vertex), (void *)0);
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(vertex), (void *)(sizeof(point)) );
-
-    //Setting pyramid's model transformation (translation)
-    transformPyramid.setPosition(-2, 0, -6);
-
-    //SETTING SPHERE FIGURE ON GPU
-    setBuffer(&sphere, set_point(0.0,0.0,-10.0),0.04f);
-
-    //setBuffer(&cat, set_point(0.0,-1.0,-4.0),2.0f);
     //SETTING PROJECTION TRANSFORMATION MATRIX
     transformProjection.perspective(60, 1, 2, 10);
 
@@ -178,32 +123,9 @@ void MainView::paintGL() {
 
     //Setting PROJECTION transformation matrix (in shader's uniform)
     glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, transformProjection.data());
-    /*
-    //RENDERING CUBE
 
-    //Setting model transformation uniform to cube transformation
-    glUniformMatrix4fv(uniformModel, 1, GL_FALSE, transformCube.getMatrix().data());
-
-    //Binding buffer containing cube
-    glBindVertexArray(VAO_cube);
-    //drawing cube from buffer
-    glDrawArrays(GL_TRIANGLES, 0, 36);
-
-    //RENDERING PYRAMID
-
-    //Setting model transformation uniform to pyramid transformation
-    glUniformMatrix4fv(uniformModel, 1, GL_FALSE, transformPyramid.getMatrix().data());
-
-    //Binding buffer containing pyramid
-    glBindVertexArray(VAO_pyramid);
-    //drawing pyramid from buffer
-    glDrawArrays(GL_TRIANGLES, 0, 18);
-
-    */
-
-    //RENDERING SPHERE
-    renderBuffer(&sphere, uniformModel, uniformNormal);
-    //renderBuffer(&cat, uniformModel, uniformNormal);
+    //RENDERING CAT
+    renderBuffer(&cat, uniformModel, uniformNormal);
 
     shaderProgram.release();
 }
@@ -230,10 +152,7 @@ void MainView::resizeGL(int newWidth, int newHeight)
 void MainView::setRotation(int rotateX, int rotateY, int rotateZ)
 {
     //Change solid's rotation value
-    transformCube.setRotation(rotateX, rotateY, rotateZ);
-    transformPyramid.setRotation(rotateX, rotateY, rotateZ);
-    sphere.transformation.setRotation(rotateX, rotateY, rotateZ);
-    cat.transformation.setRotation(rotateX, rotateY, rotateZ);
+    cat.setRotation(rotateX, rotateY, rotateZ);
 
     qDebug() << "Rotation changed to (" << rotateX << "," << rotateY << "," << rotateZ << ")";
     //Q_UNIMPLEMENTED();
@@ -243,10 +162,7 @@ void MainView::setRotation(int rotateX, int rotateY, int rotateZ)
 void MainView::setScale(int scale)
 {
     //Change solid's (uniform) scaling value
-    transformCube.setScale(scale / 100.0f);
-    transformPyramid.setScale(scale / 100.0f);
-    sphere.transformation.setScale(scale / 100.0f * 0.04f);
-    cat.transformation.setScale(scale / 100.0f*2.0f);
+    cat.setScale(scale / 100.0f);
 
     qDebug() << "Scale changed to " << scale;
     //Q_UNIMPLEMENTED();
@@ -272,7 +188,7 @@ void MainView::onMessageLogged( QOpenGLDebugMessage Message ) {
     qDebug() << " → Log:" << Message;
 }
 
-void MainView::setBuffer(solid_mesh *mesh, point position, float scale){
+void MainView::setBuffer(solid_mesh *mesh){
     //Starting VAO and VBO
     glGenBuffers(1, &(mesh->VBO));
     glGenVertexArrays(1, &(mesh->VAO));
@@ -291,10 +207,6 @@ void MainView::setBuffer(solid_mesh *mesh, point position, float scale){
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(vertex), (void *)0);
     glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(vertex), (void *)(sizeof(point)) );
 
-    //Setting solid's model transformation (translation and scaling)
-    (mesh->transformation).setPosition(position.x, position.y, position.z);
-    (mesh->transformation).setScale(scale);
-
 }
 
 void MainView::renderBuffer(solid_mesh *mesh, GLint transform_uniform, GLint normal_uniform){
@@ -307,4 +219,9 @@ void MainView::renderBuffer(solid_mesh *mesh, GLint transform_uniform, GLint nor
     glBindVertexArray(mesh->VAO);
     //drawing solid from buffer
     glDrawArrays(GL_TRIANGLES, 0, mesh->size_solid);
+}
+
+void MainView::destroyMesh(solid_mesh *mesh){
+    glDeleteBuffers(1, &(mesh->VBO));
+    glDeleteVertexArrays(1, &(mesh->VAO));
 }

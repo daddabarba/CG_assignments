@@ -1,7 +1,10 @@
 #include "solid_mesh.h"
 
-solid_mesh::solid_mesh(const char* file)
+solid_mesh::solid_mesh(const char* file, point position, float scale)
 {
+    base_scale = scale;
+    base_translation = position;
+
     Model mesh_solid(file); //Loading mesh from file
     QVector <QVector3D> solid_vertices = mesh_solid.getVertices(); //Storing QVEctor of QVector3D (vertices' locations)
     QVector <QVector3D> solid_normals  = mesh_solid.getNormals();
@@ -24,7 +27,26 @@ solid_mesh::solid_mesh(const char* file)
         figure_solid[i] = set_vertex(p,col);
 
     }
+
+    setPosition(position.x,position.y,position.z);
+    setScale(1.0f);
 }
+
+//Updating x,y, and z translation according to given values
+void solid_mesh::setPosition(float x, float y, float z) {
+    transformation.setPosition(x,y,z);
+}
+
+//Updating x,y, and z rotation according to given values
+void solid_mesh::setRotation(float x, float y, float z) {
+    transformation.setRotation(x,y,z);
+}
+
+//Updating (uniform) scaling according to given value
+void solid_mesh::setScale(float s) {
+    transformation.setScale(s*base_scale);
+}
+
 
 QMatrix3x3 solid_mesh::getNormalMatrix(){
     return (transformation.getMatrix()).normalMatrix();

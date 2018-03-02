@@ -57,7 +57,6 @@ class MainView : public QOpenGLWidget, protected QOpenGLFunctions_3_3_Core {
         void onMessageLogged( QOpenGLDebugMessage Message );
 
     private:
-        solid_mesh sphere;
         solid_mesh cat;
 
         QOpenGLDebugLogger *debugLogger;
@@ -65,22 +64,18 @@ class MainView : public QOpenGLWidget, protected QOpenGLFunctions_3_3_Core {
 
         QOpenGLShaderProgram shaderProgram;
 
-        Transform transformCube;     //Cube transformation matrix (rotation, scaling, translation)
-        Transform transformPyramid;  //Pyramid transformation matrix (rotation, scaling, translation)
-
         QMatrix4x4 transformProjection; //Matrix for projection transformation
 
         GLint uniformModel;          //model transform (rotate, scale, translate) uniform's location in shader
         GLint uniformProjection;     //projection transform uniform's location in shader
         GLint uniformNormal;
 
-        GLuint VBO_cube, VBO_pyramid;  //VBO's for cube, pyramid and sphere
-        GLuint VAO_cube, VAO_pyramid;  //VAO's for cube, pyramid and sphere
-
         void createShaderProgram();
 
-        void setBuffer(solid_mesh *mesh, point position, float scale);
+        void setBuffer(solid_mesh *mesh);
         void renderBuffer(solid_mesh *mesh, GLint transform_uniform, GLint normal_uniform);
+
+        void destroyMesh(solid_mesh *mesh);
 
 };
 
