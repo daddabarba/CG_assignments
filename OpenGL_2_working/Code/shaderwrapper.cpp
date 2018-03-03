@@ -15,10 +15,10 @@ void shaderWrapper::getUniLoc()
     uniformProjection = uniformLocation("projection");
     uniformNormal     = uniformLocation("normalMatrix");
 
-
     uniformLightPos = uniformLocation("lightPos");
     uniformLightCol = uniformLocation("lightCol");
     uniformObjCol   = uniformLocation("objCol");
     uniformMaterial = uniformLocation("material");
+    uniformSampler = uniformLocation("sampler");
 }
 

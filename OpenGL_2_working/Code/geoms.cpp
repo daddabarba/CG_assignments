@@ -10,6 +10,15 @@ RGB_color set_color(float r, float g, float b){//Given red, blue and green value
     return ret;
 }
 
+coord set_coord(float x, float y){//Given red, blue and green values, return an RGB_color struct
+    coord ret;
+
+    ret.x = x;
+    ret.y = y;
+
+    return ret;
+}
+
 point set_point(float x, float y, float z){//Given x, y and z coordinates, return a point struct
     point ret;
 
@@ -29,7 +38,17 @@ vertex set_vertex(point position, RGB_color color){//Given a point and a color r
     return ret;
 }
 
-triangle set_traingle(vertex v1, vertex v2, vertex v3){//Given three vertices, defining a triangle
+vertex set_vertex(point position, RGB_color color, coord texcoord){//Given a point and a color returns a vector struct
+    vertex ret;
+
+    ret.position = position;
+    ret.color = color;
+    ret.texcoord = texcoord;
+
+    return ret;
+}
+
+triangle set_triangle(vertex v1, vertex v2, vertex v3){//Given three vertices, defining a triangle
     triangle ret;
 
     ret.v1 = v1;
@@ -56,18 +75,18 @@ cube set_cube(float side_length, RGB_color c1, RGB_color c2, RGB_color c3, RGB_c
 
 
     //Defining all 12 triangles (given the 8 vertices)
-    ret.f11 = set_traingle(v7,v3,v5);
-    ret.f12 = set_traingle(v5,v3,v1);
-    ret.f21 = set_traingle(v3,v4,v1);
-    ret.f22 = set_traingle(v4,v2,v1);
-    ret.f31 = set_traingle(v2,v4,v8);
-    ret.f32 = set_traingle(v8,v6,v2);
-    ret.f41 = set_traingle(v6,v8,v7);
-    ret.f42 = set_traingle(v6,v7,v5);
-    ret.f51 = set_traingle(v5,v1,v6);
-    ret.f52 = set_traingle(v1,v2,v6);
-    ret.f61 = set_traingle(v8,v4,v7);
-    ret.f62 = set_traingle(v7,v4,v3);
+    ret.f11 = set_triangle(v7,v3,v5);
+    ret.f12 = set_triangle(v5,v3,v1);
+    ret.f21 = set_triangle(v3,v4,v1);
+    ret.f22 = set_triangle(v4,v2,v1);
+    ret.f31 = set_triangle(v2,v4,v8);
+    ret.f32 = set_triangle(v8,v6,v2);
+    ret.f41 = set_triangle(v6,v8,v7);
+    ret.f42 = set_triangle(v6,v7,v5);
+    ret.f51 = set_triangle(v5,v1,v6);
+    ret.f52 = set_triangle(v1,v2,v6);
+    ret.f61 = set_triangle(v8,v4,v7);
+    ret.f62 = set_triangle(v7,v4,v3);
 
     return ret;
 }
@@ -85,12 +104,12 @@ pyramid set_pyramid(float side_length, float height, RGB_color c1, RGB_color c2,
     vertex v5 = set_vertex(set_point(0.0, h, 0.0), c5); //top vertex on y axis
 
     //Defining all 6 triangles (given the 5 vertices)
-    ret.b1 = set_traingle(v2,v1,v3); //Base first half
-    ret.b2 = set_traingle(v2,v3,v4); //Base second half
-    ret.f1 = set_traingle(v3,v1,v5); //Side face 1
-    ret.f2 = set_traingle(v1,v2,v5); //Side face 2
-    ret.f3 = set_traingle(v2,v4,v5); //Side face 3
-    ret.f4 = set_traingle(v4,v3,v5); //Side face 4
+    ret.b1 = set_triangle(v2,v1,v3); //Base first half
+    ret.b2 = set_triangle(v2,v3,v4); //Base second half
+    ret.f1 = set_triangle(v3,v1,v5); //Side face 1
+    ret.f2 = set_triangle(v1,v2,v5); //Side face 2
+    ret.f3 = set_triangle(v2,v4,v5); //Side face 3
+    ret.f4 = set_triangle(v4,v3,v5); //Side face 4
 
     return ret;
 }

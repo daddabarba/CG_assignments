@@ -18,6 +18,7 @@ public:
     GLint uniformLightCol;
     GLint uniformObjCol;
     GLint uniformMaterial;
+    GLint uniformSampler;
 
     void sendMaterial(RGB_color kPar);
     void sendObjectCol(RGB_color color);

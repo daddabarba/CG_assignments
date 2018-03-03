@@ -15,7 +15,7 @@
  */
 MainView::MainView(QWidget *parent) :
     QOpenGLWidget(parent),
-    cat(":/models/cat.obj", set_point(0.0,-2.0,-10.0), 10.0f, set_color(1.0f,1.0f,1.0f), set_color(0.1f,1.0f,0.0f)),
+    cat(":/models/cat.obj", set_point(0.0,-2.0,-10.0), 10.0f, set_color(1.0f,1.0f,1.0f), set_color(0.2f,1.0f,1.0f)),
     shaderProgram_Normal(),
     shaderProgram_Gouraud(),
     shaderProgram_Phong()
@@ -23,7 +23,7 @@ MainView::MainView(QWidget *parent) :
     qDebug() << "MainView constructor";
 
     //Setting light source (position and color)
-    lightSource = set_vertex(set_point(5.0,5.0,0.0), set_color(1.0,1.0,1.0));
+    lightSource = set_vertex(set_point(5.0,5.0,5.0), set_color(1.0,1.0,1.0));
 
     connect(&timer, SIGNAL(timeout()), this, SLOT(update()));
     qDebug() << "Connected";
@@ -85,11 +85,18 @@ void MainView::initializeGL() {
 
     createShaderProgram();
 
-    QImage im_cat("textures/cat_diff.png");
-    QVector<quint8> diff_cat = imageToBytes(im_cat); // throwing unresolved external error
-    //glGenTextures(1, &tex);
-    //glBindTexture(GL_TEXTURE_2D, tex);
-    //glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, 1024, 1024, 0, GL_RGBA, GL_UNSIGNED_BYTE, &diff_cat);
+    QImage im_cat(":/textures/cat_diff.png");
+    if (im_cat.isNull()) qDebug() << "Failed to load texture";
+    QVector<quint8> diff_cat = imageToBytes(im_cat);
+    glGenTextures(1, &tex);
+    glBindTexture(GL_TEXTURE_2D, tex);
+    //glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    //glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    //glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, 512, 1024, 0, GL_RGBA, GL_UNSIGNED_BYTE, diff_cat.data());
+
+    qDebug() << "Uploading cat";
 
     //SETTING CAT FIGURE ON GPU
     setBuffer(&cat);
@@ -132,12 +139,14 @@ void MainView::paintGL() {
     //Setting PROJECTION transformation matrix (in shader's uniform)
     glUniformMatrix4fv(getShader()->uniformProjection, 1, GL_FALSE, transformProjection.data());
 
-
     if((getShader()->uniformLightCol)>=0 && (getShader()->uniformLightPos)>=0 ){
         //qDebug()<<"sent light";
         glUniform3f(getShader()->uniformLightPos, (lightSource.position).x, (lightSource.position).y, (lightSource.position).z);
         glUniform3f(getShader()->uniformLightCol, (lightSource.color).r, (lightSource.color).g, (lightSource.color).b);
     }
+
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, tex);
 
     //RENDERING CAT
     renderBuffer(&cat);
@@ -218,9 +227,11 @@ void MainView::setBuffer(solid_mesh *mesh){
     //Defining attributes
     glEnableVertexAttribArray(0);
     glEnableVertexAttribArray(1);
+    glEnableVertexAttribArray(2);
 
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(vertex), (void *)0);
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(vertex), (void *)(sizeof(point)) );
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(vertex), (void *)(sizeof(point)));
+    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(vertex), (void *)(sizeof(point) * 2));
 
 }
 
@@ -260,4 +271,33 @@ shaderWrapper *MainView::getShader(){
         return &shaderProgram_Normal;
         break;
     }
+}
+
+// Had to put this here, otherwise I got an unresolved external error
+QVector<quint8> MainView::imageToBytes(QImage image) {
+    // needed since (0,0) is bottom left in OpenGL
+    QImage im = image.mirrored();
+    QVector<quint8> pixelData;
+    pixelData.reserve(im.width()*im.height()*4);
+
+    for (int i = 0; i != im.height(); ++i) {
+        for (int j = 0; j != im.width(); ++j) {
+            QRgb pixel = im.pixel(j,i);
+
+            // pixel is of format #AARRGGBB (in hexadecimal notation)
+            // so with bitshifting and binary AND you can get
+            // the values of the different components
+            quint8 r = (quint8)((pixel >> 16) & 0xFF); // Red component
+            quint8 g = (quint8)((pixel >> 8) & 0xFF); // Green component
+            quint8 b = (quint8)(pixel & 0xFF); // Blue component
+            quint8 a = (quint8)((pixel >> 24) & 0xFF); // Alpha component
+
+            // Add them to the Vector
+            pixelData.append(r);
+            pixelData.append(g);
+            pixelData.append(b);
+            pixelData.append(a);
+        }
+    }
+    return pixelData;
 }

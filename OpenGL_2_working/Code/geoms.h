@@ -11,9 +11,14 @@ typedef struct point{ //3D point
     float x, y, z;
 }BI_Point;
 
+typedef struct coord {
+    float x, y;
+} coord;
+
 typedef struct vertex{ //Vertex (point with color)
-     point position;
-     RGB_color color;
+    point position;
+    RGB_color color;
+    coord texcoord;
 }vertex;
 
 
@@ -40,11 +45,13 @@ typedef struct pyramid{ //Struct defining a pyramid mesh, with arguments f<side 
 */
 
 RGB_color set_color(float r, float g, float b);
+coord set_coord(float x, float y);
 point set_point(float x, float y, float z);
 
 vertex set_vertex(point position, RGB_color color);
+vertex set_vertex(point position, RGB_color color, coord texcoord);
 
-triangle set_traingle(vertex v1, vertex v2, vertex v3);
+triangle set_triangle(vertex v1, vertex v2, vertex v3);
 
 cube set_cube(float side_length, RGB_color c1, RGB_color c2, RGB_color c3, RGB_color c4, RGB_color c5, RGB_color c6, RGB_color c7, RGB_color c8 );
 pyramid set_pyramid(float side_length, float height, RGB_color c1, RGB_color c2, RGB_color c3, RGB_color c4, RGB_color c5 );
