@@ -7,6 +7,10 @@ typedef struct RGB_color{ //RGB color
     float r, g, b;
 }RGB_color;
 
+typedef struct phong_mat{ //material with ambient, diffuse, specular and specular exponent
+    float a, d, s, e;
+}phong_mat;
+
 typedef struct point{ //3D point
     float x, y, z;
 }BI_Point;
@@ -45,6 +49,7 @@ typedef struct pyramid{ //Struct defining a pyramid mesh, with arguments f<side 
 */
 
 RGB_color set_color(float r, float g, float b);
+phong_mat set_material(float a, float d, float s, float e);
 coord set_coord(float x, float y);
 point set_point(float x, float y, float z);
 

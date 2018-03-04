@@ -17,7 +17,7 @@ uniform mat3 normalMatrix;
 uniform vec3 lightPos;
 uniform vec3 lightCol;
 uniform vec3 objCol;
-uniform vec3 material;
+uniform vec4 material;
 
 // Specify the output of the vertex stage
 out vec3 color;
@@ -25,18 +25,18 @@ out vec2 texCoord;
 
 void main()
 {
-    vec3 N = normalize(vertNorm_in);
+    vec3 N = normalize(normalMatrix * vertNorm_in);
     vec4 newCoordinates = modelTransform * vec4(vertCoordinates_in, 1.0);
     vec3 P = vec3(newCoordinates);
 
     vec3 IA = objCol*material.x;
 
-    vec3 L = normalize(lightPos - vertCoordinates_in);
+    vec3 L = normalize(vec3(modelTransform * vec4(lightPos,1.0)) - P);
     vec3 ID = objCol*lightCol*material.y*max(0.0,dot(L,N));
 
     vec3 R = 2*dot(N,L)*N - L;
     vec3 V = normalize(vec3(0.0,0.0,0.0) - P);
-    vec3 IS = lightCol*material.z*pow(max(0.0,dot(R,V)), 16);
+    vec3 IS = lightCol*material.z*pow(max(0.0,dot(R,V)), material.w);
 
     gl_Position = projection*newCoordinates;
     color = (IA+ID+IS);

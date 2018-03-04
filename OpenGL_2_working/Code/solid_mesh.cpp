@@ -1,6 +1,6 @@
 #include "solid_mesh.h"
 
-solid_mesh::solid_mesh(const char* file, point position, float scale, RGB_color col, RGB_color kPar)
+solid_mesh::solid_mesh(const char* file, point position, float scale, RGB_color col, phong_mat kPar)
 {
     base_scale = scale;
     base_translation = position;

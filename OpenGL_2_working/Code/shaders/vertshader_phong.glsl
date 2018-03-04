@@ -22,8 +22,9 @@ out vec2 texCoord;
 void main()
 {
     //first apply model transformation, then project on window
-    gl_Position = projection * modelTransform * vec4(vertCoordinates_in, 1.0);
-    vertCoord = vertCoordinates_in;
-    vertNorm = vertNorm_in;
+    vec4 vertCoord_transformed = modelTransform * vec4(vertCoordinates_in, 1.0);
+    gl_Position = projection * vertCoord_transformed;
+    vertCoord = vec3(vertCoord_transformed);
+    vertNorm = normalize(normalMatrix * vertNorm_in);
     texCoord = vertTexCoord_in;
 }

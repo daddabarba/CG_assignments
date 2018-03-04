@@ -15,7 +15,7 @@
  */
 MainView::MainView(QWidget *parent) :
     QOpenGLWidget(parent),
-    cat(":/models/cat.obj", set_point(0.0,-2.0,-10.0), 10.0f, set_color(1.0f,1.0f,1.0f), set_color(0.2f,1.0f,1.0f)),
+    cat(":/models/cat.obj", set_point(0.0,-2.0,-10.0), 10.0f, set_color(1.0f,1.0f,1.0f), set_material(0.2f,1.0f,1.0f, 4)),
     shaderProgram_Normal(),
     shaderProgram_Gouraud(),
     shaderProgram_Phong()
@@ -243,7 +243,7 @@ void MainView::renderBuffer(solid_mesh *mesh){
 
     if((getShader()->uniformMaterial)>=0 && (getShader()->uniformObjCol)>=0){
         //qDebug()<<"sent object";
-        glUniform3f(getShader()->uniformMaterial,(mesh->material).r,(mesh->material).g,(mesh->material).b);
+        glUniform4f(getShader()->uniformMaterial,(mesh->material).a,(mesh->material).d,(mesh->material).s,(mesh->material).e);
         glUniform3f(getShader()->uniformObjCol,(mesh->color).r,(mesh->color).g,(mesh->color).b);
     }
 

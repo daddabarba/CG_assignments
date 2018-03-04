@@ -1,6 +1,6 @@
 #include "geoms.h"
 
-RGB_color set_color(float r, float g, float b){//Given red, blue and green values, return an RGB_color struct
+RGB_color set_color(float r, float g, float b){//Given red, blue and green values, return a RGB_color struct
     RGB_color ret;
 
     ret.r = r;
@@ -10,7 +10,18 @@ RGB_color set_color(float r, float g, float b){//Given red, blue and green value
     return ret;
 }
 
-coord set_coord(float x, float y){//Given red, blue and green values, return an RGB_color struct
+phong_mat set_material(float a, float d, float s, float e){//Given ambient, diffuse, specular and exponent, return a phong_mat struct
+    phong_mat ret;
+
+    ret.a = a;
+    ret.d = d;
+    ret.s = s;
+    ret.e = e;
+
+    return ret;
+}
+
+coord set_coord(float x, float y){//Given x and y values, return a coord struct
     coord ret;
 
     ret.x = x;

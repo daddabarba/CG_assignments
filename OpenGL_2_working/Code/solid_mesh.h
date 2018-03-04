@@ -14,7 +14,7 @@
 class solid_mesh
 {
 public:
-    solid_mesh(const char* file, point positon, float scale, RGB_color col=blue, RGB_color kPar=set_color(1.0,1.0,1.0));
+    solid_mesh(const char* file, point positon, float scale, RGB_color col=blue, phong_mat kPar=set_material(1.0,1.0,1.0,16));
 
     QMatrix3x3 getNormalMatrix();
 
@@ -31,7 +31,8 @@ public:
     GLuint VAO, VBO;
     int size_solid;
 
-    RGB_color color, material;
+    RGB_color color;
+    phong_mat material;
 
     vertex *figure_solid;
 

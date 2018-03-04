@@ -17,7 +17,7 @@ uniform mat3 normalMatrix;
 uniform vec3 lightPos;
 uniform vec3 lightCol;
 uniform vec3 objCol;
-uniform vec3 material;
+uniform vec4 material;
 uniform sampler2D sampler;
 
 // Specify the output of the fragment shader
@@ -26,17 +26,14 @@ out vec4 fNorm;
 
 void main()
 {
-    vec3 N = normalize(normalMatrix * vertNorm);
-    vec3 P = vec3(modelTransform * vec4(vertCoord, 1.0));
-
     vec3 IA = objCol*material.x;
 
-    vec3 L = normalize(lightPos - vertCoord);
+    vec3 L = normalize(vec3(modelTransform * vec4(lightPos,1.0)) - vertCoord);
     vec3 ID = objCol*lightCol*(material.y)*max(0.0,dot(L,vertNorm));
 
     vec3 R = normalize(2*dot(vertNorm,L)*vertNorm - L);
-    vec3 V = normalize(vec3(0.0,0.0,0.0) - P);
-    vec3 IS = lightCol*material.z*pow(max(0.0,dot(R,V)), 16);
+    vec3 V = normalize(vec3(0.0,0.0,0.0) - vertCoord);
+    vec3 IS = lightCol*material.z*pow(max(0.0,dot(R,V)), material.w);
 
     vec4 textureColor = texture2D(sampler, texCoord);
 
