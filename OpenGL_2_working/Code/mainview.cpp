@@ -15,7 +15,7 @@
  */
 MainView::MainView(QWidget *parent) :
     QOpenGLWidget(parent),
-    cat(":/models/cat.obj", set_point(0.0,-2.0,-10.0), 10.0f, set_color(1.0f,1.0f,1.0f), set_material(0.2f,1.0f,1.0f, 4)),
+    cat(":/models/cat.obj", set_point(0.0,0.0,-8.0), 1.0f, set_color(1.0f,1.0f,1.0f), set_material(0.2f,1.0f,1.0f,4)),
     shaderProgram_Normal(),
     shaderProgram_Gouraud(),
     shaderProgram_Phong()
@@ -85,15 +85,16 @@ void MainView::initializeGL() {
 
     createShaderProgram();
 
+    // Load cat texture
     QImage im_cat(":/textures/cat_diff.png");
     if (im_cat.isNull()) qDebug() << "Failed to load texture";
     QVector<quint8> diff_cat = imageToBytes(im_cat);
     glGenTextures(1, &tex);
     glBindTexture(GL_TEXTURE_2D, tex);
-    //glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-    //glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    //glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    //glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT); //default
+    //glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT); //default
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR); //not default
+    //glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR); //default
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, 512, 1024, 0, GL_RGBA, GL_UNSIGNED_BYTE, diff_cat.data());
 
     qDebug() << "Uploading cat";
