@@ -47,9 +47,8 @@ At last i the class "model", "unitize" was implemented.
 	#FILTERING METHODS#
 	###################
 
-	First we can see that using only a method for "magnifying", setting "GL_TEXTURE_MAG_FILTER", the texture will all be black. This because it is never the case (apparently), that the textured pixel is smaller than one of the 2D texture itslef. In other words the texture is precise enough to be more detailed (in most cases), than the rendered image.
-
-	In fact we can see that "GL_TEXTURE_MIN_FILTER" is applied, and this methods can be useful in fact to determine the color of a textured pixel, when it may correspond to multiple texture ones.
+	When the texture filtering is set to GL_NEAREST, every pixel's texture color is set to the color of the texel that is closest to the texture coordinates of that pixel. This means that when the texture is scaled up, there is a sharp line between two pixels. If it's set to GL_LINEAR, the color will be interpolated between the texels of the texture, which means there is a smooth transition between pixels.
+	There are other modes for GL_TEXTURE_MIN_FILTER that can be used if mipmaps are utilized.
 
 
 #####################
