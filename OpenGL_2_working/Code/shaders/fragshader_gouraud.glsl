@@ -18,6 +18,8 @@ out vec4 fNorm;
 
 void main()
 {
+    //apply texture
     vec4 textureColor = texture2D(sampler, texCoord);
+    //return color clipped to r4,with texture applied
     fNorm = vec4(color, 1.0) * textureColor;
 }

@@ -25,20 +25,32 @@ out vec2 texCoord;
 
 void main()
 {
+    //transforming normal
     vec3 N = normalize(normalMatrix * vertNorm_in);
+    //transformin point
     vec4 newCoordinates = modelTransform * vec4(vertCoordinates_in, 1.0);
+    //clipping point to r3
     vec3 P = vec3(newCoordinates);
 
+    //computing ambience coefficent
     vec3 IA = objCol*material.x;
 
+    //computing light vector
     vec3 L = normalize(vec3(modelTransform * vec4(lightPos,1.0)) - P);
+    //computing diffuse coefficent
     vec3 ID = objCol*lightCol*material.y*max(0.0,dot(L,N));
 
-    vec3 R = 2*dot(N,L)*N - L;
+    //reflecting light vector
+    vec3 R = normalize(-reflect(L,N));
+    //computing p.o.v. vector
     vec3 V = normalize(vec3(0.0,0.0,0.0) - P);
+    //computing specular coefficent
     vec3 IS = lightCol*material.z*pow(max(0.0,dot(R,V)), material.w);
 
+    //applying projection transform
     gl_Position = projection*newCoordinates;
+    //computing final color
     color = (IA+ID+IS);
+    //passing texture to frag. shader
     texCoord = vertTexCoord_in;
 }

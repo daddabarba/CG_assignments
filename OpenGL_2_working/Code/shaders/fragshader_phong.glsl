@@ -26,16 +26,24 @@ out vec4 fNorm;
 
 void main()
 {
+    //Computing ambient illuminance
     vec3 IA = objCol*material.x;
 
+    //applying model tranform to light too, while also computing L itself
     vec3 L = normalize(vec3(modelTransform * vec4(lightPos,1.0)) - vertCoord);
+    //compute diffuse term
     vec3 ID = objCol*lightCol*(material.y)*max(0.0,dot(L,vertNorm));
 
-    vec3 R = normalize(2*dot(vertNorm,L)*vertNorm - L);
+    //Reflecting light vector
+    vec3 R = normalize(-reflect(L, vertNorm));
+    //getting p.o.v. vector
     vec3 V = normalize(vec3(0.0,0.0,0.0) - vertCoord);
+    //computing specular coefficent
     vec3 IS = lightCol*material.z*pow(max(0.0,dot(R,V)), material.w);
 
+    //getting texture (mapping)
     vec4 textureColor = texture2D(sampler, texCoord);
 
+    //returning color
     fNorm = vec4((IA+ID+IS), 1.0) * textureColor;
 }

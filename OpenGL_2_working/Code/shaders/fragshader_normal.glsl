@@ -16,5 +16,6 @@ out vec4 fNorm;
 
 void main()
 {
+    //clip normal to r4
     fNorm = vec4(normalize(vertNorm), 1.0);
 }

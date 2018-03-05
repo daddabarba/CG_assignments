@@ -1,3 +1,40 @@
+#################
+#CURRENT CHANGES#
+#################
+
+First two new classes have been added. The first one is the class "solid_mesh". This class wraps an entire mesh. In fact it stores the size of the mes (number of vertices), its VAO, its VBO, and its transformation.
+It also has some useful method, mainly "getNormalMatrix", which returns the QMAtrix3x3 which is the normal matrix w.r.t. the mesh transformation.
+
+The second class added is "shaderwrapper", as we will be using multiple shader, it is useful to wrapp them, along with their uniform locations.
+
+As some function to send data to the shader or to allocate a VBO or VAO, are methods of the class "QOpenGLFunctions_3_3_Core", we leave these duty to the class "mainview".
+We in fact added so methods to mainview to set the VAO and VBO of a mesh, render them (given a mesh), and destroy a mesh.
+In addition to this the method "createShaderProgram" has been modified so that it makes use of the "shaderwrapper" class.
+
+A variable has been added to "mainview", to keep track of the current shader and the function "getShader" has been made so that a pointer to the current shader is returned.
+
+There are now 6 glsl shader programs, for 3 different shader (2 for each, fragment and vertex). These are normal shader (using normal as color), phong shading, and gouraud shading.
+
+The vertex struct (in "geoms.h"), has been modified so that it also includes texture mapping.
+A third location has been added in the shaders for this vec2.
+We also added a variable to "mainview" to keep track of the generated texture ("tex"), and modified "initializeGL" so that the texture is generated and bind.
+This is done right before uploading the texture image (to do so, the method "imageToBytes" has been added to the "mainview" class).
+
+Moreover in "paintGl" we also bind the texture before rendering.
+
+At last i the class "model", "unitize" was implemented.
+
+
+
+############################################
+#EXPERIMENT WITH DIFFERENT WRAPPING METHODS#
+############################################
+
+
+
+#####################
+#CHANGES IN OPNEGL 1#
+#####################
 First we added some new types (in "geoms.h"), defining both basic geometrical components (RGB color, points and vertices), and polygons (triangles in 3D, pyramids and cubes). In the file "geoms.cpp" functions to easily (and especially in 1 row) generate the struct representing instances of these polynoms, are specified.
 
 Then we added a new class "transform", to store (and easily change) a tranformation's rotation angles, translation (with respect to x,y, and z axis), and uniform scaling. This class is then also able to return a QMatrix4x4 which computes the aforementioned tranformation.

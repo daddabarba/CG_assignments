@@ -24,5 +24,6 @@ void main()
 
     //first apply model tranfromation, then project on window
     gl_Position = projection * modelTransform * vec4(vertCoordinates_in, 1.0);
+    //return transfornmed normal as color
     vertNorm = normalMatrix*vertNorm_in;
 }

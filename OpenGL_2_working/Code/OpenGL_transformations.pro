@@ -20,8 +20,7 @@ SOURCES += main.cpp\
     geoms.cpp \
     transform.cpp \
     solid_mesh.cpp \
-    shaderwrapper.cpp \
-    utility.cpp
+    shaderwrapper.cpp
 
 HEADERS  += mainwindow.h \
     mainview.h \

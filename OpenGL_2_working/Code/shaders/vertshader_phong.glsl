@@ -21,10 +21,18 @@ out vec2 texCoord;
 
 void main()
 {
-    //first apply model transformation, then project on window
+    //easier to transform the interpolate (automatic), then interpolate and
+    //then transform (every interpolation in frag. shader)
+
+    //transform point coordinates
     vec4 vertCoord_transformed = modelTransform * vec4(vertCoordinates_in, 1.0);
+    //return position after adding projection transformation
     gl_Position = projection * vertCoord_transformed;
+
+    //trasnformed vertex coordinates for fragment shader
     vertCoord = vec3(vertCoord_transformed);
+    //transforming normal
     vertNorm = normalize(normalMatrix * vertNorm_in);
+    //texture mapping
     texCoord = vertTexCoord_in;
 }
