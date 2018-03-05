@@ -30,6 +30,26 @@ At last i the class "model", "unitize" was implemented.
 #EXPERIMENT WITH DIFFERENT WRAPPING METHODS#
 ############################################
 
+	##################
+	#WRAPPING METHODS#
+	##################
+
+	Regarding wrapping methods, first of all the difference between "GL_TEXTURE_WRAP_T" and "GL_TEXTURE_WRAP_S", is that the specified method is applied along the "t" direction (the vertical axes of the 2D texture) or the "s" direction (the horizontal one).
+
+	Now the main difference between the methods can be seen when one of the specified (s,t) coordinates is outised of the texture bound. This is why we multiplied each (s,t) pair by a factor of 2, because otherwise, in this case, with texture mapping properly done, there is no difference.
+
+	We can see however that, in "t" direction, "GL_CALMP_TO_BORDER", "GL_CLAMP_TO_EDGE", and "GL_REPEAT", have the same exact texture mapping in the back and the front of the cat. The difference is in the middle part of the body. This because, if we look at the 2D texture, face and back, if multiplied by 2, the height is less than that of the picture. The parts which differ between the three methods are those which are closer to the top than the bottom of the 2D texture (the distance from the top is less that "t", thus double it is more than 1). "GL_REPEAT" will threat the 2D texture as a sort of toroidal surface, basically starting from the bottom once the top (1) is surpassed. We can in fact see that the middle part of the cat here is filled. "GL_CLAMP_TO_BORDER" will instead set these values (those outside the bound in the "t" direction in this case), are set to the color "black" (in this case). While   "GL_CLAMP_TO_EDGE" sets the "t" coordinate to the closest vertical boundary, and the color is the determined as usual (only at the edges of the texture). Therefore, if the value is greather than the maximum "t", then there is an array of possible pixel it can be assigned to, made of the top edge of the texture. The "s" coordinate then determines which along the colors on the borders is picked.
+	Finally the "GL_MIRRORED_REPEAT", when one edge is surpassed, instead of starting from the opposite one (like in "GL_REPEAT"), it goes back (in the opposite direction), starting from the same edge that was surpassed. Informally we might say it bounces off.
+
+	When these methods are set for "GL_TEXTURE_WRAP_S", the same exact thing happens, only horizontally with respect to the 2D texture.
+
+	###################
+	#FILTERING METHODS#
+	###################
+
+	First we can see that using only a method for "magnifying", setting "GL_TEXTURE_MAG_FILTER", the texture will all be black. This because it is never the case (apparently), that the textured pixel is smaller than one of the 2D texture itslef. In other words the texture is precise enough to be more detailed (in most cases), than the rendered image.
+
+	In fact we can see that "GL_TEXTURE_MIN_FILTER" is applied, and this methods can be useful in fact to determine the color of a textured pixel, when it may correspond to multiple texture ones.
 
 
 #####################
