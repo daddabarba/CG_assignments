@@ -1,0 +1,128 @@
+{
+    "Eye": [200, 200, 500],
+    "Lights": [
+        {
+            "position": [-600, 500, 1000],
+            "color": [1.0, 1.0, 1.0]
+        },
+	{
+            "position": [600, -500, -500],
+            "color": [1.0, 1.0, 1.0]
+        },
+	{
+            "position": [600, 500, 500],
+            "color": [0.5, 0.5, 0.5]
+        },
+	{
+            "position": [80, 240, 150],
+            "color": [0.2, 1.0, 0.0]
+        }
+    ],
+    "Objects": [
+        {
+            "type": "plane",
+            "comment": "background",
+            "normal": [-0.5, 0.0, -1.0],
+            "origin": -500,
+            "material":
+            {
+                "color": [0.4, 0.1, 0.2],
+                "ka": 0.5,
+                "kd": 1.0,
+                "ks": 0.2,
+                "n": 4
+            }
+        },
+        {
+            "type": "sphere",
+            "comment": "Teal sphere",
+            "position": [300, 300, 100],
+            "radius": 50,
+            "material":
+            {
+                "color": [0.0, 0.5, 1.0],
+                "ka": 0.2,
+                "kd": 1.0,
+                "ks": 0.2,
+                "n": 8
+            }
+        },
+	{
+            "type": "cylinder",
+            "comment": "Yellow cylinder",
+            "origin": [200, 100, 200],
+            "direction": [0.5,1.0,-0.5],
+            "height": 200,
+            "radius": 5,
+            "material":
+            {
+                "color": [1.0, 1.0, 0.0],
+                "ka": 0.2,
+                "kd": 0.7,
+                "ks": 0.2,
+                "n": 32
+            }
+        },
+	{
+            "type": "sphere",
+            "comment": "Teal sphere",
+            "position": [200, 100, 200],
+            "radius": 50,
+            "material":
+            {
+                "color": [0.0, 0.5, 1.0],
+                "ka": 0.2,
+                "kd": 1.0,
+                "ks": 0.2,
+                "n": 8
+            }
+        },
+	{
+            "type": "cylinder",
+            "comment": "Yellow cylinder 2",
+            "origin": [200, 100, 200],
+            "direction": [-0.5,0.1,0.5],
+            "height": 200,
+            "radius": 5,
+            "material":
+            {
+                "color": [1.0, 1.0, 0.0],
+                "ka": 0.2,
+                "kd": 0.7,
+                "ks": 0.2,
+                "n": 32
+            }
+        },
+	{
+            "type": "cylinder",
+            "comment": "Yellow cylinder 3",
+            "origin": [300, 300, 100],
+            "direction": [-1.0,1.0,-0.5],
+            "height": 200,
+            "radius": 5,
+            "material":
+            {
+                "color": [1.0, 1.0, 0.0],
+                "ka": 0.2,
+                "kd": 0.7,
+                "ks": 0.2,
+                "n": 32
+            }
+        },
+	{
+            "type": "mesh",
+            "comment": "green icosahedron",
+            "model": "../Code/models/icosahedron.obj",
+            "position": [80, 240, 150],
+            "scale": 90,
+            "material":
+            {
+                "color": [0.2, 1.0, 0.0],
+                "ka": 0.5,
+                "kd": 0.8,
+                "ks": 0.0,
+                "n": 32
+            }
+        }
+    ]
+}
