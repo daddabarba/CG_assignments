@@ -10,20 +10,11 @@
 
 using namespace std;
 
-Color Scene::trace(Ray const &ray)
+Color Scene::trace(Ray const &ray, int depth)
 {
     // Find hit object and distance
-    Hit min_hit(numeric_limits<double>::infinity(), Vector());
     ObjectPtr obj = nullptr;
-    for (unsigned idx = 0; idx != objects.size(); ++idx)
-    {
-        Hit hit(objects[idx]->intersect(ray));
-        if (hit.t < min_hit.t)
-        {
-            min_hit = hit;
-            obj = objects[idx];
-        }
-    }
+    Hit min_hit = shoot_ray(ray, &obj);
 
     // No hit? Return background color.
     if (!obj) return Color(0.0, 0.0, 0.0);
@@ -56,22 +47,77 @@ Color Scene::trace(Ray const &ray)
 			if (intersection) continue;
 		}
 		
-		//compute vector from intersection point to light
-        Vector L = (lights[idx]->position - hit).normalized();
-        //compute reflected vector
-		Vector R = 2*(N.dot(L))*N - L;
-
-        //add diffusion illumination for this light
-		I_D += material.color*(lights[idx]->color)*(material.kd)*(max(0.0,L.dot(N)));
-        //add specular illumination for this light
-		I_S += (lights[idx]->color)*(material.ks)*pow(max(0.0,V.dot(R)),material.n);
+        light(*lights[idx], hit, N, V, material, &I_D, &I_S);
 	}
 
+    //Reflection
+    if(depth<waves) {
+        //Reflecting direction
+        Vector R = 2 * (N.dot(-ray.D)) * N + ray.D;
+        //Ray from hit point towards reflected direction
+        Ray r_ray(hit, R);
+
+        //Object impacted by reflected ray
+        ObjectPtr r_obj = nullptr;
+        //Hit of reflected ray
+        Hit r_min_hit = shoot_ray(r_ray, &r_obj);
+
+        //If the reflected ray hits something
+        if (r_obj != nullptr) {
+            //get incident point (reflected light source origin)
+            Point r_hit = r_ray.at(r_min_hit.t);
+
+            //Make reflected light source (recursively compute color)
+            Light r_light(r_hit, trace(r_ray, depth + 1));
+            //Apply light source
+            light(r_light, hit, N, V, material, &I_D, &I_S);
+        }
+    }
+
     //compute final color
-    Color color = I_A + I_D + I_S;
+    Color color = I_S;
+
+    //for reflected lights use only specular component
+    if(depth==0)
+        color += I_A + I_D;
 
     return color;
 }
+
+//AUXILIARY FUNCTIONS
+
+//Computes diffuse and specular componentws at hit, given a light
+void Scene::light(Light l, Point P, Vector N, Vector V, Material m, Color *I_D, Color *I_S){
+    //compute vector from intersection point to light
+    Vector L = (l.position - P).normalized();
+    //compute reflected vector
+    Vector R = 2*(N.dot(L))*N - L;
+
+    //add diffusion illumination for this light
+    *I_D += m.color*(l.color)*(m.kd)*(max(0.0,L.dot(N)));
+    //add specular illumination for this light
+    *I_S += (l.color)*(m.ks)*pow(max(0.0,V.dot(R)),m.n);
+}
+
+//Computes hit (and object) of given ray
+Hit Scene::shoot_ray(Ray const &ray, ObjectPtr *obj){
+    Hit min_hit(numeric_limits<double>::infinity(), Vector());
+    for (unsigned idx = 0; idx != objects.size(); ++idx)
+    {
+        Hit hit(objects[idx]->intersect(ray));
+        if (hit.t < min_hit.t)
+        {
+            min_hit = hit;
+
+            if(obj!= nullptr)
+                *obj = objects[idx];
+        }
+    }
+
+    return min_hit;
+}
+
+//RENDERING
 
 void Scene::render(Image &img)
 {
@@ -89,6 +135,8 @@ void Scene::render(Image &img)
         }
     }
 }
+
+
 
 // --- Misc functions ----------------------------------------------------------
 

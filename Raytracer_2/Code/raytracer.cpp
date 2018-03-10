@@ -134,8 +134,19 @@ try
     
     //scene.shadows = jsonscene["Shadows"].is_number() ? jsonscene["Shadows"] : false;
     //scene.ss_factor = jsonscene["SuperSamplingFactor"].is_number() ? jsonscene["SuperSamplingFactor"] : 1;
-    if (jsonscene["Shadows"].is_number()) scene.shadows = jsonscene["Shadows"];
-    else scene.shadows = false;
+    //if (jsonscene["Shadows"].is_number()) scene.shadows = jsonscene["Shadows"];
+    //else scene.shadows = false;
+
+    if(jsonscene["Shadows"] != nullptr)
+        scene.shadows = jsonscene["Shadows"];
+    else
+        scene.shadows = false;
+
+    if(jsonscene["Waves"] != nullptr)
+        scene.waves = jsonscene["Waves"];
+    else
+        scene.waves = 0;
+
     if (jsonscene["SuperSamplingFactor"].is_number()) scene.ss_factor = jsonscene["SuperSamplingFactor"];
     else scene.ss_factor = 1;
 
