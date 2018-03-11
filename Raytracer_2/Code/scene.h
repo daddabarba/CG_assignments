@@ -22,7 +22,7 @@ class Scene
         // trace a ray into the scene and return the color
         Color trace(Ray const &ray, int depth=0);
 
-        void light(Light l, Point P, Vector N, Vector V, Material m, Color *I_D, Color *I_S);
+        void light(Light l, Point P, Vector N, Vector V, Material m, Color *I_S, Color *I_D=nullptr);
         Hit shoot_ray(Ray const &ray, ObjectPtr *obj=nullptr);
 
         // render the scene to the given image

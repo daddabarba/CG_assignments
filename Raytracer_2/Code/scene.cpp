@@ -54,7 +54,7 @@ Color Scene::trace(Ray const &ray, int depth)
                 if (intersection) continue;
             }
 
-            light(*lights[idx], hit, N, V, material, &I_D, &I_S);
+            light(*lights[idx], hit, N, V, material, &I_S, &I_D);
         }
 		
         //REFLECTING
@@ -77,8 +77,7 @@ Color Scene::trace(Ray const &ray, int depth)
                 //Make reflected light source (recursively compute color)
                 Light r_light(r_hit, trace(r_ray, depth + 1));
                 //Apply light source
-                Color ID_ref;
-                light(r_light, hit, N, V, material, &ID_ref, &I_S);
+                light(r_light, hit, N, V, material, &I_S);
             }
         }
 
@@ -92,14 +91,15 @@ Color Scene::trace(Ray const &ray, int depth)
 //AUXILIARY FUNCTIONS
 
 //Computes diffuse and specular components at hit, given a light
-void Scene::light(Light l, Point P, Vector N, Vector V, Material m, Color *I_D, Color *I_S){
+void Scene::light(Light l, Point P, Vector N, Vector V, Material m, Color *I_S, Color *I_D){
     //compute vector from intersection point to light
     Vector L = (l.position - P).normalized();
     //compute reflected vector
     Vector R = 2*(N.dot(L))*N - L;
 
-    //add diffusion illumination for this light
-    *I_D += m.color*(l.color)*(m.kd)*(max(0.0,L.dot(N)));
+    if(I_D!= nullptr)
+        //add diffusion illumination for this light
+        *I_D += m.color*(l.color)*(m.kd)*(max(0.0,L.dot(N)));
     //add specular illumination for this light
     *I_S += (l.color)*(m.ks)*pow(max(0.0,V.dot(R)),m.n);
 }
