@@ -17,6 +17,8 @@ class Sphere: public Object
 
         Vector axis;
         double angle;
+
+        Vector clip;
 };
 
 #endif
