@@ -43,10 +43,10 @@ RM = /opt/clion-2017.2.2/bin/cmake/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)"
+CMAKE_SOURCE_DIR = /home/daddabarba/Desktop/CG_assignments/Raytracer_2
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/cmake-build-debug"
+CMAKE_BINARY_DIR = /home/daddabarba/Desktop/CG_assignments/Raytracer_2/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/ray.dir/depend.make
@@ -59,16 +59,16 @@ include CMakeFiles/ray.dir/flags.make
 
 CMakeFiles/ray.dir/Code/image.cpp.o: CMakeFiles/ray.dir/flags.make
 CMakeFiles/ray.dir/Code/image.cpp.o: ../Code/image.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/ray.dir/Code/image.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ray.dir/Code/image.cpp.o -c "/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/image.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/daddabarba/Desktop/CG_assignments/Raytracer_2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/ray.dir/Code/image.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ray.dir/Code/image.cpp.o -c /home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/image.cpp
 
 CMakeFiles/ray.dir/Code/image.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ray.dir/Code/image.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/image.cpp" > CMakeFiles/ray.dir/Code/image.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/image.cpp > CMakeFiles/ray.dir/Code/image.cpp.i
 
 CMakeFiles/ray.dir/Code/image.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ray.dir/Code/image.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/image.cpp" -o CMakeFiles/ray.dir/Code/image.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/image.cpp -o CMakeFiles/ray.dir/Code/image.cpp.s
 
 CMakeFiles/ray.dir/Code/image.cpp.o.requires:
 
@@ -83,16 +83,16 @@ CMakeFiles/ray.dir/Code/image.cpp.o.provides.build: CMakeFiles/ray.dir/Code/imag
 
 CMakeFiles/ray.dir/Code/lode/lodepng.cpp.o: CMakeFiles/ray.dir/flags.make
 CMakeFiles/ray.dir/Code/lode/lodepng.cpp.o: ../Code/lode/lodepng.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/ray.dir/Code/lode/lodepng.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ray.dir/Code/lode/lodepng.cpp.o -c "/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/lode/lodepng.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/daddabarba/Desktop/CG_assignments/Raytracer_2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/ray.dir/Code/lode/lodepng.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ray.dir/Code/lode/lodepng.cpp.o -c /home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/lode/lodepng.cpp
 
 CMakeFiles/ray.dir/Code/lode/lodepng.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ray.dir/Code/lode/lodepng.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/lode/lodepng.cpp" > CMakeFiles/ray.dir/Code/lode/lodepng.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/lode/lodepng.cpp > CMakeFiles/ray.dir/Code/lode/lodepng.cpp.i
 
 CMakeFiles/ray.dir/Code/lode/lodepng.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ray.dir/Code/lode/lodepng.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/lode/lodepng.cpp" -o CMakeFiles/ray.dir/Code/lode/lodepng.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/lode/lodepng.cpp -o CMakeFiles/ray.dir/Code/lode/lodepng.cpp.s
 
 CMakeFiles/ray.dir/Code/lode/lodepng.cpp.o.requires:
 
@@ -107,16 +107,16 @@ CMakeFiles/ray.dir/Code/lode/lodepng.cpp.o.provides.build: CMakeFiles/ray.dir/Co
 
 CMakeFiles/ray.dir/Code/main.cpp.o: CMakeFiles/ray.dir/flags.make
 CMakeFiles/ray.dir/Code/main.cpp.o: ../Code/main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/ray.dir/Code/main.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ray.dir/Code/main.cpp.o -c "/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/main.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/daddabarba/Desktop/CG_assignments/Raytracer_2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/ray.dir/Code/main.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ray.dir/Code/main.cpp.o -c /home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/main.cpp
 
 CMakeFiles/ray.dir/Code/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ray.dir/Code/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/main.cpp" > CMakeFiles/ray.dir/Code/main.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/main.cpp > CMakeFiles/ray.dir/Code/main.cpp.i
 
 CMakeFiles/ray.dir/Code/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ray.dir/Code/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/main.cpp" -o CMakeFiles/ray.dir/Code/main.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/main.cpp -o CMakeFiles/ray.dir/Code/main.cpp.s
 
 CMakeFiles/ray.dir/Code/main.cpp.o.requires:
 
@@ -129,18 +129,66 @@ CMakeFiles/ray.dir/Code/main.cpp.o.provides: CMakeFiles/ray.dir/Code/main.cpp.o.
 CMakeFiles/ray.dir/Code/main.cpp.o.provides.build: CMakeFiles/ray.dir/Code/main.cpp.o
 
 
+CMakeFiles/ray.dir/Code/material.cpp.o: CMakeFiles/ray.dir/flags.make
+CMakeFiles/ray.dir/Code/material.cpp.o: ../Code/material.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/daddabarba/Desktop/CG_assignments/Raytracer_2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/ray.dir/Code/material.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ray.dir/Code/material.cpp.o -c /home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/material.cpp
+
+CMakeFiles/ray.dir/Code/material.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ray.dir/Code/material.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/material.cpp > CMakeFiles/ray.dir/Code/material.cpp.i
+
+CMakeFiles/ray.dir/Code/material.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ray.dir/Code/material.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/material.cpp -o CMakeFiles/ray.dir/Code/material.cpp.s
+
+CMakeFiles/ray.dir/Code/material.cpp.o.requires:
+
+.PHONY : CMakeFiles/ray.dir/Code/material.cpp.o.requires
+
+CMakeFiles/ray.dir/Code/material.cpp.o.provides: CMakeFiles/ray.dir/Code/material.cpp.o.requires
+	$(MAKE) -f CMakeFiles/ray.dir/build.make CMakeFiles/ray.dir/Code/material.cpp.o.provides.build
+.PHONY : CMakeFiles/ray.dir/Code/material.cpp.o.provides
+
+CMakeFiles/ray.dir/Code/material.cpp.o.provides.build: CMakeFiles/ray.dir/Code/material.cpp.o
+
+
+CMakeFiles/ray.dir/Code/object.cpp.o: CMakeFiles/ray.dir/flags.make
+CMakeFiles/ray.dir/Code/object.cpp.o: ../Code/object.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/daddabarba/Desktop/CG_assignments/Raytracer_2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/ray.dir/Code/object.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ray.dir/Code/object.cpp.o -c /home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/object.cpp
+
+CMakeFiles/ray.dir/Code/object.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ray.dir/Code/object.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/object.cpp > CMakeFiles/ray.dir/Code/object.cpp.i
+
+CMakeFiles/ray.dir/Code/object.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ray.dir/Code/object.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/object.cpp -o CMakeFiles/ray.dir/Code/object.cpp.s
+
+CMakeFiles/ray.dir/Code/object.cpp.o.requires:
+
+.PHONY : CMakeFiles/ray.dir/Code/object.cpp.o.requires
+
+CMakeFiles/ray.dir/Code/object.cpp.o.provides: CMakeFiles/ray.dir/Code/object.cpp.o.requires
+	$(MAKE) -f CMakeFiles/ray.dir/build.make CMakeFiles/ray.dir/Code/object.cpp.o.provides.build
+.PHONY : CMakeFiles/ray.dir/Code/object.cpp.o.provides
+
+CMakeFiles/ray.dir/Code/object.cpp.o.provides.build: CMakeFiles/ray.dir/Code/object.cpp.o
+
+
 CMakeFiles/ray.dir/Code/objloader.cpp.o: CMakeFiles/ray.dir/flags.make
 CMakeFiles/ray.dir/Code/objloader.cpp.o: ../Code/objloader.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/ray.dir/Code/objloader.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ray.dir/Code/objloader.cpp.o -c "/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/objloader.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/daddabarba/Desktop/CG_assignments/Raytracer_2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/ray.dir/Code/objloader.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ray.dir/Code/objloader.cpp.o -c /home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/objloader.cpp
 
 CMakeFiles/ray.dir/Code/objloader.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ray.dir/Code/objloader.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/objloader.cpp" > CMakeFiles/ray.dir/Code/objloader.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/objloader.cpp > CMakeFiles/ray.dir/Code/objloader.cpp.i
 
 CMakeFiles/ray.dir/Code/objloader.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ray.dir/Code/objloader.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/objloader.cpp" -o CMakeFiles/ray.dir/Code/objloader.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/objloader.cpp -o CMakeFiles/ray.dir/Code/objloader.cpp.s
 
 CMakeFiles/ray.dir/Code/objloader.cpp.o.requires:
 
@@ -155,16 +203,16 @@ CMakeFiles/ray.dir/Code/objloader.cpp.o.provides.build: CMakeFiles/ray.dir/Code/
 
 CMakeFiles/ray.dir/Code/raytracer.cpp.o: CMakeFiles/ray.dir/flags.make
 CMakeFiles/ray.dir/Code/raytracer.cpp.o: ../Code/raytracer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/ray.dir/Code/raytracer.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ray.dir/Code/raytracer.cpp.o -c "/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/raytracer.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/daddabarba/Desktop/CG_assignments/Raytracer_2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/ray.dir/Code/raytracer.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ray.dir/Code/raytracer.cpp.o -c /home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/raytracer.cpp
 
 CMakeFiles/ray.dir/Code/raytracer.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ray.dir/Code/raytracer.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/raytracer.cpp" > CMakeFiles/ray.dir/Code/raytracer.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/raytracer.cpp > CMakeFiles/ray.dir/Code/raytracer.cpp.i
 
 CMakeFiles/ray.dir/Code/raytracer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ray.dir/Code/raytracer.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/raytracer.cpp" -o CMakeFiles/ray.dir/Code/raytracer.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/raytracer.cpp -o CMakeFiles/ray.dir/Code/raytracer.cpp.s
 
 CMakeFiles/ray.dir/Code/raytracer.cpp.o.requires:
 
@@ -179,16 +227,16 @@ CMakeFiles/ray.dir/Code/raytracer.cpp.o.provides.build: CMakeFiles/ray.dir/Code/
 
 CMakeFiles/ray.dir/Code/scene.cpp.o: CMakeFiles/ray.dir/flags.make
 CMakeFiles/ray.dir/Code/scene.cpp.o: ../Code/scene.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/ray.dir/Code/scene.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ray.dir/Code/scene.cpp.o -c "/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/scene.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/daddabarba/Desktop/CG_assignments/Raytracer_2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/ray.dir/Code/scene.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ray.dir/Code/scene.cpp.o -c /home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/scene.cpp
 
 CMakeFiles/ray.dir/Code/scene.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ray.dir/Code/scene.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/scene.cpp" > CMakeFiles/ray.dir/Code/scene.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/scene.cpp > CMakeFiles/ray.dir/Code/scene.cpp.i
 
 CMakeFiles/ray.dir/Code/scene.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ray.dir/Code/scene.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/scene.cpp" -o CMakeFiles/ray.dir/Code/scene.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/scene.cpp -o CMakeFiles/ray.dir/Code/scene.cpp.s
 
 CMakeFiles/ray.dir/Code/scene.cpp.o.requires:
 
@@ -203,16 +251,16 @@ CMakeFiles/ray.dir/Code/scene.cpp.o.provides.build: CMakeFiles/ray.dir/Code/scen
 
 CMakeFiles/ray.dir/Code/shapes/cone.cpp.o: CMakeFiles/ray.dir/flags.make
 CMakeFiles/ray.dir/Code/shapes/cone.cpp.o: ../Code/shapes/cone.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/ray.dir/Code/shapes/cone.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ray.dir/Code/shapes/cone.cpp.o -c "/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/shapes/cone.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/daddabarba/Desktop/CG_assignments/Raytracer_2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/ray.dir/Code/shapes/cone.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ray.dir/Code/shapes/cone.cpp.o -c /home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/cone.cpp
 
 CMakeFiles/ray.dir/Code/shapes/cone.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ray.dir/Code/shapes/cone.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/shapes/cone.cpp" > CMakeFiles/ray.dir/Code/shapes/cone.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/cone.cpp > CMakeFiles/ray.dir/Code/shapes/cone.cpp.i
 
 CMakeFiles/ray.dir/Code/shapes/cone.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ray.dir/Code/shapes/cone.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/shapes/cone.cpp" -o CMakeFiles/ray.dir/Code/shapes/cone.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/cone.cpp -o CMakeFiles/ray.dir/Code/shapes/cone.cpp.s
 
 CMakeFiles/ray.dir/Code/shapes/cone.cpp.o.requires:
 
@@ -227,16 +275,16 @@ CMakeFiles/ray.dir/Code/shapes/cone.cpp.o.provides.build: CMakeFiles/ray.dir/Cod
 
 CMakeFiles/ray.dir/Code/shapes/cylinder.cpp.o: CMakeFiles/ray.dir/flags.make
 CMakeFiles/ray.dir/Code/shapes/cylinder.cpp.o: ../Code/shapes/cylinder.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/ray.dir/Code/shapes/cylinder.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ray.dir/Code/shapes/cylinder.cpp.o -c "/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/shapes/cylinder.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/daddabarba/Desktop/CG_assignments/Raytracer_2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/ray.dir/Code/shapes/cylinder.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ray.dir/Code/shapes/cylinder.cpp.o -c /home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/cylinder.cpp
 
 CMakeFiles/ray.dir/Code/shapes/cylinder.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ray.dir/Code/shapes/cylinder.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/shapes/cylinder.cpp" > CMakeFiles/ray.dir/Code/shapes/cylinder.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/cylinder.cpp > CMakeFiles/ray.dir/Code/shapes/cylinder.cpp.i
 
 CMakeFiles/ray.dir/Code/shapes/cylinder.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ray.dir/Code/shapes/cylinder.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/shapes/cylinder.cpp" -o CMakeFiles/ray.dir/Code/shapes/cylinder.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/cylinder.cpp -o CMakeFiles/ray.dir/Code/shapes/cylinder.cpp.s
 
 CMakeFiles/ray.dir/Code/shapes/cylinder.cpp.o.requires:
 
@@ -251,16 +299,16 @@ CMakeFiles/ray.dir/Code/shapes/cylinder.cpp.o.provides.build: CMakeFiles/ray.dir
 
 CMakeFiles/ray.dir/Code/shapes/example.cpp.o: CMakeFiles/ray.dir/flags.make
 CMakeFiles/ray.dir/Code/shapes/example.cpp.o: ../Code/shapes/example.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/ray.dir/Code/shapes/example.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ray.dir/Code/shapes/example.cpp.o -c "/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/shapes/example.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/daddabarba/Desktop/CG_assignments/Raytracer_2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/ray.dir/Code/shapes/example.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ray.dir/Code/shapes/example.cpp.o -c /home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/example.cpp
 
 CMakeFiles/ray.dir/Code/shapes/example.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ray.dir/Code/shapes/example.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/shapes/example.cpp" > CMakeFiles/ray.dir/Code/shapes/example.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/example.cpp > CMakeFiles/ray.dir/Code/shapes/example.cpp.i
 
 CMakeFiles/ray.dir/Code/shapes/example.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ray.dir/Code/shapes/example.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/shapes/example.cpp" -o CMakeFiles/ray.dir/Code/shapes/example.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/example.cpp -o CMakeFiles/ray.dir/Code/shapes/example.cpp.s
 
 CMakeFiles/ray.dir/Code/shapes/example.cpp.o.requires:
 
@@ -275,16 +323,16 @@ CMakeFiles/ray.dir/Code/shapes/example.cpp.o.provides.build: CMakeFiles/ray.dir/
 
 CMakeFiles/ray.dir/Code/shapes/mesh.cpp.o: CMakeFiles/ray.dir/flags.make
 CMakeFiles/ray.dir/Code/shapes/mesh.cpp.o: ../Code/shapes/mesh.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/ray.dir/Code/shapes/mesh.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ray.dir/Code/shapes/mesh.cpp.o -c "/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/shapes/mesh.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/daddabarba/Desktop/CG_assignments/Raytracer_2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/ray.dir/Code/shapes/mesh.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ray.dir/Code/shapes/mesh.cpp.o -c /home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/mesh.cpp
 
 CMakeFiles/ray.dir/Code/shapes/mesh.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ray.dir/Code/shapes/mesh.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/shapes/mesh.cpp" > CMakeFiles/ray.dir/Code/shapes/mesh.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/mesh.cpp > CMakeFiles/ray.dir/Code/shapes/mesh.cpp.i
 
 CMakeFiles/ray.dir/Code/shapes/mesh.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ray.dir/Code/shapes/mesh.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/shapes/mesh.cpp" -o CMakeFiles/ray.dir/Code/shapes/mesh.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/mesh.cpp -o CMakeFiles/ray.dir/Code/shapes/mesh.cpp.s
 
 CMakeFiles/ray.dir/Code/shapes/mesh.cpp.o.requires:
 
@@ -299,16 +347,16 @@ CMakeFiles/ray.dir/Code/shapes/mesh.cpp.o.provides.build: CMakeFiles/ray.dir/Cod
 
 CMakeFiles/ray.dir/Code/shapes/plane.cpp.o: CMakeFiles/ray.dir/flags.make
 CMakeFiles/ray.dir/Code/shapes/plane.cpp.o: ../Code/shapes/plane.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/ray.dir/Code/shapes/plane.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ray.dir/Code/shapes/plane.cpp.o -c "/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/shapes/plane.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/daddabarba/Desktop/CG_assignments/Raytracer_2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/ray.dir/Code/shapes/plane.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ray.dir/Code/shapes/plane.cpp.o -c /home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/plane.cpp
 
 CMakeFiles/ray.dir/Code/shapes/plane.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ray.dir/Code/shapes/plane.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/shapes/plane.cpp" > CMakeFiles/ray.dir/Code/shapes/plane.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/plane.cpp > CMakeFiles/ray.dir/Code/shapes/plane.cpp.i
 
 CMakeFiles/ray.dir/Code/shapes/plane.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ray.dir/Code/shapes/plane.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/shapes/plane.cpp" -o CMakeFiles/ray.dir/Code/shapes/plane.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/plane.cpp -o CMakeFiles/ray.dir/Code/shapes/plane.cpp.s
 
 CMakeFiles/ray.dir/Code/shapes/plane.cpp.o.requires:
 
@@ -321,18 +369,42 @@ CMakeFiles/ray.dir/Code/shapes/plane.cpp.o.provides: CMakeFiles/ray.dir/Code/sha
 CMakeFiles/ray.dir/Code/shapes/plane.cpp.o.provides.build: CMakeFiles/ray.dir/Code/shapes/plane.cpp.o
 
 
+CMakeFiles/ray.dir/Code/shapes/solvers.cpp.o: CMakeFiles/ray.dir/flags.make
+CMakeFiles/ray.dir/Code/shapes/solvers.cpp.o: ../Code/shapes/solvers.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/daddabarba/Desktop/CG_assignments/Raytracer_2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/ray.dir/Code/shapes/solvers.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ray.dir/Code/shapes/solvers.cpp.o -c /home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/solvers.cpp
+
+CMakeFiles/ray.dir/Code/shapes/solvers.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ray.dir/Code/shapes/solvers.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/solvers.cpp > CMakeFiles/ray.dir/Code/shapes/solvers.cpp.i
+
+CMakeFiles/ray.dir/Code/shapes/solvers.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ray.dir/Code/shapes/solvers.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/solvers.cpp -o CMakeFiles/ray.dir/Code/shapes/solvers.cpp.s
+
+CMakeFiles/ray.dir/Code/shapes/solvers.cpp.o.requires:
+
+.PHONY : CMakeFiles/ray.dir/Code/shapes/solvers.cpp.o.requires
+
+CMakeFiles/ray.dir/Code/shapes/solvers.cpp.o.provides: CMakeFiles/ray.dir/Code/shapes/solvers.cpp.o.requires
+	$(MAKE) -f CMakeFiles/ray.dir/build.make CMakeFiles/ray.dir/Code/shapes/solvers.cpp.o.provides.build
+.PHONY : CMakeFiles/ray.dir/Code/shapes/solvers.cpp.o.provides
+
+CMakeFiles/ray.dir/Code/shapes/solvers.cpp.o.provides.build: CMakeFiles/ray.dir/Code/shapes/solvers.cpp.o
+
+
 CMakeFiles/ray.dir/Code/shapes/sphere.cpp.o: CMakeFiles/ray.dir/flags.make
 CMakeFiles/ray.dir/Code/shapes/sphere.cpp.o: ../Code/shapes/sphere.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/ray.dir/Code/shapes/sphere.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ray.dir/Code/shapes/sphere.cpp.o -c "/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/shapes/sphere.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/daddabarba/Desktop/CG_assignments/Raytracer_2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/ray.dir/Code/shapes/sphere.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ray.dir/Code/shapes/sphere.cpp.o -c /home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/sphere.cpp
 
 CMakeFiles/ray.dir/Code/shapes/sphere.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ray.dir/Code/shapes/sphere.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/shapes/sphere.cpp" > CMakeFiles/ray.dir/Code/shapes/sphere.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/sphere.cpp > CMakeFiles/ray.dir/Code/shapes/sphere.cpp.i
 
 CMakeFiles/ray.dir/Code/shapes/sphere.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ray.dir/Code/shapes/sphere.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/shapes/sphere.cpp" -o CMakeFiles/ray.dir/Code/shapes/sphere.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/sphere.cpp -o CMakeFiles/ray.dir/Code/shapes/sphere.cpp.s
 
 CMakeFiles/ray.dir/Code/shapes/sphere.cpp.o.requires:
 
@@ -347,16 +419,16 @@ CMakeFiles/ray.dir/Code/shapes/sphere.cpp.o.provides.build: CMakeFiles/ray.dir/C
 
 CMakeFiles/ray.dir/Code/shapes/triangle.cpp.o: CMakeFiles/ray.dir/flags.make
 CMakeFiles/ray.dir/Code/shapes/triangle.cpp.o: ../Code/shapes/triangle.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/ray.dir/Code/shapes/triangle.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ray.dir/Code/shapes/triangle.cpp.o -c "/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/shapes/triangle.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/daddabarba/Desktop/CG_assignments/Raytracer_2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/ray.dir/Code/shapes/triangle.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ray.dir/Code/shapes/triangle.cpp.o -c /home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/triangle.cpp
 
 CMakeFiles/ray.dir/Code/shapes/triangle.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ray.dir/Code/shapes/triangle.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/shapes/triangle.cpp" > CMakeFiles/ray.dir/Code/shapes/triangle.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/triangle.cpp > CMakeFiles/ray.dir/Code/shapes/triangle.cpp.i
 
 CMakeFiles/ray.dir/Code/shapes/triangle.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ray.dir/Code/shapes/triangle.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/shapes/triangle.cpp" -o CMakeFiles/ray.dir/Code/shapes/triangle.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/triangle.cpp -o CMakeFiles/ray.dir/Code/shapes/triangle.cpp.s
 
 CMakeFiles/ray.dir/Code/shapes/triangle.cpp.o.requires:
 
@@ -371,16 +443,16 @@ CMakeFiles/ray.dir/Code/shapes/triangle.cpp.o.provides.build: CMakeFiles/ray.dir
 
 CMakeFiles/ray.dir/Code/triple.cpp.o: CMakeFiles/ray.dir/flags.make
 CMakeFiles/ray.dir/Code/triple.cpp.o: ../Code/triple.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/ray.dir/Code/triple.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ray.dir/Code/triple.cpp.o -c "/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/triple.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/daddabarba/Desktop/CG_assignments/Raytracer_2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/ray.dir/Code/triple.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ray.dir/Code/triple.cpp.o -c /home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/triple.cpp
 
 CMakeFiles/ray.dir/Code/triple.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ray.dir/Code/triple.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/triple.cpp" > CMakeFiles/ray.dir/Code/triple.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/triple.cpp > CMakeFiles/ray.dir/Code/triple.cpp.i
 
 CMakeFiles/ray.dir/Code/triple.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ray.dir/Code/triple.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/triple.cpp" -o CMakeFiles/ray.dir/Code/triple.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/triple.cpp -o CMakeFiles/ray.dir/Code/triple.cpp.s
 
 CMakeFiles/ray.dir/Code/triple.cpp.o.requires:
 
@@ -398,6 +470,8 @@ ray_OBJECTS = \
 "CMakeFiles/ray.dir/Code/image.cpp.o" \
 "CMakeFiles/ray.dir/Code/lode/lodepng.cpp.o" \
 "CMakeFiles/ray.dir/Code/main.cpp.o" \
+"CMakeFiles/ray.dir/Code/material.cpp.o" \
+"CMakeFiles/ray.dir/Code/object.cpp.o" \
 "CMakeFiles/ray.dir/Code/objloader.cpp.o" \
 "CMakeFiles/ray.dir/Code/raytracer.cpp.o" \
 "CMakeFiles/ray.dir/Code/scene.cpp.o" \
@@ -406,6 +480,7 @@ ray_OBJECTS = \
 "CMakeFiles/ray.dir/Code/shapes/example.cpp.o" \
 "CMakeFiles/ray.dir/Code/shapes/mesh.cpp.o" \
 "CMakeFiles/ray.dir/Code/shapes/plane.cpp.o" \
+"CMakeFiles/ray.dir/Code/shapes/solvers.cpp.o" \
 "CMakeFiles/ray.dir/Code/shapes/sphere.cpp.o" \
 "CMakeFiles/ray.dir/Code/shapes/triangle.cpp.o" \
 "CMakeFiles/ray.dir/Code/triple.cpp.o"
@@ -416,6 +491,8 @@ ray_EXTERNAL_OBJECTS =
 ray: CMakeFiles/ray.dir/Code/image.cpp.o
 ray: CMakeFiles/ray.dir/Code/lode/lodepng.cpp.o
 ray: CMakeFiles/ray.dir/Code/main.cpp.o
+ray: CMakeFiles/ray.dir/Code/material.cpp.o
+ray: CMakeFiles/ray.dir/Code/object.cpp.o
 ray: CMakeFiles/ray.dir/Code/objloader.cpp.o
 ray: CMakeFiles/ray.dir/Code/raytracer.cpp.o
 ray: CMakeFiles/ray.dir/Code/scene.cpp.o
@@ -424,12 +501,13 @@ ray: CMakeFiles/ray.dir/Code/shapes/cylinder.cpp.o
 ray: CMakeFiles/ray.dir/Code/shapes/example.cpp.o
 ray: CMakeFiles/ray.dir/Code/shapes/mesh.cpp.o
 ray: CMakeFiles/ray.dir/Code/shapes/plane.cpp.o
+ray: CMakeFiles/ray.dir/Code/shapes/solvers.cpp.o
 ray: CMakeFiles/ray.dir/Code/shapes/sphere.cpp.o
 ray: CMakeFiles/ray.dir/Code/shapes/triangle.cpp.o
 ray: CMakeFiles/ray.dir/Code/triple.cpp.o
 ray: CMakeFiles/ray.dir/build.make
 ray: CMakeFiles/ray.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_15) "Linking CXX executable ray"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/daddabarba/Desktop/CG_assignments/Raytracer_2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Linking CXX executable ray"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ray.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -440,6 +518,8 @@ CMakeFiles/ray.dir/build: ray
 CMakeFiles/ray.dir/requires: CMakeFiles/ray.dir/Code/image.cpp.o.requires
 CMakeFiles/ray.dir/requires: CMakeFiles/ray.dir/Code/lode/lodepng.cpp.o.requires
 CMakeFiles/ray.dir/requires: CMakeFiles/ray.dir/Code/main.cpp.o.requires
+CMakeFiles/ray.dir/requires: CMakeFiles/ray.dir/Code/material.cpp.o.requires
+CMakeFiles/ray.dir/requires: CMakeFiles/ray.dir/Code/object.cpp.o.requires
 CMakeFiles/ray.dir/requires: CMakeFiles/ray.dir/Code/objloader.cpp.o.requires
 CMakeFiles/ray.dir/requires: CMakeFiles/ray.dir/Code/raytracer.cpp.o.requires
 CMakeFiles/ray.dir/requires: CMakeFiles/ray.dir/Code/scene.cpp.o.requires
@@ -448,6 +528,7 @@ CMakeFiles/ray.dir/requires: CMakeFiles/ray.dir/Code/shapes/cylinder.cpp.o.requi
 CMakeFiles/ray.dir/requires: CMakeFiles/ray.dir/Code/shapes/example.cpp.o.requires
 CMakeFiles/ray.dir/requires: CMakeFiles/ray.dir/Code/shapes/mesh.cpp.o.requires
 CMakeFiles/ray.dir/requires: CMakeFiles/ray.dir/Code/shapes/plane.cpp.o.requires
+CMakeFiles/ray.dir/requires: CMakeFiles/ray.dir/Code/shapes/solvers.cpp.o.requires
 CMakeFiles/ray.dir/requires: CMakeFiles/ray.dir/Code/shapes/sphere.cpp.o.requires
 CMakeFiles/ray.dir/requires: CMakeFiles/ray.dir/Code/shapes/triangle.cpp.o.requires
 CMakeFiles/ray.dir/requires: CMakeFiles/ray.dir/Code/triple.cpp.o.requires
@@ -459,6 +540,6 @@ CMakeFiles/ray.dir/clean:
 .PHONY : CMakeFiles/ray.dir/clean
 
 CMakeFiles/ray.dir/depend:
-	cd "/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/cmake-build-debug" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)" "/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)" "/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/cmake-build-debug" "/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/cmake-build-debug" "/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/cmake-build-debug/CMakeFiles/ray.dir/DependInfo.cmake" --color=$(COLOR)
+	cd /home/daddabarba/Desktop/CG_assignments/Raytracer_2/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/daddabarba/Desktop/CG_assignments/Raytracer_2 /home/daddabarba/Desktop/CG_assignments/Raytracer_2 /home/daddabarba/Desktop/CG_assignments/Raytracer_2/cmake-build-debug /home/daddabarba/Desktop/CG_assignments/Raytracer_2/cmake-build-debug /home/daddabarba/Desktop/CG_assignments/Raytracer_2/cmake-build-debug/CMakeFiles/ray.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/ray.dir/depend
 

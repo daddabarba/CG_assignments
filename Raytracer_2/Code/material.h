@@ -2,6 +2,8 @@
 #define MATERIAL_H_
 
 #include "triple.h"
+#include "image.h"
+#include "json/json.h"
 
 class Material
 {
@@ -14,13 +16,21 @@ class Material
 
         Material() = default;
 
-        Material(Color const &color, double ka, double kd, double ks, double n)
+        Image texture;
+        bool has_tex;
+
+        void set_tex(std::string const &path);
+        const Color &get_tex_col(Point P);
+
+        Material(double ka, double kd, double ks, double n, Color const &color=Color(0.0,0.0,0.0))
         :
             color(color),
             ka(ka),
             kd(kd),
             ks(ks),
-            n(n)
+            n(n),
+            texture(),
+            has_tex(false)
         {}
 };
 

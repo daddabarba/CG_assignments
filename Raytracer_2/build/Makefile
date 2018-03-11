@@ -48,18 +48,18 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/s3210812/CG/CG_assignments/Raytracer_2
+CMAKE_SOURCE_DIR = /home/daddabarba/Desktop/CG_assignments/Raytracer_2
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/s3210812/CG/CG_assignments/Raytracer_2/build
+CMAKE_BINARY_DIR = /home/daddabarba/Desktop/CG_assignments/Raytracer_2/build
 
 #=============================================================================
 # Targets provided globally by CMake.
 
 # Special rule for the target edit_cache
 edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
-	/usr/bin/ccmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -80,9 +80,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/s3210812/CG/CG_assignments/Raytracer_2/build/CMakeFiles /home/s3210812/CG/CG_assignments/Raytracer_2/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/daddabarba/Desktop/CG_assignments/Raytracer_2/build/CMakeFiles /home/daddabarba/Desktop/CG_assignments/Raytracer_2/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/s3210812/CG/CG_assignments/Raytracer_2/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/daddabarba/Desktop/CG_assignments/Raytracer_2/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -203,6 +203,60 @@ Code/main.s: Code/main.cpp.s
 Code/main.cpp.s:
 	$(MAKE) -f CMakeFiles/ray.dir/build.make CMakeFiles/ray.dir/Code/main.cpp.s
 .PHONY : Code/main.cpp.s
+
+Code/material.o: Code/material.cpp.o
+
+.PHONY : Code/material.o
+
+# target to build an object file
+Code/material.cpp.o:
+	$(MAKE) -f CMakeFiles/ray.dir/build.make CMakeFiles/ray.dir/Code/material.cpp.o
+.PHONY : Code/material.cpp.o
+
+Code/material.i: Code/material.cpp.i
+
+.PHONY : Code/material.i
+
+# target to preprocess a source file
+Code/material.cpp.i:
+	$(MAKE) -f CMakeFiles/ray.dir/build.make CMakeFiles/ray.dir/Code/material.cpp.i
+.PHONY : Code/material.cpp.i
+
+Code/material.s: Code/material.cpp.s
+
+.PHONY : Code/material.s
+
+# target to generate assembly for a file
+Code/material.cpp.s:
+	$(MAKE) -f CMakeFiles/ray.dir/build.make CMakeFiles/ray.dir/Code/material.cpp.s
+.PHONY : Code/material.cpp.s
+
+Code/object.o: Code/object.cpp.o
+
+.PHONY : Code/object.o
+
+# target to build an object file
+Code/object.cpp.o:
+	$(MAKE) -f CMakeFiles/ray.dir/build.make CMakeFiles/ray.dir/Code/object.cpp.o
+.PHONY : Code/object.cpp.o
+
+Code/object.i: Code/object.cpp.i
+
+.PHONY : Code/object.i
+
+# target to preprocess a source file
+Code/object.cpp.i:
+	$(MAKE) -f CMakeFiles/ray.dir/build.make CMakeFiles/ray.dir/Code/object.cpp.i
+.PHONY : Code/object.cpp.i
+
+Code/object.s: Code/object.cpp.s
+
+.PHONY : Code/object.s
+
+# target to generate assembly for a file
+Code/object.cpp.s:
+	$(MAKE) -f CMakeFiles/ray.dir/build.make CMakeFiles/ray.dir/Code/object.cpp.s
+.PHONY : Code/object.cpp.s
 
 Code/objloader.o: Code/objloader.cpp.o
 
@@ -546,6 +600,12 @@ help:
 	@echo "... Code/main.o"
 	@echo "... Code/main.i"
 	@echo "... Code/main.s"
+	@echo "... Code/material.o"
+	@echo "... Code/material.i"
+	@echo "... Code/material.s"
+	@echo "... Code/object.o"
+	@echo "... Code/object.i"
+	@echo "... Code/object.s"
 	@echo "... Code/objloader.o"
 	@echo "... Code/objloader.i"
 	@echo "... Code/objloader.s"

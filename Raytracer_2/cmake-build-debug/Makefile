@@ -48,10 +48,10 @@ RM = /opt/clion-2017.2.2/bin/cmake/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)"
+CMAKE_SOURCE_DIR = /home/daddabarba/Desktop/CG_assignments/Raytracer_2
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/cmake-build-debug"
+CMAKE_BINARY_DIR = /home/daddabarba/Desktop/CG_assignments/Raytracer_2/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/cmake-build-debug/CMakeFiles" "/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/cmake-build-debug/CMakeFiles/progress.marks"
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/daddabarba/Desktop/CG_assignments/Raytracer_2/cmake-build-debug/CMakeFiles /home/daddabarba/Desktop/CG_assignments/Raytracer_2/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/cmake-build-debug/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/daddabarba/Desktop/CG_assignments/Raytracer_2/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -203,6 +203,60 @@ Code/main.s: Code/main.cpp.s
 Code/main.cpp.s:
 	$(MAKE) -f CMakeFiles/ray.dir/build.make CMakeFiles/ray.dir/Code/main.cpp.s
 .PHONY : Code/main.cpp.s
+
+Code/material.o: Code/material.cpp.o
+
+.PHONY : Code/material.o
+
+# target to build an object file
+Code/material.cpp.o:
+	$(MAKE) -f CMakeFiles/ray.dir/build.make CMakeFiles/ray.dir/Code/material.cpp.o
+.PHONY : Code/material.cpp.o
+
+Code/material.i: Code/material.cpp.i
+
+.PHONY : Code/material.i
+
+# target to preprocess a source file
+Code/material.cpp.i:
+	$(MAKE) -f CMakeFiles/ray.dir/build.make CMakeFiles/ray.dir/Code/material.cpp.i
+.PHONY : Code/material.cpp.i
+
+Code/material.s: Code/material.cpp.s
+
+.PHONY : Code/material.s
+
+# target to generate assembly for a file
+Code/material.cpp.s:
+	$(MAKE) -f CMakeFiles/ray.dir/build.make CMakeFiles/ray.dir/Code/material.cpp.s
+.PHONY : Code/material.cpp.s
+
+Code/object.o: Code/object.cpp.o
+
+.PHONY : Code/object.o
+
+# target to build an object file
+Code/object.cpp.o:
+	$(MAKE) -f CMakeFiles/ray.dir/build.make CMakeFiles/ray.dir/Code/object.cpp.o
+.PHONY : Code/object.cpp.o
+
+Code/object.i: Code/object.cpp.i
+
+.PHONY : Code/object.i
+
+# target to preprocess a source file
+Code/object.cpp.i:
+	$(MAKE) -f CMakeFiles/ray.dir/build.make CMakeFiles/ray.dir/Code/object.cpp.i
+.PHONY : Code/object.cpp.i
+
+Code/object.s: Code/object.cpp.s
+
+.PHONY : Code/object.s
+
+# target to generate assembly for a file
+Code/object.cpp.s:
+	$(MAKE) -f CMakeFiles/ray.dir/build.make CMakeFiles/ray.dir/Code/object.cpp.s
+.PHONY : Code/object.cpp.s
 
 Code/objloader.o: Code/objloader.cpp.o
 
@@ -420,6 +474,33 @@ Code/shapes/plane.cpp.s:
 	$(MAKE) -f CMakeFiles/ray.dir/build.make CMakeFiles/ray.dir/Code/shapes/plane.cpp.s
 .PHONY : Code/shapes/plane.cpp.s
 
+Code/shapes/solvers.o: Code/shapes/solvers.cpp.o
+
+.PHONY : Code/shapes/solvers.o
+
+# target to build an object file
+Code/shapes/solvers.cpp.o:
+	$(MAKE) -f CMakeFiles/ray.dir/build.make CMakeFiles/ray.dir/Code/shapes/solvers.cpp.o
+.PHONY : Code/shapes/solvers.cpp.o
+
+Code/shapes/solvers.i: Code/shapes/solvers.cpp.i
+
+.PHONY : Code/shapes/solvers.i
+
+# target to preprocess a source file
+Code/shapes/solvers.cpp.i:
+	$(MAKE) -f CMakeFiles/ray.dir/build.make CMakeFiles/ray.dir/Code/shapes/solvers.cpp.i
+.PHONY : Code/shapes/solvers.cpp.i
+
+Code/shapes/solvers.s: Code/shapes/solvers.cpp.s
+
+.PHONY : Code/shapes/solvers.s
+
+# target to generate assembly for a file
+Code/shapes/solvers.cpp.s:
+	$(MAKE) -f CMakeFiles/ray.dir/build.make CMakeFiles/ray.dir/Code/shapes/solvers.cpp.s
+.PHONY : Code/shapes/solvers.cpp.s
+
 Code/shapes/sphere.o: Code/shapes/sphere.cpp.o
 
 .PHONY : Code/shapes/sphere.o
@@ -519,6 +600,12 @@ help:
 	@echo "... Code/main.o"
 	@echo "... Code/main.i"
 	@echo "... Code/main.s"
+	@echo "... Code/material.o"
+	@echo "... Code/material.i"
+	@echo "... Code/material.s"
+	@echo "... Code/object.o"
+	@echo "... Code/object.i"
+	@echo "... Code/object.s"
 	@echo "... Code/objloader.o"
 	@echo "... Code/objloader.i"
 	@echo "... Code/objloader.s"
@@ -543,6 +630,9 @@ help:
 	@echo "... Code/shapes/plane.o"
 	@echo "... Code/shapes/plane.i"
 	@echo "... Code/shapes/plane.s"
+	@echo "... Code/shapes/solvers.o"
+	@echo "... Code/shapes/solvers.i"
+	@echo "... Code/shapes/solvers.s"
 	@echo "... Code/shapes/sphere.o"
 	@echo "... Code/shapes/sphere.i"
 	@echo "... Code/shapes/sphere.s"

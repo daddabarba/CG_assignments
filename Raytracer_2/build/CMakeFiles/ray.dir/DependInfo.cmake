@@ -4,21 +4,23 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/s3210812/CG/CG_assignments/Raytracer_2/Code/image.cpp" "/home/s3210812/CG/CG_assignments/Raytracer_2/build/CMakeFiles/ray.dir/Code/image.cpp.o"
-  "/home/s3210812/CG/CG_assignments/Raytracer_2/Code/lode/lodepng.cpp" "/home/s3210812/CG/CG_assignments/Raytracer_2/build/CMakeFiles/ray.dir/Code/lode/lodepng.cpp.o"
-  "/home/s3210812/CG/CG_assignments/Raytracer_2/Code/main.cpp" "/home/s3210812/CG/CG_assignments/Raytracer_2/build/CMakeFiles/ray.dir/Code/main.cpp.o"
-  "/home/s3210812/CG/CG_assignments/Raytracer_2/Code/objloader.cpp" "/home/s3210812/CG/CG_assignments/Raytracer_2/build/CMakeFiles/ray.dir/Code/objloader.cpp.o"
-  "/home/s3210812/CG/CG_assignments/Raytracer_2/Code/raytracer.cpp" "/home/s3210812/CG/CG_assignments/Raytracer_2/build/CMakeFiles/ray.dir/Code/raytracer.cpp.o"
-  "/home/s3210812/CG/CG_assignments/Raytracer_2/Code/scene.cpp" "/home/s3210812/CG/CG_assignments/Raytracer_2/build/CMakeFiles/ray.dir/Code/scene.cpp.o"
-  "/home/s3210812/CG/CG_assignments/Raytracer_2/Code/shapes/cone.cpp" "/home/s3210812/CG/CG_assignments/Raytracer_2/build/CMakeFiles/ray.dir/Code/shapes/cone.cpp.o"
-  "/home/s3210812/CG/CG_assignments/Raytracer_2/Code/shapes/cylinder.cpp" "/home/s3210812/CG/CG_assignments/Raytracer_2/build/CMakeFiles/ray.dir/Code/shapes/cylinder.cpp.o"
-  "/home/s3210812/CG/CG_assignments/Raytracer_2/Code/shapes/example.cpp" "/home/s3210812/CG/CG_assignments/Raytracer_2/build/CMakeFiles/ray.dir/Code/shapes/example.cpp.o"
-  "/home/s3210812/CG/CG_assignments/Raytracer_2/Code/shapes/mesh.cpp" "/home/s3210812/CG/CG_assignments/Raytracer_2/build/CMakeFiles/ray.dir/Code/shapes/mesh.cpp.o"
-  "/home/s3210812/CG/CG_assignments/Raytracer_2/Code/shapes/plane.cpp" "/home/s3210812/CG/CG_assignments/Raytracer_2/build/CMakeFiles/ray.dir/Code/shapes/plane.cpp.o"
-  "/home/s3210812/CG/CG_assignments/Raytracer_2/Code/shapes/solvers.cpp" "/home/s3210812/CG/CG_assignments/Raytracer_2/build/CMakeFiles/ray.dir/Code/shapes/solvers.cpp.o"
-  "/home/s3210812/CG/CG_assignments/Raytracer_2/Code/shapes/sphere.cpp" "/home/s3210812/CG/CG_assignments/Raytracer_2/build/CMakeFiles/ray.dir/Code/shapes/sphere.cpp.o"
-  "/home/s3210812/CG/CG_assignments/Raytracer_2/Code/shapes/triangle.cpp" "/home/s3210812/CG/CG_assignments/Raytracer_2/build/CMakeFiles/ray.dir/Code/shapes/triangle.cpp.o"
-  "/home/s3210812/CG/CG_assignments/Raytracer_2/Code/triple.cpp" "/home/s3210812/CG/CG_assignments/Raytracer_2/build/CMakeFiles/ray.dir/Code/triple.cpp.o"
+  "/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/image.cpp" "/home/daddabarba/Desktop/CG_assignments/Raytracer_2/build/CMakeFiles/ray.dir/Code/image.cpp.o"
+  "/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/lode/lodepng.cpp" "/home/daddabarba/Desktop/CG_assignments/Raytracer_2/build/CMakeFiles/ray.dir/Code/lode/lodepng.cpp.o"
+  "/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/main.cpp" "/home/daddabarba/Desktop/CG_assignments/Raytracer_2/build/CMakeFiles/ray.dir/Code/main.cpp.o"
+  "/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/material.cpp" "/home/daddabarba/Desktop/CG_assignments/Raytracer_2/build/CMakeFiles/ray.dir/Code/material.cpp.o"
+  "/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/object.cpp" "/home/daddabarba/Desktop/CG_assignments/Raytracer_2/build/CMakeFiles/ray.dir/Code/object.cpp.o"
+  "/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/objloader.cpp" "/home/daddabarba/Desktop/CG_assignments/Raytracer_2/build/CMakeFiles/ray.dir/Code/objloader.cpp.o"
+  "/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/raytracer.cpp" "/home/daddabarba/Desktop/CG_assignments/Raytracer_2/build/CMakeFiles/ray.dir/Code/raytracer.cpp.o"
+  "/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/scene.cpp" "/home/daddabarba/Desktop/CG_assignments/Raytracer_2/build/CMakeFiles/ray.dir/Code/scene.cpp.o"
+  "/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/cone.cpp" "/home/daddabarba/Desktop/CG_assignments/Raytracer_2/build/CMakeFiles/ray.dir/Code/shapes/cone.cpp.o"
+  "/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/cylinder.cpp" "/home/daddabarba/Desktop/CG_assignments/Raytracer_2/build/CMakeFiles/ray.dir/Code/shapes/cylinder.cpp.o"
+  "/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/example.cpp" "/home/daddabarba/Desktop/CG_assignments/Raytracer_2/build/CMakeFiles/ray.dir/Code/shapes/example.cpp.o"
+  "/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/mesh.cpp" "/home/daddabarba/Desktop/CG_assignments/Raytracer_2/build/CMakeFiles/ray.dir/Code/shapes/mesh.cpp.o"
+  "/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/plane.cpp" "/home/daddabarba/Desktop/CG_assignments/Raytracer_2/build/CMakeFiles/ray.dir/Code/shapes/plane.cpp.o"
+  "/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/solvers.cpp" "/home/daddabarba/Desktop/CG_assignments/Raytracer_2/build/CMakeFiles/ray.dir/Code/shapes/solvers.cpp.o"
+  "/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/sphere.cpp" "/home/daddabarba/Desktop/CG_assignments/Raytracer_2/build/CMakeFiles/ray.dir/Code/shapes/sphere.cpp.o"
+  "/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/triangle.cpp" "/home/daddabarba/Desktop/CG_assignments/Raytracer_2/build/CMakeFiles/ray.dir/Code/shapes/triangle.cpp.o"
+  "/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/triple.cpp" "/home/daddabarba/Desktop/CG_assignments/Raytracer_2/build/CMakeFiles/ray.dir/Code/triple.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

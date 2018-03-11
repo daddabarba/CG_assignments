@@ -21,6 +21,10 @@ class Object
 
         virtual Hit intersect(Ray const &ray) = 0;  // must be implemented
                                                     // in derived class
+
+        bool has_tex();
+        virtual Point map_tex(Point P);
+        const Color &get_tex_col(Point P);
 };
 
 #endif

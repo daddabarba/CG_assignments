@@ -8,38 +8,38 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/cmake-build-debug"/>
+				<Option working_dir="/home/daddabarba/Desktop/CG_assignments/Raytracer_2/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j2 -f &quot;/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j2 -f &quot;/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j2 -f &quot;/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j2 -f &quot;/home/daddabarba/Desktop/CG_assignments/Raytracer_2/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/daddabarba/Desktop/CG_assignments/Raytracer_2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j2 -f &quot;/home/daddabarba/Desktop/CG_assignments/Raytracer_2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j2 -f &quot;/home/daddabarba/Desktop/CG_assignments/Raytracer_2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/cmake-build-debug"/>
+				<Option working_dir="/home/daddabarba/Desktop/CG_assignments/Raytracer_2/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j2 -f &quot;/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j2 -f &quot;/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j2 -f &quot;/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j2 -f &quot;/home/daddabarba/Desktop/CG_assignments/Raytracer_2/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/daddabarba/Desktop/CG_assignments/Raytracer_2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j2 -f &quot;/home/daddabarba/Desktop/CG_assignments/Raytracer_2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j2 -f &quot;/home/daddabarba/Desktop/CG_assignments/Raytracer_2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/cmake-build-debug"/>
+				<Option working_dir="/home/daddabarba/Desktop/CG_assignments/Raytracer_2/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j2 -f &quot;/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j2 -f &quot;/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j2 -f &quot;/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j2 -f &quot;/home/daddabarba/Desktop/CG_assignments/Raytracer_2/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/daddabarba/Desktop/CG_assignments/Raytracer_2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j2 -f &quot;/home/daddabarba/Desktop/CG_assignments/Raytracer_2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j2 -f &quot;/home/daddabarba/Desktop/CG_assignments/Raytracer_2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="ray">
-				<Option output="/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/cmake-build-debug/ray" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/cmake-build-debug"/>
+				<Option output="/home/daddabarba/Desktop/CG_assignments/Raytracer_2/cmake-build-debug/ray" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/daddabarba/Desktop/CG_assignments/Raytracer_2/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -53,15 +53,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j2 -f &quot;/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/cmake-build-debug/Makefile&quot;  VERBOSE=1 ray"/>
-					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j2 -f &quot;/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j2 -f &quot;/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j2 -f &quot;/home/daddabarba/Desktop/CG_assignments/Raytracer_2/cmake-build-debug/Makefile&quot;  VERBOSE=1 ray"/>
+					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/daddabarba/Desktop/CG_assignments/Raytracer_2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j2 -f &quot;/home/daddabarba/Desktop/CG_assignments/Raytracer_2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j2 -f &quot;/home/daddabarba/Desktop/CG_assignments/Raytracer_2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="ray/fast">
-				<Option output="/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/cmake-build-debug/ray" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/cmake-build-debug"/>
+				<Option output="/home/daddabarba/Desktop/CG_assignments/Raytracer_2/cmake-build-debug/ray" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/daddabarba/Desktop/CG_assignments/Raytracer_2/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -75,95 +75,113 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j2 -f &quot;/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/cmake-build-debug/Makefile&quot;  VERBOSE=1 ray/fast"/>
-					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j2 -f &quot;/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j2 -f &quot;/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j2 -f &quot;/home/daddabarba/Desktop/CG_assignments/Raytracer_2/cmake-build-debug/Makefile&quot;  VERBOSE=1 ray/fast"/>
+					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/daddabarba/Desktop/CG_assignments/Raytracer_2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j2 -f &quot;/home/daddabarba/Desktop/CG_assignments/Raytracer_2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j2 -f &quot;/home/daddabarba/Desktop/CG_assignments/Raytracer_2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/image.cpp">
+		<Unit filename="/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/image.cpp">
 			<Option target="ray"/>
 		</Unit>
-		<Unit filename="/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/image.h">
+		<Unit filename="/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/image.h">
 			<Option target="ray"/>
 		</Unit>
-		<Unit filename="/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/lode/lodepng.cpp">
+		<Unit filename="/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/lode/lodepng.cpp">
 			<Option target="ray"/>
 		</Unit>
-		<Unit filename="/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/lode/lodepng.h">
+		<Unit filename="/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/lode/lodepng.h">
 			<Option target="ray"/>
 		</Unit>
-		<Unit filename="/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/main.cpp">
+		<Unit filename="/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/main.cpp">
 			<Option target="ray"/>
 		</Unit>
-		<Unit filename="/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/objloader.cpp">
+		<Unit filename="/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/material.cpp">
 			<Option target="ray"/>
 		</Unit>
-		<Unit filename="/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/objloader.h">
+		<Unit filename="/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/material.h">
 			<Option target="ray"/>
 		</Unit>
-		<Unit filename="/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/raytracer.cpp">
+		<Unit filename="/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/object.cpp">
 			<Option target="ray"/>
 		</Unit>
-		<Unit filename="/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/raytracer.h">
+		<Unit filename="/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/object.h">
 			<Option target="ray"/>
 		</Unit>
-		<Unit filename="/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/scene.cpp">
+		<Unit filename="/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/objloader.cpp">
 			<Option target="ray"/>
 		</Unit>
-		<Unit filename="/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/scene.h">
+		<Unit filename="/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/objloader.h">
 			<Option target="ray"/>
 		</Unit>
-		<Unit filename="/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/shapes/cone.cpp">
+		<Unit filename="/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/raytracer.cpp">
 			<Option target="ray"/>
 		</Unit>
-		<Unit filename="/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/shapes/cone.h">
+		<Unit filename="/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/raytracer.h">
 			<Option target="ray"/>
 		</Unit>
-		<Unit filename="/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/shapes/cylinder.cpp">
+		<Unit filename="/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/scene.cpp">
 			<Option target="ray"/>
 		</Unit>
-		<Unit filename="/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/shapes/cylinder.h">
+		<Unit filename="/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/scene.h">
 			<Option target="ray"/>
 		</Unit>
-		<Unit filename="/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/shapes/example.cpp">
+		<Unit filename="/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/cone.cpp">
 			<Option target="ray"/>
 		</Unit>
-		<Unit filename="/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/shapes/example.h">
+		<Unit filename="/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/cone.h">
 			<Option target="ray"/>
 		</Unit>
-		<Unit filename="/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/shapes/mesh.cpp">
+		<Unit filename="/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/cylinder.cpp">
 			<Option target="ray"/>
 		</Unit>
-		<Unit filename="/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/shapes/mesh.h">
+		<Unit filename="/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/cylinder.h">
 			<Option target="ray"/>
 		</Unit>
-		<Unit filename="/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/shapes/plane.cpp">
+		<Unit filename="/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/example.cpp">
 			<Option target="ray"/>
 		</Unit>
-		<Unit filename="/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/shapes/plane.h">
+		<Unit filename="/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/example.h">
 			<Option target="ray"/>
 		</Unit>
-		<Unit filename="/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/shapes/sphere.cpp">
+		<Unit filename="/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/mesh.cpp">
 			<Option target="ray"/>
 		</Unit>
-		<Unit filename="/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/shapes/sphere.h">
+		<Unit filename="/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/mesh.h">
 			<Option target="ray"/>
 		</Unit>
-		<Unit filename="/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/shapes/triangle.cpp">
+		<Unit filename="/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/plane.cpp">
 			<Option target="ray"/>
 		</Unit>
-		<Unit filename="/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/shapes/triangle.h">
+		<Unit filename="/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/plane.h">
 			<Option target="ray"/>
 		</Unit>
-		<Unit filename="/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/triple.cpp">
+		<Unit filename="/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/solvers.cpp">
 			<Option target="ray"/>
 		</Unit>
-		<Unit filename="/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/Code/triple.h">
+		<Unit filename="/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/solvers.h">
 			<Option target="ray"/>
 		</Unit>
-		<Unit filename="/home/daddabarba/Desktop/CG_assignments/raytracerframework_cpp(3)/CMakeLists.txt">
+		<Unit filename="/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/sphere.cpp">
+			<Option target="ray"/>
+		</Unit>
+		<Unit filename="/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/sphere.h">
+			<Option target="ray"/>
+		</Unit>
+		<Unit filename="/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/triangle.cpp">
+			<Option target="ray"/>
+		</Unit>
+		<Unit filename="/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/triangle.h">
+			<Option target="ray"/>
+		</Unit>
+		<Unit filename="/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/triple.cpp">
+			<Option target="ray"/>
+		</Unit>
+		<Unit filename="/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/triple.h">
+			<Option target="ray"/>
+		</Unit>
+		<Unit filename="/home/daddabarba/Desktop/CG_assignments/Raytracer_2/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

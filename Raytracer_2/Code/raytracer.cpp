@@ -106,12 +106,28 @@ Light Raytracer::parseLightNode(json const &node) const
 
 Material Raytracer::parseMaterialNode(json const &node) const
 {
-    Color color(node["color"]);
+    bool texturized = node.size()>5;
+
+    Color color;
+    if(!texturized)
+        color = Color(node["color"]);
+
     double ka = node["ka"];
     double kd = node["kd"];
     double ks = node["ks"];
     double n  = node["n"];
-    return Material(color, ka, kd, ks, n);
+
+    Material material;
+    if(!texturized)
+        material = Material(ka, kd, ks, n, color);
+    else
+        material = Material(ka, kd, ks, n);
+
+    if(texturized) {
+         material.set_tex((string const &)node["texture"]);
+    }
+
+    return material;
 }
 
 bool Raytracer::readScene(string const &ifname)
