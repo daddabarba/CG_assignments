@@ -6,31 +6,31 @@
 
 #IncludeRegexTransform: 
 
-/home/tux/CG/Raytracer_2/Code/hit.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/hit.h
 triple.h
-/home/tux/CG/Raytracer_2/Code/triple.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/triple.h
 limits
 -
 
-/home/tux/CG/Raytracer_2/Code/image.cpp
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/image.cpp
 image.h
-/home/tux/CG/Raytracer_2/Code/image.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/image.h
 lode/lodepng.h
-/home/tux/CG/Raytracer_2/Code/lode/lodepng.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/lode/lodepng.h
 iostream
 -
 fstream
 -
 
-/home/tux/CG/Raytracer_2/Code/image.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/image.h
 triple.h
-/home/tux/CG/Raytracer_2/Code/triple.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/triple.h
 string
 -
 vector
 -
 
-/home/tux/CG/Raytracer_2/Code/json/json.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/json/json.h
 algorithm
 -
 cassert
@@ -294,7 +294,7 @@ utility
 utility
 -
 
-/home/tux/CG/Raytracer_2/Code/json/json_fwd.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/json/json_fwd.h
 cstdint
 -
 map
@@ -306,15 +306,15 @@ string
 vector
 -
 
-/home/tux/CG/Raytracer_2/Code/light.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/light.h
 triple.h
-/home/tux/CG/Raytracer_2/Code/triple.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/triple.h
 memory
 -
 
-/home/tux/CG/Raytracer_2/Code/lode/lodepng.cpp
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/lode/lodepng.cpp
 lodepng.h
-/home/tux/CG/Raytracer_2/Code/lode/lodepng.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/lode/lodepng.h
 limits.h
 -
 stdio.h
@@ -322,7 +322,7 @@ stdio.h
 stdlib.h
 -
 
-/home/tux/CG/Raytracer_2/Code/lode/lodepng.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/lode/lodepng.h
 string.h
 -
 vector
@@ -330,51 +330,51 @@ vector
 string
 -
 lodepng.h
-/home/tux/CG/Raytracer_2/Code/lode/lodepng.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/lode/lodepng.h
 iostream
 -
 lodepng.h
-/home/tux/CG/Raytracer_2/Code/lode/lodepng.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/lode/lodepng.h
 
-/home/tux/CG/Raytracer_2/Code/main.cpp
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/main.cpp
 raytracer.h
-/home/tux/CG/Raytracer_2/Code/raytracer.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/raytracer.h
 iostream
 -
 string
 -
 
-/home/tux/CG/Raytracer_2/Code/material.cpp
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/material.cpp
 material.h
-/home/tux/CG/Raytracer_2/Code/material.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/material.h
 
-/home/tux/CG/Raytracer_2/Code/material.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/material.h
 triple.h
-/home/tux/CG/Raytracer_2/Code/triple.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/triple.h
 image.h
-/home/tux/CG/Raytracer_2/Code/image.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/image.h
 json/json.h
-/home/tux/CG/Raytracer_2/Code/json/json.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/json/json.h
 
-/home/tux/CG/Raytracer_2/Code/object.cpp
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/object.cpp
 object.h
-/home/tux/CG/Raytracer_2/Code/object.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/object.h
 
-/home/tux/CG/Raytracer_2/Code/object.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/object.h
 material.h
-/home/tux/CG/Raytracer_2/Code/material.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/material.h
 hit.h
-/home/tux/CG/Raytracer_2/Code/hit.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/hit.h
 ray.h
-/home/tux/CG/Raytracer_2/Code/ray.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/ray.h
 triple.h
-/home/tux/CG/Raytracer_2/Code/triple.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/triple.h
 memory
 -
 
-/home/tux/CG/Raytracer_2/Code/objloader.cpp
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/objloader.cpp
 objloader.h
-/home/tux/CG/Raytracer_2/Code/objloader.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/objloader.h
 fstream
 -
 iostream
@@ -382,43 +382,43 @@ iostream
 sstream
 -
 
-/home/tux/CG/Raytracer_2/Code/objloader.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/objloader.h
 vertex.h
-/home/tux/CG/Raytracer_2/Code/vertex.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/vertex.h
 string
 -
 vector
 -
 
-/home/tux/CG/Raytracer_2/Code/ray.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/ray.h
 triple.h
-/home/tux/CG/Raytracer_2/Code/triple.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/triple.h
 
-/home/tux/CG/Raytracer_2/Code/raytracer.cpp
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/raytracer.cpp
 raytracer.h
-/home/tux/CG/Raytracer_2/Code/raytracer.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/raytracer.h
 image.h
-/home/tux/CG/Raytracer_2/Code/image.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/image.h
 light.h
-/home/tux/CG/Raytracer_2/Code/light.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/light.h
 material.h
-/home/tux/CG/Raytracer_2/Code/material.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/material.h
 triple.h
-/home/tux/CG/Raytracer_2/Code/triple.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/triple.h
 shapes/sphere.h
-/home/tux/CG/Raytracer_2/Code/shapes/sphere.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/sphere.h
 shapes/plane.h
-/home/tux/CG/Raytracer_2/Code/shapes/plane.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/plane.h
 shapes/triangle.h
-/home/tux/CG/Raytracer_2/Code/shapes/triangle.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/triangle.h
 shapes/cylinder.h
-/home/tux/CG/Raytracer_2/Code/shapes/cylinder.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/cylinder.h
 shapes/cone.h
-/home/tux/CG/Raytracer_2/Code/shapes/cone.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/cone.h
 shapes/mesh.h
-/home/tux/CG/Raytracer_2/Code/shapes/mesh.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/mesh.h
 json/json.h
-/home/tux/CG/Raytracer_2/Code/json/json.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/json/json.h
 exception
 -
 fstream
@@ -426,135 +426,135 @@ fstream
 iostream
 -
 
-/home/tux/CG/Raytracer_2/Code/raytracer.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/raytracer.h
 scene.h
-/home/tux/CG/Raytracer_2/Code/scene.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/scene.h
 string
 -
 json/json_fwd.h
-/home/tux/CG/Raytracer_2/Code/json/json_fwd.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/json/json_fwd.h
 
-/home/tux/CG/Raytracer_2/Code/scene.cpp
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/scene.cpp
 scene.h
-/home/tux/CG/Raytracer_2/Code/scene.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/scene.h
 hit.h
-/home/tux/CG/Raytracer_2/Code/hit.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/hit.h
 image.h
-/home/tux/CG/Raytracer_2/Code/image.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/image.h
 material.h
-/home/tux/CG/Raytracer_2/Code/material.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/material.h
 ray.h
-/home/tux/CG/Raytracer_2/Code/ray.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/ray.h
 cmath
 -
 limits
 -
 
-/home/tux/CG/Raytracer_2/Code/scene.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/scene.h
 light.h
-/home/tux/CG/Raytracer_2/Code/light.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/light.h
 object.h
-/home/tux/CG/Raytracer_2/Code/object.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/object.h
 triple.h
-/home/tux/CG/Raytracer_2/Code/triple.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/triple.h
 vector
 -
 
-/home/tux/CG/Raytracer_2/Code/shapes/cone.cpp
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/cone.cpp
 cone.h
-/home/tux/CG/Raytracer_2/Code/shapes/cone.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/cone.h
 cmath
 -
 
-/home/tux/CG/Raytracer_2/Code/shapes/cone.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/cone.h
 ../object.h
-/home/tux/CG/Raytracer_2/Code/object.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/object.h
 
-/home/tux/CG/Raytracer_2/Code/shapes/cylinder.cpp
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/cylinder.cpp
 cylinder.h
-/home/tux/CG/Raytracer_2/Code/shapes/cylinder.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/cylinder.h
 cmath
 -
 
-/home/tux/CG/Raytracer_2/Code/shapes/cylinder.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/cylinder.h
 ../object.h
-/home/tux/CG/Raytracer_2/Code/object.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/object.h
 
-/home/tux/CG/Raytracer_2/Code/shapes/example.cpp
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/example.cpp
 example.h
-/home/tux/CG/Raytracer_2/Code/shapes/example.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/example.h
 cmath
 -
 
-/home/tux/CG/Raytracer_2/Code/shapes/example.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/example.h
 ../object.h
-/home/tux/CG/Raytracer_2/Code/object.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/object.h
 
-/home/tux/CG/Raytracer_2/Code/shapes/mesh.cpp
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/mesh.cpp
 mesh.h
-/home/tux/CG/Raytracer_2/Code/shapes/mesh.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/mesh.h
 cmath
 -
 ../objloader.h
-/home/tux/CG/Raytracer_2/Code/objloader.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/objloader.h
 limits
 -
 
-/home/tux/CG/Raytracer_2/Code/shapes/mesh.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/mesh.h
 ../object.h
-/home/tux/CG/Raytracer_2/Code/object.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/object.h
 triangle.h
-/home/tux/CG/Raytracer_2/Code/shapes/triangle.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/triangle.h
 
-/home/tux/CG/Raytracer_2/Code/shapes/plane.cpp
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/plane.cpp
 plane.h
-/home/tux/CG/Raytracer_2/Code/shapes/plane.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/plane.h
 
-/home/tux/CG/Raytracer_2/Code/shapes/plane.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/plane.h
 ../object.h
-/home/tux/CG/Raytracer_2/Code/object.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/object.h
 
-/home/tux/CG/Raytracer_2/Code/shapes/solvers.cpp
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/solvers.cpp
 solvers.h
-/home/tux/CG/Raytracer_2/Code/shapes/solvers.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/solvers.h
 cmath
 -
 utility
 -
 
-/home/tux/CG/Raytracer_2/Code/shapes/solvers.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/solvers.h
 
-/home/tux/CG/Raytracer_2/Code/shapes/sphere.cpp
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/sphere.cpp
 sphere.h
-/home/tux/CG/Raytracer_2/Code/shapes/sphere.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/sphere.h
 solvers.h
-/home/tux/CG/Raytracer_2/Code/shapes/solvers.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/solvers.h
 cmath
 -
 
-/home/tux/CG/Raytracer_2/Code/shapes/sphere.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/sphere.h
 ../object.h
-/home/tux/CG/Raytracer_2/Code/object.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/object.h
 cmath
 -
 
-/home/tux/CG/Raytracer_2/Code/shapes/triangle.cpp
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/triangle.cpp
 triangle.h
-/home/tux/CG/Raytracer_2/Code/shapes/triangle.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/triangle.h
 cfloat
 -
 cmath
 -
 
-/home/tux/CG/Raytracer_2/Code/shapes/triangle.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/shapes/triangle.h
 ../object.h
-/home/tux/CG/Raytracer_2/Code/object.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/object.h
 
-/home/tux/CG/Raytracer_2/Code/triple.cpp
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/triple.cpp
 triple.h
-/home/tux/CG/Raytracer_2/Code/triple.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/triple.h
 json/json.h
-/home/tux/CG/Raytracer_2/Code/json/json.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/json/json.h
 cmath
 -
 exception
@@ -562,11 +562,11 @@ exception
 iostream
 -
 
-/home/tux/CG/Raytracer_2/Code/triple.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/triple.h
 json/json_fwd.h
-/home/tux/CG/Raytracer_2/Code/json/json_fwd.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/json/json_fwd.h
 iosfwd
 -
 
-/home/tux/CG/Raytracer_2/Code/vertex.h
+/home/daddabarba/Desktop/CG_assignments/Raytracer_2/Code/vertex.h
 
