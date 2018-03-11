@@ -22,7 +22,7 @@ Color Scene::trace(Ray const &ray, int depth)
     if (!obj) return Color(0.0, 0.0, 0.0);
 
     Material material = obj->material;          //the hit objects material
-    Point hit = ray.at(min_hit.t);                 //the hit point
+    Point hit = ray.at(min_hit.t - 0.0000000001);                 //the hit point
     Vector N = min_hit.N;                          //the normal at hit point
     Vector V = -ray.D;                             //the view vector
 
@@ -31,8 +31,7 @@ Color Scene::trace(Ray const &ray, int depth)
     if(obj->has_tex()) {
         color = obj->get_tex_col(uv_coord);
     } else {
-
-
+		
         //initializing ambient, diffuse and specular illumination to black
         Color I_A(0.0, 0.0, 0.0);
         Color I_D(0.0, 0.0, 0.0);
@@ -40,11 +39,11 @@ Color Scene::trace(Ray const &ray, int depth)
 
         //ambient illumination is constant
         I_A = material.color * material.ka;
-
+		
         //for every light source
         for (unsigned idx = 0; idx != lights.size(); ++idx) {
             if (shadows) {
-                Ray shadowCheck(ray.at(min_hit.t - 0.0000000001), lights[idx]->position - hit);
+                Ray shadowCheck(hit, lights[idx]->position - hit);
                 bool intersection = false;
                 for (unsigned io = 0; io != objects.size(); ++io) {
                     if (objects[io]->intersect(shadowCheck).t < (lights[idx]->position - hit).length()) {
@@ -57,7 +56,7 @@ Color Scene::trace(Ray const &ray, int depth)
 
             light(*lights[idx], hit, N, V, material, &I_D, &I_S);
         }
-
+		
         //REFLECTING
         if (depth < waves) {
             //Reflecting direction
@@ -78,16 +77,13 @@ Color Scene::trace(Ray const &ray, int depth)
                 //Make reflected light source (recursively compute color)
                 Light r_light(r_hit, trace(r_ray, depth + 1));
                 //Apply light source
-                light(r_light, hit, N, V, material, &I_D, &I_S);
+                Color ID_ref;
+                light(r_light, hit, N, V, material, &ID_ref, &I_S);
             }
         }
 
         //compute final color
-        color = I_S;
-
-        //for reflected lights use only specular component
-        if (depth == 0)
-            color += I_A + I_D;
+        color = I_A + I_D + I_S;
     }
 
     return color;
@@ -95,7 +91,7 @@ Color Scene::trace(Ray const &ray, int depth)
 
 //AUXILIARY FUNCTIONS
 
-//Computes diffuse and specular componentws at hit, given a light
+//Computes diffuse and specular components at hit, given a light
 void Scene::light(Light l, Point P, Vector N, Vector V, Material m, Color *I_D, Color *I_S){
     //compute vector from intersection point to light
     Vector L = (l.position - P).normalized();

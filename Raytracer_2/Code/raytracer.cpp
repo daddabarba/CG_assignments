@@ -158,8 +158,8 @@ try
     else
         scene.shadows = false;
 
-    if(jsonscene["Waves"] != nullptr)
-        scene.waves = jsonscene["Waves"];
+    if(jsonscene["MaxRecursionDepth"] != nullptr)
+        scene.waves = jsonscene["MaxRecursionDepth"];
     else
         scene.waves = 0;
 
