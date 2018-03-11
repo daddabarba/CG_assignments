@@ -41,7 +41,11 @@ bool Raytracer::parseObjectNode(json const &node)
     {
         Point pos(node["position"]);
         double radius = node["radius"];
-        obj = ObjectPtr(new Sphere(pos, radius));
+
+        if(node.find("rotation")!=node.end() && node.find("angle")!=node.end())
+            obj = ObjectPtr(new Sphere(pos, radius, Vector(node["rotation"]),node["angle"]));
+        else
+            obj = ObjectPtr(new Sphere(pos, radius));
     }
     else if (node["type"] == "plane")
     {
@@ -106,7 +110,6 @@ Light Raytracer::parseLightNode(json const &node) const
 
 Material Raytracer::parseMaterialNode(json const &node) const
 {
-    //bool texturized = node.size()>5;
     bool texturized = node.find("texture") != node.end();
 
     Color color;
