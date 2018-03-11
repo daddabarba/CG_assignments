@@ -106,7 +106,8 @@ Light Raytracer::parseLightNode(json const &node) const
 
 Material Raytracer::parseMaterialNode(json const &node) const
 {
-    bool texturized = node.size()>5;
+    //bool texturized = node.size()>5;
+    bool texturized = node.find("texture") != node.end();
 
     Color color;
     if(!texturized)
