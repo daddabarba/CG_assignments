@@ -99,7 +99,7 @@ Point Cone::map_tex(Point P) {
     return Point(u,height/h,0.0);
 }
 
-Cone::Cone(Vector origin, Vector direction, double height, double radius, double ang=0.0, bool fit_tex)
+Cone::Cone(Vector origin, Vector direction, double height, double radius, double ang, bool fit_tex)
         :
         O(origin), //center of base (circle)
         D(direction.normalized()), //normalized direction (axis of cone)

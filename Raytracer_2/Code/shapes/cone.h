@@ -16,8 +16,8 @@ public:
     double r;
     double h;
 
-    Vector clip,
-    double angle,
+    Vector clip;
+    double angle;
 
     bool triangular_tex;
 
