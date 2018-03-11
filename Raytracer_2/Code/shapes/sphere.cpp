@@ -42,14 +42,16 @@ Hit Sphere::intersect(Ray const &ray)
 Point Sphere::map_tex(Point P){
     double pi = atan(1)*4;
 
-    double theta = acos((P.z-position.z)/r);
-    double phi = atan2(P.y-position.y,P.x-position.x);
+    double theta = acos(((P-position)/r).dot(axis));
+    double phi = atan2(P.y-position.y,P.x-position.x) - angle;
 
     return Point(phi/(2*pi), (pi-theta)/pi, 0.0);
 }
 
-Sphere::Sphere(Point const &pos, double radius)
+Sphere::Sphere(Point const &pos, double radius, Vector ax, double ang)
 :
     position(pos),
-    r(radius)
+    r(radius),
+    axis(ax.normalized()),
+    angle(ang)
 {}

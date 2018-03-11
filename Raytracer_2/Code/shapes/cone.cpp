@@ -81,10 +81,33 @@ Hit Cone::intersect(Ray const &ray)
     return (bottom_t < t && at_extreme)?(failure):(Hit(t,N));
 }
 
-Cone::Cone(Vector origin, Vector direction, double height, double radius)
+Point Cone::map_tex(Point P) {
+    double height = (P-O).dot(D);
+
+    Vector projection = height*D + O;
+    Vector ang_pos = (P-projection).normalized();
+
+    double cos_alpha = ang_pos.dot(clip) - angle;
+
+    double u = -0.25*cos_alpha + 0.25;
+    if(ang_pos.cross(clip) == D)
+        u = -u + 1.0;
+
+    if(triangular_tex)
+        u = (1.0-height)*u + height/2.0;
+
+    return Point(u,height/h,0.0);
+}
+
+Cone::Cone(Vector origin, Vector direction, double height, double radius, double ang=0.0, bool fit_tex)
         :
         O(origin), //center of base (circle)
         D(direction.normalized()), //normalized direction (axis of cone)
         r(radius), //radius of cone
-        h(height) //height of cone
+        h(height), //height of cone
+
+        clip(Vector(1.0,-direction.x/direction.y,0.0).normalized()),
+        angle(ang),
+
+        triangular_tex(fit_tex)
 {}

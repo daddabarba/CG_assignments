@@ -75,6 +75,11 @@ Triple Triple::operator/(double f) const
     return Triple(x * invf, y * invf, z * invf);
 }
 
+bool Triple::operator==(Triple const &t) const
+{
+    return x==t.x && y==t.y && z==t.z;
+}
+
 // --- Compound operators ------------------------------------------------------
 
 Triple &Triple::operator+=(Triple const &t)

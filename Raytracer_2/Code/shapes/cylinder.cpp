@@ -89,10 +89,28 @@ Hit Cylinder::intersect(Ray const &ray)
     return (extreme_t < t && at_extreme)?(failure):(Hit(t,N));
 }
 
-Cylinder::Cylinder(Vector origin, Vector direction, double height, double radius)
+Point Cylinder::map_tex(Point P) {
+    double height = (P-O).dot(D);
+
+    Vector projection = height*D + O;
+    Vector ang_pos = (P-projection).normalized();
+
+    double cos_alpha = ang_pos.dot(clip) - angle;
+
+    double u = -0.25*cos_alpha + 0.25;
+    if(ang_pos.cross(clip) == D)
+        u = -u + 1.0;
+
+    return Point(u,height/h,0.0);
+}
+
+Cylinder::Cylinder(Vector origin, Vector direction, double height, double radius, double ang)
         :
         O(origin), //center of base (circle)
         D(direction.normalized()), //normalized direction (axis of cylinder)
         r(radius), //radius of cylinder
-        h(height) //height of cylinder
+        h(height), //height of cylinder
+
+        clip(Vector(1.0,-direction.x/direction.y,0.0).normalized()),
+        angle(ang)
 {}

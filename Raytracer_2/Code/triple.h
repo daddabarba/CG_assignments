@@ -52,6 +52,8 @@ class Triple
                                                 // value
         Triple operator/(double f) const;       // divide each member by a value
 
+        bool operator==(Triple const &t) const;
+
 // --- Compound operators ------------------------------------------------------
 
         Triple &operator+=(Triple const &t);
