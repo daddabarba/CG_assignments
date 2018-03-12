@@ -26,9 +26,8 @@ Color Scene::trace(Ray const &ray, int depth)
     Vector N = min_hit.N;                          //the normal at hit point
     Vector V = -ray.D;                             //the view vector
 
-    Point uv_coord = obj->map_tex(hit);
-
     if(obj->has_tex()) {
+        Point uv_coord = obj->map_tex(hit);
         color = obj->get_tex_col(uv_coord);
     } else {
 
@@ -42,9 +41,11 @@ Color Scene::trace(Ray const &ray, int depth)
 
         //for every light source
         for (unsigned idx = 0; idx != lights.size(); ++idx) {
+            //checking if point is in shadow
             if (shadows) {
                 Ray shadowCheck(hit, lights[idx]->position - hit);
                 bool intersection = false;
+                //for every object, check if it is intersected before the light
                 for (unsigned io = 0; io != objects.size(); ++io) {
                     if (objects[io]->intersect(shadowCheck).t < (lights[idx]->position - hit).length()) {
                         intersection = true;
@@ -54,6 +55,7 @@ Color Scene::trace(Ray const &ray, int depth)
                 if (intersection) continue;
             }
 
+            //apply effect of single light source (if lit)
             light(*lights[idx], hit, N, V, material, &I_S, &I_D);
         }
 
