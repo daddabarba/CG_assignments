@@ -61,7 +61,7 @@ Point Sphere::map_tex(Point P){
         phi -= 2*pi;
 
 
-    return Point((pi-theta)/(pi), phi/(2*pi), 0.0);
+    return Point(phi/(2*pi), (pi-theta)/(pi), 0.0);
 }
 
 
