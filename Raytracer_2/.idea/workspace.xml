@@ -22,13 +22,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="cone.cpp" pinned="false" current-in-tab="false">
+      <file leaf-file-name="cone.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Code/shapes/cone.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="431">
-              <caret line="125" column="55" lean-forward="false" selection-start-line="125" selection-start-column="55" selection-end-line="125" selection-end-column="55" />
+            <state relative-caret-position="413">
+              <caret line="129" column="22" lean-forward="false" selection-start-line="129" selection-start-column="22" selection-end-line="129" selection-end-column="22" />
               <folding />
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="scene01-texture-ss-reflect-lights-shadows.png" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Scenes/scene01-texture-ss-reflect-lights-shadows.png">
+          <provider selected="true" editor-type-id="images">
+            <state />
           </provider>
         </entry>
       </file>
@@ -42,12 +49,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="raytracer.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Code/raytracer.cpp">
+      <file leaf-file-name="scene01-texture-ss-reflect-lights-shadows.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Scenes/scene01-texture-ss-reflect-lights-shadows.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="201" column="0" lean-forward="false" selection-start-line="201" selection-start-column="0" selection-end-line="201" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="323">
+              <caret line="68" column="16" lean-forward="false" selection-start-line="68" selection-start-column="16" selection-end-line="69" selection-end-column="16" />
+              <folding>
+                <marker date="1520893475044" expanded="true" signature="0:2628" ph="{&quot;Shadows&quot;: true...}" />
+                <marker date="1520893475044" expanded="true" signature="348:2626" ph="[...]" />
+                <marker date="1520893475044" expanded="true" signature="1421:1907" ph="{&quot;type&quot;: &quot;sphere&quot;...}" />
+                <marker date="1520893475044" expanded="true" signature="1655:1897" ph="{&quot;comment&quot;: &quot;image is relative to scene file here!&quot;...}" />
+                <marker date="1520893475044" expanded="true" signature="1917:2264" ph="{&quot;type&quot;: &quot;sphere&quot;...}" />
+                <marker date="1520893475044" expanded="true" signature="2092:2254" ph="{&quot;ka&quot;: 0.2...}" />
+                <marker date="1520893475044" expanded="true" signature="2274:2620" ph="{&quot;type&quot;: &quot;sphere&quot;...}" />
+                <marker date="1520893475044" expanded="true" signature="2451:2610" ph="{&quot;ka&quot;: 0.2...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -55,8 +71,8 @@
       <file leaf-file-name="sphere.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Code/shapes/sphere.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="76" column="4" lean-forward="false" selection-start-line="76" selection-start-column="4" selection-end-line="77" selection-end-column="4" />
+            <state relative-caret-position="347">
+              <caret line="77" column="4" lean-forward="false" selection-start-line="77" selection-start-column="4" selection-end-line="84" selection-end-column="21" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -64,41 +80,37 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="cone.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Code/shapes/cone.h">
+      <file leaf-file-name="scene03.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Scenes/scene03.json">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="378">
-              <caret line="21" column="24" lean-forward="false" selection-start-line="21" selection-start-column="24" selection-end-line="21" selection-end-column="24" />
-              <folding />
+              <caret line="90" column="16" lean-forward="false" selection-start-line="90" selection-start-column="16" selection-end-line="90" selection-end-column="16" />
+              <folding>
+                <marker date="1520893475048" expanded="true" signature="0:3259" ph="{...}" />
+                <marker date="1520893475048" expanded="true" signature="169:3257" ph="[...]" />
+                <marker date="1520893475048" expanded="true" signature="2006:2263" ph="{&quot;type&quot;: &quot;cone&quot;...}" />
+                <marker date="1520893475048" expanded="true" signature="2244:2263" ph="{&quot;texture&quot;: &quot;../Scenes/earthmap1k.png&quot;...}" />
+                <marker date="1520893475048" expanded="true" signature="2710:2830" ph="{&quot;texture&quot;: &quot;../Scenes/earthmap1k.png&quot;...}" />
+                <marker date="1520893475048" expanded="true" signature="2710:2840" ph="{&quot;type&quot;: &quot;cylinder&quot;...}" />
+                <marker date="1520893475048" expanded="true" signature="2847:3251" ph="{&quot;type&quot;: &quot;mesh&quot;...}" />
+                <marker date="1520893475048" expanded="true" signature="3079:3241" ph="{&quot;ka&quot;: 0.2...}" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="scene.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Code/scene.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
+      <file leaf-file-name="scene01-reflect-lights-shadows.png" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Scenes/scene01-reflect-lights-shadows.png">
+          <provider selected="true" editor-type-id="images">
+            <state />
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="cylinder.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Code/shapes/cylinder.h">
+      <file leaf-file-name="scene01-reflect-lights-shadows.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Scenes/scene01-reflect-lights-shadows.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="13" column="22" lean-forward="false" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="scene.cpp" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Code/scene.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1494">
-              <caret line="60" column="0" lean-forward="true" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
+            <state relative-caret-position="18">
+              <caret line="2" column="19" lean-forward="false" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -107,8 +119,8 @@
       <file leaf-file-name="cylinder.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Code/shapes/cylinder.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="417">
-              <caret line="126" column="55" lean-forward="false" selection-start-line="126" selection-start-column="55" selection-end-line="126" selection-end-column="55" />
+            <state relative-caret-position="327">
+              <caret line="128" column="13" lean-forward="false" selection-start-line="128" selection-start-column="13" selection-end-line="128" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -155,12 +167,12 @@
         <option value="$PROJECT_DIR$/Code/shapes/cone.h" />
         <option value="$PROJECT_DIR$/Code/shapes/sphere.h" />
         <option value="$PROJECT_DIR$/Code/shapes/cylinder.h" />
-        <option value="$PROJECT_DIR$/Code/shapes/sphere.cpp" />
-        <option value="$PROJECT_DIR$/Code/shapes/cylinder.cpp" />
-        <option value="$PROJECT_DIR$/Code/shapes/cone.cpp" />
         <option value="$PROJECT_DIR$/Code/raytracer.cpp" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/Code/scene.cpp" />
+        <option value="$PROJECT_DIR$/Code/shapes/sphere.cpp" />
+        <option value="$PROJECT_DIR$/Code/shapes/cylinder.cpp" />
+        <option value="$PROJECT_DIR$/Code/shapes/cone.cpp" />
       </list>
     </option>
   </component>
@@ -291,7 +303,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="44854000" />
+    <option name="totallyTimeSpent" value="44920000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="53" y="-4" width="1227" height="724" extended-state="6" />
@@ -310,12 +322,24 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.025806451" sideWeight="0.4775876" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24938875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -329,13 +353,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Code/hit.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Code/models/cat.obj">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -395,8 +412,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Scenes/scene03.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="16" column="39" lean-forward="false" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
+        <state relative-caret-position="378">
+          <caret line="90" column="16" lean-forward="false" selection-start-line="90" selection-start-column="16" selection-end-line="90" selection-end-column="16" />
+          <folding>
+            <marker date="1520893475048" expanded="true" signature="0:3259" ph="{...}" />
+            <marker date="1520893475048" expanded="true" signature="169:3257" ph="[...]" />
+            <marker date="1520893475048" expanded="true" signature="2006:2263" ph="{&quot;type&quot;: &quot;cone&quot;...}" />
+            <marker date="1520893475048" expanded="true" signature="2244:2263" ph="{&quot;texture&quot;: &quot;../Scenes/earthmap1k.png&quot;...}" />
+            <marker date="1520893475048" expanded="true" signature="2710:2830" ph="{&quot;texture&quot;: &quot;../Scenes/earthmap1k.png&quot;...}" />
+            <marker date="1520893475048" expanded="true" signature="2710:2840" ph="{&quot;type&quot;: &quot;cylinder&quot;...}" />
+            <marker date="1520893475048" expanded="true" signature="2847:3251" ph="{&quot;type&quot;: &quot;mesh&quot;...}" />
+            <marker date="1520893475048" expanded="true" signature="3079:3241" ph="{&quot;ka&quot;: 0.2...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -522,6 +549,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="18">
           <caret line="2" column="19" lean-forward="false" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -548,7 +576,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -556,7 +583,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -581,9 +607,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Scenes/scene01-texture-ss-reflect-lights-shadows.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="395">
-          <caret line="69" column="26" lean-forward="true" selection-start-line="69" selection-start-column="26" selection-end-line="69" selection-end-column="26" />
-          <folding />
+        <state relative-caret-position="323">
+          <caret line="68" column="16" lean-forward="false" selection-start-line="68" selection-start-column="16" selection-end-line="69" selection-end-column="16" />
+          <folding>
+            <marker date="1520893475044" expanded="true" signature="0:2628" ph="{&quot;Shadows&quot;: true...}" />
+            <marker date="1520893475044" expanded="true" signature="348:2626" ph="[...]" />
+            <marker date="1520893475044" expanded="true" signature="1421:1907" ph="{&quot;type&quot;: &quot;sphere&quot;...}" />
+            <marker date="1520893475044" expanded="true" signature="1655:1897" ph="{&quot;comment&quot;: &quot;image is relative to scene file here!&quot;...}" />
+            <marker date="1520893475044" expanded="true" signature="1917:2264" ph="{&quot;type&quot;: &quot;sphere&quot;...}" />
+            <marker date="1520893475044" expanded="true" signature="2092:2254" ph="{&quot;ka&quot;: 0.2...}" />
+            <marker date="1520893475044" expanded="true" signature="2274:2620" ph="{&quot;type&quot;: &quot;sphere&quot;...}" />
+            <marker date="1520893475044" expanded="true" signature="2451:2610" ph="{&quot;ka&quot;: 0.2...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -611,44 +646,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Code/shapes/sphere.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Code/shapes/sphere.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="76" column="4" lean-forward="false" selection-start-line="76" selection-start-column="4" selection-end-line="77" selection-end-column="4" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Code/shapes/cylinder.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
           <caret line="13" column="22" lean-forward="false" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Code/shapes/cylinder.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="417">
-          <caret line="126" column="55" lean-forward="false" selection-start-line="126" selection-start-column="55" selection-end-line="126" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Code/shapes/cone.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="431">
-          <caret line="125" column="55" lean-forward="false" selection-start-line="125" selection-start-column="55" selection-end-line="125" selection-end-column="55" />
           <folding />
         </state>
       </provider>
@@ -681,6 +682,45 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1494">
           <caret line="60" column="0" lean-forward="true" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Code/shapes/sphere.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Code/shapes/sphere.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="347">
+          <caret line="77" column="4" lean-forward="false" selection-start-line="77" selection-start-column="4" selection-end-line="84" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Scenes/scene02_reference.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Code/shapes/cylinder.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="327">
+          <caret line="128" column="13" lean-forward="false" selection-start-line="128" selection-start-column="13" selection-end-line="128" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Code/shapes/cone.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="413">
+          <caret line="129" column="22" lean-forward="false" selection-start-line="129" selection-start-column="22" selection-end-line="129" selection-end-column="22" />
           <folding />
         </state>
       </provider>

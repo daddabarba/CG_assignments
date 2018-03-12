@@ -75,9 +75,9 @@ Sphere::Sphere(Point const &pos, double radius, Vector ax, double ang)
     angle((ang*acos(-1))/180.0)
 {
     //computing landmark vector, avoiding division by 0
-    if (ax.y > std::numeric_limits<double>::epsilon())
+    if (fabs(ax.y) > std::numeric_limits<double>::epsilon())
         clip = Vector(1.0,-ax.x/ax.y,0.0);
-    else if (ax.z > std::numeric_limits<double>::epsilon())
+    else if (fabs(ax.z) > std::numeric_limits<double>::epsilon())
         clip = Vector(1.0,0.0,-ax.x/ax.z);
     else
         clip = Vector(-ax.y/ax.x, 1.0,0.0);

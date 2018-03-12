@@ -124,9 +124,10 @@ Cone::Cone(Vector origin, Vector direction, double height, double radius, double
         triangular_tex(fit_tex)
 {
     //computing landmark vector, avoiding division by 0
-    if (D.y > std::numeric_limits<double>::epsilon())
+
+    if (fabs(D.y) > std::numeric_limits<double>::epsilon())
         clip = Vector(1.0,-D.x/D.y,0.0);
-    else if (D.z > std::numeric_limits<double>::epsilon())
+    else if (fabs(D.z) > std::numeric_limits<double>::epsilon())
         clip = Vector(1.0,0.0,-D.x/D.z);
     else
         clip = Vector(-D.y/D.x, 1.0,0.0);
