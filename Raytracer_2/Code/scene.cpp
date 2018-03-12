@@ -22,16 +22,16 @@ Color Scene::trace(Ray const &ray, int depth)
     if (!obj) return Color(0.0, 0.0, 0.0);
 
     Material material = obj->material;          //the hit objects material
-    Point hit = ray.at(min_hit.t - 0.0000000001);    //the hit point
+    Point hit = ray.at(min_hit.t - 0.0000000001);                 //the hit point
     Vector N = min_hit.N;                          //the normal at hit point
     Vector V = -ray.D;                             //the view vector
 
+    Point uv_coord = obj->map_tex(hit);
+
     if(obj->has_tex()) {
-        //if there is a texture, then it gives the color
-        Point uv_coord = obj->map_tex(hit);
         color = obj->get_tex_col(uv_coord);
     } else {
-		
+
         //initializing ambient, diffuse and specular illumination to black
         Color I_A(0.0, 0.0, 0.0);
         Color I_D(0.0, 0.0, 0.0);
@@ -39,14 +39,12 @@ Color Scene::trace(Ray const &ray, int depth)
 
         //ambient illumination is constant
         I_A = material.color * material.ka;
-		
+
         //for every light source
         for (unsigned idx = 0; idx != lights.size(); ++idx) {
-            //check if in shadow
             if (shadows) {
                 Ray shadowCheck(hit, lights[idx]->position - hit);
                 bool intersection = false;
-                //for every object, check if intersected before
                 for (unsigned io = 0; io != objects.size(); ++io) {
                     if (objects[io]->intersect(shadowCheck).t < (lights[idx]->position - hit).length()) {
                         intersection = true;
@@ -56,10 +54,9 @@ Color Scene::trace(Ray const &ray, int depth)
                 if (intersection) continue;
             }
 
-            //add effect of single light source (if lit)
             light(*lights[idx], hit, N, V, material, &I_S, &I_D);
         }
-		
+
         //REFLECTING
         if (depth < waves) {
             //Reflecting direction

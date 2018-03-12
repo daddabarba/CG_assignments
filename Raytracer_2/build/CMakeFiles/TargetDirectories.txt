@@ -1,3 +1,3 @@
-/home/daddabarba/Desktop/CG_assignments/Raytracer_2/build/CMakeFiles/edit_cache.dir
-/home/daddabarba/Desktop/CG_assignments/Raytracer_2/build/CMakeFiles/rebuild_cache.dir
-/home/daddabarba/Desktop/CG_assignments/Raytracer_2/build/CMakeFiles/ray.dir
+/home/tux/CG/Raytracer_2/build/CMakeFiles/edit_cache.dir
+/home/tux/CG/Raytracer_2/build/CMakeFiles/rebuild_cache.dir
+/home/tux/CG/Raytracer_2/build/CMakeFiles/ray.dir

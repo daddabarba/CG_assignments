@@ -1,4 +1,4 @@
-# Install script for directory: /home/daddabarba/Desktop/CG_assignments/Raytracer_2
+# Install script for directory: /home/tux/CG/Raytracer_2
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/daddabarba/Desktop/CG_assignments/Raytracer_2/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/tux/CG/Raytracer_2/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
