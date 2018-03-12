@@ -27,63 +27,62 @@ Color Scene::trace(Ray const &ray, int depth)
     Vector V = -ray.D;                             //the view vector
 
     Point uv_coord = obj->map_tex(hit);
-
+	
     if(obj->has_tex()) {
-        color = obj->get_tex_col(uv_coord);
-    } else {
-		
-        //initializing ambient, diffuse and specular illumination to black
-        Color I_A(0.0, 0.0, 0.0);
-        Color I_D(0.0, 0.0, 0.0);
-        Color I_S(0.0, 0.0, 0.0);
-
-        //ambient illumination is constant
-        I_A = material.color * material.ka;
-		
-        //for every light source
-        for (unsigned idx = 0; idx != lights.size(); ++idx) {
-            if (shadows) {
-                Ray shadowCheck(hit, lights[idx]->position - hit);
-                bool intersection = false;
-                for (unsigned io = 0; io != objects.size(); ++io) {
-                    if (objects[io]->intersect(shadowCheck).t < (lights[idx]->position - hit).length()) {
-                        intersection = true;
-                        break;
-                    }
-                }
-                if (intersection) continue;
-            }
-
-            light(*lights[idx], hit, N, V, material, &I_S, &I_D);
-        }
-		
-        //REFLECTING
-        if (depth < waves) {
-            //Reflecting direction
-            Vector R = 2 * (N.dot(-ray.D)) * N + ray.D;
-            //Ray from hit point towards reflected direction
-            Ray r_ray(hit, R);
-
-            //Object impacted by reflected ray
-            ObjectPtr r_obj = nullptr;
-            //Hit of reflected ray
-            Hit r_min_hit = shoot_ray(r_ray, &r_obj);
-
-            //If the reflected ray hits something
-            if (r_obj != nullptr) {
-                //get incident point (reflected light source origin)
-                Point r_hit = r_ray.at(r_min_hit.t);
-
-                //Make reflected light source (recursively compute color)
-                Light r_light(r_hit, trace(r_ray, depth + 1));
-                //Apply light source
-                light(r_light, hit, N, V, material, &I_S);
-            }
-        }
-
-        //compute final color
-        color = I_A + I_D + I_S;
+        material.color = obj->get_tex_col(uv_coord);
     }
+		
+	//initializing ambient, diffuse and specular illumination to black
+	Color I_A(0.0, 0.0, 0.0);
+	Color I_D(0.0, 0.0, 0.0);
+	Color I_S(0.0, 0.0, 0.0);
+
+	//ambient illumination is constant
+	I_A = material.color * material.ka;
+	
+	//for every light source
+	for (unsigned idx = 0; idx != lights.size(); ++idx) {
+		if (shadows) {
+			Ray shadowCheck(hit, lights[idx]->position - hit);
+			bool intersection = false;
+			for (unsigned io = 0; io != objects.size(); ++io) {
+				if (objects[io]->intersect(shadowCheck).t < (lights[idx]->position - hit).length()) {
+					intersection = true;
+					break;
+				}
+			}
+			if (intersection) continue;
+		}
+
+		light(*lights[idx], hit, N, V, material, &I_S, &I_D);
+	}
+	
+	//REFLECTING
+	if (depth < waves) {
+		//Reflecting direction
+		Vector R = 2 * (N.dot(-ray.D)) * N + ray.D;
+		//Ray from hit point towards reflected direction
+		Ray r_ray(hit, R);
+
+		//Object impacted by reflected ray
+		ObjectPtr r_obj = nullptr;
+		//Hit of reflected ray
+		Hit r_min_hit = shoot_ray(r_ray, &r_obj);
+
+		//If the reflected ray hits something
+		if (r_obj != nullptr) {
+			//get incident point (reflected light source origin)
+			Point r_hit = r_ray.at(r_min_hit.t);
+
+			//Make reflected light source (recursively compute color)
+			Light r_light(r_hit, trace(r_ray, depth + 1));
+			//Apply light source
+			light(r_light, hit, N, V, material, &I_S);
+		}
+	}
+
+	//compute final color
+	color = I_A + I_D + I_S;
 
     return color;
 }

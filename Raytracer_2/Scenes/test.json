@@ -2,7 +2,7 @@
     "Eye": [200, 200, 1000],
     "Shadows": true,
     "MaxRecursionDepth": 1,
-    "SuperSamplingFactor": 1,
+    "SuperSamplingFactor": 2,
     "Lights": [
         {
             "position": [-200, 600, 1500],
@@ -69,8 +69,8 @@
                 "texture": "../Scenes/bluegrid.png",
                 "ka": 0.2,
                 "kd": 0.8,
-                "ks": 0.0,
-                "n": 1
+                "ks": 0.8,
+                "n": 16
             }
         },
         {
