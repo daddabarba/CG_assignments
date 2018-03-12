@@ -42,25 +42,27 @@ Hit Sphere::intersect(Ray const &ray)
 Point Sphere::map_tex(Point P){
     double pi = acos(-1);
 
-    double h = axis.dot(P-position);
-    Vector projection_ax = h*axis + position;
-    Vector projection_pl = (P - projection_ax).normalized();
+    double h = axis.dot(P-position); //height of projection on axis
+    Vector projection_ax = h*axis + position; //projection on axis
+    Vector projection_pl = (P - projection_ax).normalized(); //projection on axis' plane
 
-    double theta = acos(((P - position).normalized()).dot(axis));
-    double phi = acos(projection_pl.dot(clip));
-	
+    double theta = acos(((P - position).normalized()).dot(axis)); //angle between tangent and axis
+    double phi = acos(projection_pl.dot(clip)); //angle from landmark on axis' plane
+
+    //accounting for cosine symmetry
     if(projection_pl.cross(clip).normalized() == axis)
         phi = 2*pi - phi;
 
-    phi -= angle;
+    phi -= angle;//applying rotation around axis
 
+    //bounding phi in [0,2*pi]
     if (phi<0)
         phi += 2*pi;
 
     else if (phi>2*pi)
         phi -= 2*pi;
 
-
+    //returning normalized angles
     return Point(phi/(2*pi), (pi-theta)/(pi), 0.0);
 }
 
@@ -72,6 +74,7 @@ Sphere::Sphere(Point const &pos, double radius, Vector ax, double ang)
     axis(ax.normalized()),
     angle((ang*acos(-1))/180.0)
 {
+    //computing landmark vector, avoiding division by 0
     if (ax.y > std::numeric_limits<double>::epsilon())
         clip = Vector(1.0,-ax.x/ax.y,0.0);
     else if (ax.z > std::numeric_limits<double>::epsilon())

@@ -83,28 +83,32 @@ Hit Cone::intersect(Ray const &ray)
 
 Point Cone::map_tex(Point P) {
     double pi = acos(-1);
-    double height = (P-O).dot(D);
+    double height = (P-O).dot(D);//height of projection on axis
 
-    Vector projection = height*D + O;
-    Vector ang_pos = (P-projection).normalized();
+    Vector projection = height*D + O; //projection on axis
+    Vector ang_pos = (P-projection).normalized(); //projection on axis' plane
 
-    double alpha = acos(ang_pos.dot(clip));
+    double alpha = acos(ang_pos.dot(clip)); //angle from landmark on axis' plane
 
+    //accounting for cosine symmetry
     if(ang_pos.cross(clip).normalized() == D)
         alpha = 2*pi - alpha;
 
-    alpha -= angle;
+    alpha -= angle;//applying rotation around axis
 
+    //bounding alpha in [0,2*pi]
     if(alpha<0)
         alpha += 2*pi;
     if(alpha>2*pi)
         alpha -= 2*pi;
 
+    //if texture is triangle, then transform u in function of h
     double u = alpha/(2*pi);
     if(triangular_tex)
         u = (1.0-height)*u + height/2.0;
 
-    return Point(u,height/h,0.0);
+    //returning normalized coordinates
+    return Point(alpha/(2*pi),height/h,0.0);
 }
 
 Cone::Cone(Vector origin, Vector direction, double height, double radius, double ang, bool fit_tex)
@@ -114,8 +118,19 @@ Cone::Cone(Vector origin, Vector direction, double height, double radius, double
         r(radius), //radius of cone
         h(height), //height of cone
 
-        clip(Vector(1.0,-direction.x/direction.y,0.0).normalized()),
+        clip(),
         angle(ang),
 
         triangular_tex(fit_tex)
-{}
+{
+    //computing landmark vector, avoiding division by 0
+    if (D.y > std::numeric_limits<double>::epsilon())
+        clip = Vector(1.0,-D.x/D.y,0.0);
+    else if (D.z > std::numeric_limits<double>::epsilon())
+        clip = Vector(1.0,0.0,-D.x/D.z);
+    else
+        clip = Vector(-D.y/D.x, 1.0,0.0);
+
+    clip.normalize();
+
+}

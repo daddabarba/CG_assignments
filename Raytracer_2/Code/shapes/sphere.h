@@ -12,13 +12,13 @@ class Sphere: public Object
         virtual Hit intersect(Ray const &ray);
         Point map_tex (Point P) override;
 
-        Point const position;
-        double const r;
+        Point const position; //center
+        double const r; //ray length
 
-        Vector axis;
-        double angle;
+        Vector axis; //rotation axis
+        double angle; //angle of rotation around axis
 
-        Vector clip;
+        Vector clip; //landmark vector for defining u coordinates
 };
 
 #endif

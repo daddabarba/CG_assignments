@@ -42,6 +42,7 @@ bool Raytracer::parseObjectNode(json const &node)
         Point pos(node["position"]);
         double radius = node["radius"];
 
+        //read rotation and angle if given
         if(node.find("rotation")!=node.end() && node.find("angle")!=node.end())
             obj = ObjectPtr(new Sphere(pos, radius, Vector(node["rotation"]),node["angle"]));
         else
@@ -66,7 +67,12 @@ bool Raytracer::parseObjectNode(json const &node)
         Vector d(node["direction"]);
         double r = node["radius"];
         double h = node["height"];
-        obj = ObjectPtr(new Cylinder(o,d,h,r));
+
+        //read angle if given
+        if(node.find("angle")!=node.end())
+            obj = ObjectPtr(new Cylinder(o,d,h,r,node["angle"]));
+        else
+            obj = ObjectPtr(new Cylinder(o,d,h,r));
     }
     else if (node["type"] == "cone")
     {
@@ -74,7 +80,19 @@ bool Raytracer::parseObjectNode(json const &node)
         Vector d(node["direction"]);
         double r = node["radius"];
         double h = node["height"];
-        obj = ObjectPtr(new Cone(o,d,h,r));
+
+        bool fit_tex = false;
+
+        //read angle if given
+        if(node.find("angle")!=node.end()) {
+            //read if texture is triangle if given)
+            if (node.find("fit_tex") != node.end())
+                fit_tex = node["fit_tex"];
+
+            obj = ObjectPtr(new Cone(o, d, h, r, node["angle"], fit_tex));
+        }else {
+            obj = ObjectPtr(new Cone(o, d, h, r));
+        }
     }
     else if (node["type"] == "mesh")
     {
@@ -152,11 +170,6 @@ try
 
     // TODO: add your other configuration settings here
     
-    //scene.shadows = jsonscene["Shadows"].is_number() ? jsonscene["Shadows"] : false;
-    //scene.ss_factor = jsonscene["SuperSamplingFactor"].is_number() ? jsonscene["SuperSamplingFactor"] : 1;
-    //if (jsonscene["Shadows"].is_number()) scene.shadows = jsonscene["Shadows"];
-    //else scene.shadows = false;
-
     if(jsonscene["Shadows"] != nullptr)
         scene.shadows = jsonscene["Shadows"];
     else
@@ -167,7 +180,7 @@ try
     else
         scene.waves = 0;
 
-    if (jsonscene["SuperSamplingFactor"].is_number()) scene.ss_factor = jsonscene["SuperSamplingFactor"];
+    if (jsonscene["SuperSamplingFactor"] != nullptr) scene.ss_factor = jsonscene["SuperSamplingFactor"];
     else scene.ss_factor = 1;
 
     for (auto const &lightNode : jsonscene["Lights"])
@@ -186,6 +199,7 @@ try
 
     return true;
 }
+
 catch (exception const &ex)
 {
     cerr << ex.what() << '\n';

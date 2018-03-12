@@ -10,6 +10,59 @@ which can be rendered: scene01.json,scene02.json (given for the assignment),
 scene03.json (showing most of the shapes implemented),scene04.json (showing shapes and
 meshes), and scene05.json (mesh of a tea-pot).
 
+####################
+#CURRENT ASSIGNMENT#
+####################
+
+For the first part of this assignment, the method "trace" of the class "scene" has been
+modified.
+
+- for SHADOWS we added a check (after finding an intersection point of the ray with an object)
+where we shoot the a ray from the intersection to the light, and if it intersects an object
+before the light, then it is shaded
+
+- we already LOOPED OVER LIGHT SOURCES
+
+- for REFLECTIONS, the method was modified with an extra argument depth (number of reflections),
+which is by default 0. We added an argument "waves" to set the depth limit.
+Then "trace" is recursively called with a reflected ray, and the resulting intersection
+point and color compose a new light source.
+To facilitate code reading, we wrapped in two new methods: the procedure of shooting a ray
+(getting its first intersection), and adding to the Diffuse and Specular component the effects
+of a single light source.
+
+For ANTIALIASING ----
+
+The method "readScene", in the "raytracer" class was changed so that it could read the maximum
+reflection depth, whether or not we wanted shadows, and the sampling size for anti-aliasing
+from a json file.
+
+
+Regarding TEXTURING we first modified the "object" and "material" classes. The latter to
+contain and load a texture file, the former to easily access and change these new material features.
+The methods "parseObject" and "parseMaterial" have been changed so that the new texture arguments
+of the objects (see below) and the texture specifications can be red.
+
+Regarding the objects the "sphere" class (and also the "cylinder" and "cone" classes
+accordingly) have been modified. First we added some arguments keeping track of the rotation,
+that is an axis, and an angle of rotation around the axis. Then we added an override of
+the method "map_tex" (added to the "object" class), which, given a point P, will return
+its respective (u,v) coordinates.
+In the SPHERE this has been done by using the normalized angle between the tangent vector
+(from center to surface point) and the rotation axis as v coordinate. For the u coordinate
+we project the tangent vector on the plane defined by the rotation axis, on which we have
+pre computed (in the constructor) a landmark vector (such that it is always on this plane).
+The normalize angle between the landmark and the projection is the u coordinate.
+For CONE and CYLINDER the process is very similar (we already have an axis for them, so
+we only added texture rotation around it), only that v is the normalized height (on the axis).
+
+Also do notice that in the class "triple" we added the operator == as it is needed in the sphere
+"map_tex" method
+
+#####################
+#PREVIOUS ASSIGNMENT#
+#####################
+
 In this assignment 5 shapes have been added (in Code/shapes). These have been implemented
 as c++ classes, therefore having both an header and a cpp file.
 The added classes are the following:

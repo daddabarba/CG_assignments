@@ -11,13 +11,13 @@ public:
     virtual Hit intersect(Ray const &ray);
     Point map_tex(Point P) override ;
 
-    Vector O;
-    Vector D;
-    double r;
-    double h;
+    Vector O; //origin
+    Vector D; //axis
+    double r; //radius length
+    double h; //height
 
-    Vector clip;
-    double angle;
+    Vector clip; //landmark vector for u coordinates
+    double angle; //texture rotation around axis
 };
 
 #endif
