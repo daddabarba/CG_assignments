@@ -40,7 +40,7 @@ Hit Sphere::intersect(Ray const &ray)
 }
 
 Point Sphere::map_tex(Point P){
-    double pi = atan(1)*4;
+    double pi = acos(-1);
 
     double h = axis.dot(P-position);
     Vector projection_ax = h*axis + position;
@@ -48,8 +48,8 @@ Point Sphere::map_tex(Point P){
 
     double theta = acos(((P - position).normalized()).dot(axis));
     double phi = acos(projection_pl.dot(clip));
-
-    if((projection_pl.cross(clip) == axis))
+	
+    if(projection_pl.cross(clip).normalized() == axis)
         phi = 2*pi - phi;
 
     phi -= angle;
@@ -57,7 +57,7 @@ Point Sphere::map_tex(Point P){
     if (phi<0)
         phi += 2*pi;
 
-    if (phi>2*pi)
+    else if (phi>2*pi)
         phi -= 2*pi;
 
 
@@ -70,12 +70,12 @@ Sphere::Sphere(Point const &pos, double radius, Vector ax, double ang)
     position(pos),
     r(radius),
     axis(ax.normalized()),
-    angle((ang*atan(1)*4)/180.0)
+    angle((ang*acos(-1))/180.0)
 {
     if (ax.y > std::numeric_limits<double>::epsilon())
-        clip = Vector(1,-ax.x/ax.y,0.0);
+        clip = Vector(1.0,-ax.x/ax.y,0.0);
     else if (ax.z > std::numeric_limits<double>::epsilon())
-        clip = Vector(1,0.0,-ax.x/ax.z);
+        clip = Vector(1.0,0.0,-ax.x/ax.z);
     else
         clip = Vector(-ax.y/ax.x, 1.0,0.0);
 

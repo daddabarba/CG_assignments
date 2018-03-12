@@ -77,7 +77,9 @@ Triple Triple::operator/(double f) const
 
 bool Triple::operator==(Triple const &t) const
 {
-    return x==t.x && y==t.y && z==t.z;
+    return abs(x-t.x) < std::numeric_limits<double>::epsilon()
+		&& abs(y-t.y) < std::numeric_limits<double>::epsilon()
+		&& abs(z-t.z) < std::numeric_limits<double>::epsilon();
 }
 
 // --- Compound operators ------------------------------------------------------
