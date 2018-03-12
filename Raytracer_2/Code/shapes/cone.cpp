@@ -82,17 +82,25 @@ Hit Cone::intersect(Ray const &ray)
 }
 
 Point Cone::map_tex(Point P) {
+    double pi = acos(-1);
     double height = (P-O).dot(D);
 
     Vector projection = height*D + O;
     Vector ang_pos = (P-projection).normalized();
 
-    double cos_alpha = ang_pos.dot(clip) - angle;
+    double alpha = acos(ang_pos.dot(clip));
 
-    double u = -0.25*cos_alpha + 0.25;
-    if(ang_pos.cross(clip) == D)
-        u = -u + 1.0;
+    if(ang_pos.cross(clip).normalized() == D)
+        alpha = 2*pi - alpha;
 
+    alpha -= angle;
+
+    if(alpha<0)
+        alpha += 2*pi;
+    if(alpha>2*pi)
+        alpha -= 2*pi;
+
+    double u = alpha/(2*pi);
     if(triangular_tex)
         u = (1.0-height)*u + height/2.0;
 
