@@ -145,9 +145,12 @@ void MainView::paintGL() {
     //Setting VIEW transformation matrix (in shader's uniform)
     glUniformMatrix4fv(getShader()->uniformView, 1, GL_FALSE, transformView.getMatrix().data());
 
+    //Setting VIEW normal transformation matrix (in shader's uniform)
     glUniformMatrix3fv(getShader()->uniformViewNormal, 1, GL_FALSE, transformView.getMatrix().normalMatrix().data());
 
-    //glUniform3f(getShader()->uniformCameraPos, transformView.posX, transformView.posY, transformView.posZ);
+    //Setting camera position (in shader's uniform)
+    QVector3D cameraPos = transformView.getMatrix().inverted().map(QVector3D(0.0f, 0.0f, 0.0f));
+    glUniform3f(getShader()->uniformCameraPos, cameraPos.x(), cameraPos.y(), cameraPos.z());
 
     if((getShader()->uniformLightCol)>=0 && (getShader()->uniformLightPos)>=0 ){
         //qDebug()<<"sent light";
@@ -192,6 +195,12 @@ void MainView::setRotation(int rotateX, int rotateY, int rotateZ)
     qDebug() << "Rotation changed to (" << rotateX << "," << rotateY << "," << rotateZ << ")";
     //Q_UNIMPLEMENTED();
     update();
+
+    QMatrix4x4 view = transformView.getMatrix();
+    /*qDebug() << view.column(0);
+    qDebug() << view.column(1);
+    qDebug() << view.column(2);
+    qDebug() << view.column(3);*/
 }
 
 void MainView::setScale(int scale)

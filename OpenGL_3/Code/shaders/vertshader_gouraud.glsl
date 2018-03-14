@@ -16,7 +16,7 @@ uniform mat4 viewTransform; //uniform for view transformation matrix
 uniform mat3 viewTransformNormal;
 uniform mat3 normalMatrix;
 
-//uniform vec3 cameraPos;
+uniform vec3 cameraPos;
 uniform vec3 lightPos;
 uniform vec3 lightCol;
 uniform vec3 objCol;
@@ -46,8 +46,7 @@ void main()
     //reflecting light vector
     vec3 R = normalize(-reflect(L,N));
     //computing p.o.v. vector
-    //vec3 V = normalize(cameraPos - P);
-    vec3 V = normalize(vec3(0.0f, 0.0f, 0.0f) - P);
+    vec3 V = normalize(cameraPos - P);
     //computing specular coefficent
     vec3 IS = lightCol*material.z*pow(max(0.0,dot(R,V)), material.w);
 

@@ -17,7 +17,7 @@ void shaderWrapper::getUniLoc()
     uniformViewNormal = uniformLocation("viewTransformNormal");
     uniformNormal     = uniformLocation("normalMatrix");
 
-    //uniformCameraPos = uniformLocation("cameraPos");
+    uniformCameraPos = uniformLocation("cameraPos");
     uniformLightPos = uniformLocation("lightPos");
     uniformLightCol = uniformLocation("lightCol");
     uniformObjCol   = uniformLocation("objCol");

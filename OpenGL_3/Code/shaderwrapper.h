@@ -16,7 +16,7 @@ public:
     GLint uniformViewNormal;
     GLint uniformNormal;
 
-    //GLint uniformCameraPos;
+    GLint uniformCameraPos;
     GLint uniformLightPos;
     GLint uniformLightCol;
     GLint uniformObjCol;

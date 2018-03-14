@@ -15,7 +15,7 @@ in vec2 texCoord;
 uniform mat4 modelTransform;
 uniform mat4 viewTransform;
 uniform mat3 normalMatrix;
-//uniform vec3 cameraPos;
+uniform vec3 cameraPos;
 uniform vec3 lightPos;
 uniform vec3 lightCol;
 uniform vec3 objCol;
@@ -31,7 +31,7 @@ void main()
     //Computing ambient illuminance
     vec3 IA = objCol*material.x;
 
-    //applying model tranform to light too, while also computing L itself
+    //applying model transform to light too, while also computing L itself
     vec3 L = normalize(lightPos - vertCoord);
     //compute diffuse term
     vec3 ID = objCol*lightCol*(material.y)*max(0.0,dot(L,vertNorm));
@@ -39,8 +39,7 @@ void main()
     //Reflecting light vector
     vec3 R = normalize(-reflect(L, vertNorm));
     //getting p.o.v. vector
-    //vec3 V = normalize(cameraPos - vertCoord);
-    vec3 V = normalize(vec3(0.0f, 0.0f, 0.0f) - vertCoord);
+    vec3 V = normalize(cameraPos - vertCoord);
     //computing specular coefficent
     vec3 IS = lightCol*material.z*pow(max(0.0,dot(R,V)), material.w);
 
