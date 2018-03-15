@@ -15,7 +15,8 @@
  */
 MainView::MainView(QWidget *parent) :
     QOpenGLWidget(parent),
-    cat(":/models/cat.obj", set_point(0.0,0.0,0.0), 1.0f, set_color(1.0f,1.0f,1.0f), set_material(0.2f,1.0f,1.0f,4)),
+    cat(":/models/cat.obj", set_point(0.0,0.0,0.0), 1.0f, set_color(1.0f,1.0f,1.0f), set_material(0.2f,1.0f,0.5f,2)),
+    ball(":/models/sphere.obj", set_point(4.0,0.0,-4.0), 1.0f, set_color(1.0f,0.0f,0.2f), set_material(0.2f,1.0f,1.0f,8)),
     shaderProgram_Normal(),
     shaderProgram_Gouraud(),
     shaderProgram_Phong()
@@ -43,6 +44,7 @@ MainView::~MainView() {
     debugLogger->stopLogging();
 
     destroyMesh(&cat);
+    destroyMesh(&ball);
 
     qDebug() << "MainView destructor";
 }
@@ -104,6 +106,7 @@ void MainView::initializeGL() {
     //SETTING CAT FIGURE ON GPU
     setBuffer(&cat);
     qDebug() << "cat mesh uploaded";
+    setBuffer(&ball);
 
     //SETTING PROJECTION TRANSFORMATION MATRIX
     transformProjection.perspective(60, 1, 0.1f, 100.0);
@@ -163,6 +166,7 @@ void MainView::paintGL() {
 
     //RENDERING CAT
     renderBuffer(&cat);
+    renderBuffer(&ball);
 
     getShader()->release();
 }
@@ -188,8 +192,7 @@ void MainView::resizeGL(int newWidth, int newHeight)
 
 void MainView::setRotation(int rotateX, int rotateY, int rotateZ)
 {
-    //Change solid's rotation value
-    //cat.setRotation(rotateX, rotateY, rotateZ);
+    //Change view transform rotation
     transformView.setRotation(rotateX, rotateY, rotateZ);
 
     qDebug() << "Rotation changed to (" << rotateX << "," << rotateY << "," << rotateZ << ")";
@@ -197,16 +200,14 @@ void MainView::setRotation(int rotateX, int rotateY, int rotateZ)
     update();
 
     QMatrix4x4 view = transformView.getMatrix();
-    /*qDebug() << view.column(0);
-    qDebug() << view.column(1);
-    qDebug() << view.column(2);
-    qDebug() << view.column(3);*/
 }
 
 void MainView::setScale(int scale)
 {
-    //Change solid's (uniform) scaling value
-    cat.setScale(scale / 100.0f);
+    //Change view transform translation
+    transformView.scale = scale / 100.0f;
+    //alternatively,
+    //transformView.posZ = -8.0f * 100.0f / scale; //also works
 
     qDebug() << "Scale changed to " << scale;
     //Q_UNIMPLEMENTED();

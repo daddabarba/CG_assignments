@@ -2,6 +2,7 @@
 #define TRANSFORM
 
 #include <QMatrix4x4>
+#include "geoms.h"
 
 class Transform { //A class to wrap a QMatrix4x4 matrix for easy model transformation storage
 public:
@@ -16,8 +17,11 @@ public:
     QMatrix4x4 getMatrix();   //generate QMatrix4x4 applying the above defined tranformation
 };
 
-class TrackballTransform : public Transform {
+class TurntableTransform : public Transform {
 public:
+    TurntableTransform();
+    point target;
+    QVector3D getCameraPosition();
     QMatrix4x4 getMatrix();
 };
 

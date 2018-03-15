@@ -57,6 +57,7 @@ class MainView : public QOpenGLWidget, protected QOpenGLFunctions_3_3_Core {
 
     private:
         solid_mesh cat;
+        solid_mesh ball;
 
         shaderWrapper shaderProgram_Normal;
         shaderWrapper shaderProgram_Gouraud;
@@ -71,7 +72,7 @@ class MainView : public QOpenGLWidget, protected QOpenGLFunctions_3_3_Core {
         QTimer timer; // timer used for animation
 
         QMatrix4x4 transformProjection; //Matrix for projection transformation
-        Transform transformView; //Transform for view transformation
+        TurntableTransform transformView;
 
         GLuint tex;
 
