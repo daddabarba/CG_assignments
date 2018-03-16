@@ -22,8 +22,8 @@ MainView::MainView(QWidget *parent) :
     shaderProgram_Normal(),
     shaderProgram_Gouraud(),
     shaderProgram_Phong(),
-    sphere_orbit(set_point(0.0,1.0,0.0), set_point(1.0,0.8,0.0), set_point(0.0,0.0,1.0), 20.0f, 12.0f, 0.01f),
-    cube_orbit(set_point(0.0,1.0,0.2), set_point(1.0,0.8,-0.4), set_point(0.0,0.0,1.0), 6.0f, 10.0f, 0.1f, 100.0f)
+    sphere_orbit(set_point(0.0f,1.0f,0.0f), set_point(1.0f,0.8f,0.0f), set_point(0.0,0.0,1.0), 20.0f, 12.0f, 0.01f),
+    cube_orbit(set_point(0.0f,1.0f,0.2f), set_point(1.0f,0.8f,-0.4f), set_point(0.0,0.0,1.0), 6.0f, 10.0f, 0.1f, 100.0f)
 {
     qDebug() << "MainView constructor";
 
@@ -289,7 +289,7 @@ void MainView::setTexture(solid_mesh *mesh, const char *path){
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR); //not default
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR); //default
 
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, 512, 1024, 0, GL_RGBA, GL_UNSIGNED_BYTE, diff_mesh.data());
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, im_tex.width(), im_tex.height(), 0, GL_RGBA, GL_UNSIGNED_BYTE, diff_mesh.data());
 }
 
 void MainView::initAnimations(){

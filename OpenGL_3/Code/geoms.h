@@ -63,7 +63,7 @@ pyramid set_pyramid(float side_length, float height, RGB_color c1, RGB_color c2,
 
 double point_distance(point p);
 
-point scale_point(point p, double factor);
+point scale_point(point p, float factor);
 point add_point(point p, point t);
 
 #endif // GEOMS

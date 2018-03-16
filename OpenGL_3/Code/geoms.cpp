@@ -131,7 +131,7 @@ double point_distance(point p){
     return sqrt(p.x*p.x + p.y*p.y + p.z*p.z);
 }
 
-point scale_point(point p, double factor){
+point scale_point(point p, float factor){
     return set_point(p.x*factor, p.y*factor, p.z*factor);
 }
 
