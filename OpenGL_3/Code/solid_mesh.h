@@ -31,6 +31,8 @@ public:
     GLuint VAO, VBO;
     int size_solid;
 
+    GLuint tex;
+
     RGB_color color;
     phong_mat material;
 

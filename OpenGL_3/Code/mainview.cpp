@@ -18,7 +18,7 @@ MainView::MainView(QWidget *parent) :
     cat(":/models/cat.obj", set_point(0.0f,0.0f,0.0f), 1.0f, set_color(1.0f,1.0f,1.0f), set_material(0.2f,1.0f,0.5f,2)),
     ball(":/models/sphere.obj", set_point(4.0f,0.0f,-4.0f), 2.0f, set_color(1.0f,0.0f,0.2f), set_material(0.2f,1.0f,1.0f,8)),
     cube(":/models/cube.obj", set_point(-4.0f,0.0f,-4.0f), 2.0f, set_color(0.5f,1.0f,0.0f), set_material(0.2f,1.0f,0.75f,4)),
-    plane(":/models/cube2.obj", set_point(0.0f,-3.0f,0.0f), 1.0f, set_color(0.8f,0.8f,0.5f), set_material(0.2f,1.0f,0.2f,8)),
+    plane(":/models/cube2.obj", set_point(0.0f,-3.0f,0.0f), 1.0f, set_color(0.1f,0.1f,0.8f), set_material(0.2f,1.0f,0.2f,8)),
     shaderProgram_Normal(),
     shaderProgram_Gouraud(),
     shaderProgram_Phong()
@@ -93,25 +93,19 @@ void MainView::initializeGL() {
 
     createShaderProgram();
 
-    // Load cat texture
-    QImage im_cat(":/textures/cat_diff.png");
-    if (im_cat.isNull()) qDebug() << "Failed to load texture";
-    QVector<quint8> diff_cat = imageToBytes(im_cat);
-    glGenTextures(1, &tex);
-    glBindTexture(GL_TEXTURE_2D, tex);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT); //default
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT); //default
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR); //not default
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR); //default
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, 512, 1024, 0, GL_RGBA, GL_UNSIGNED_BYTE, diff_cat.data());
-
-    qDebug() << "Uploading cat";
+    qDebug() << "Uploading meshes";
 
     //SETTING CAT FIGURE ON GPU
     setBuffer(&cat);
     setBuffer(&ball);
     setBuffer(&cube);
     setBuffer(&plane);
+
+
+    setTexture(&cat, ":/textures/cat_diff.png");
+    setTexture(&ball, ":/textures/cat_diff.png");
+    setTexture(&cube, ":/textures/rug_logo.png");
+    setTexture(&plane, ":/textures/rug_logo.png");
 
     //SETTING PROJECTION TRANSFORMATION MATRIX
     transformProjection.perspective(60, 1, 0.1f, 100.0);
@@ -176,8 +170,6 @@ void MainView::paintGL() {
     }
 
     //Rendering cat
-    glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, tex);
     renderBuffer(&cat);
     //Rendering other objects
     //glDisable(GL_TEXTURE_2D); //gives me an error?
@@ -273,7 +265,26 @@ void MainView::setBuffer(solid_mesh *mesh){
 
 }
 
+void MainView::setTexture(solid_mesh *mesh, const char *path){
+    QImage im_tex(path);
+    if (im_tex.isNull()) qDebug() << "Failed to load texture";
+
+    QVector<quint8> diff_mesh = imageToBytes(im_tex);
+    glGenTextures(1, &(mesh->tex));
+    glBindTexture(GL_TEXTURE_2D, mesh->tex);
+
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT); //default
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT); //default
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR); //not default
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR); //default
+
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, 512, 1024, 0, GL_RGBA, GL_UNSIGNED_BYTE, diff_mesh.data());
+}
+
 void MainView::renderBuffer(solid_mesh *mesh){
+
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, mesh->tex);
 
     //Setting model transformation uniform to solid transformation
     glUniformMatrix4fv(getShader()->uniformModel, 1, GL_FALSE, (mesh->transformation).getMatrix().data());

@@ -77,11 +77,11 @@ class MainView : public QOpenGLWidget, protected QOpenGLFunctions_3_3_Core {
         QMatrix4x4 transformProjection; //Matrix for projection transformation
         TurntableTransform transformView;
 
-        GLuint tex;
-
         void createShaderProgram();
 
         void setBuffer(solid_mesh *mesh);
+        void setTexture(solid_mesh *mesh, const char *path);
+
         void renderBuffer(solid_mesh *mesh);
 
         void destroyMesh(solid_mesh *mesh);

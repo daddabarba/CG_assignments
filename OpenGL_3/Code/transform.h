@@ -11,9 +11,11 @@ public:
     float scale;            //(uniform) scaling factor
 
     Transform();
+
     void setPosition(float x, float y, float z); //change translation
     void setRotation(float x, float y, float z); //change rotation
     void setScale(float s);                      //change (uniform) scaling
+
     QMatrix4x4 getMatrix();   //generate QMatrix4x4 applying the above defined tranformation
 };
 
