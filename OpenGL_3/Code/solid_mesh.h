@@ -7,6 +7,7 @@
 #include "colors.h"
 
 #include "model.h"
+#include "animation.h"
 
 #include <QOpenGLShaderProgram>
 #include <QVector3D>
@@ -37,6 +38,9 @@ public:
     phong_mat material;
 
     vertex *figure_solid;
+
+    animation anim;
+    void animate();
 
 };
 

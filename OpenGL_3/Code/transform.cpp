@@ -44,6 +44,20 @@ TurntableTransform::TurntableTransform() {
     target = set_point(0.0f, 0.0f, 0.0f);
 }
 
+
+
+Transform Transform::operator+(const Transform &t) const{
+    Transform res;
+
+    res.setPosition(posX+t.posX, posY+t.posY, posZ+t.posZ);
+    res.setRotation(rotX+t.rotX, rotY+t.rotY, rotZ+t.rotZ);
+    res.setScale(scale+t.scale);
+
+    return res;
+}
+
+
+
 QVector3D TurntableTransform::getCameraPosition() {
     QMatrix4x4 pitchYaw;
     pitchYaw.rotate(rotX, 0, 1, 0);

@@ -61,3 +61,7 @@ QMatrix3x3 solid_mesh::getNormalMatrix(){
 void solid_mesh::discard_vertices(){
     free(figure_solid);
 }
+
+void solid_mesh::animate(){
+    anim.apply(&(transformation));
+}

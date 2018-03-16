@@ -103,9 +103,13 @@ void MainView::initializeGL() {
 
 
     setTexture(&cat, ":/textures/cat_diff.png");
-    setTexture(&ball, ":/textures/cat_diff.png");
+    setTexture(&ball, ":/textures/earthmap1k.png");
     setTexture(&cube, ":/textures/rug_logo.png");
     setTexture(&plane, ":/textures/rug_logo.png");
+
+
+
+    initAnimations();
 
     //SETTING PROJECTION TRANSFORMATION MATRIX
     transformProjection.perspective(60, 1, 0.1f, 100.0);
@@ -127,10 +131,15 @@ void MainView::createShaderProgram()
 }
 
 void MainView::updateAnimations() {
-    cat.transformation.rotY -= 1.0f;
+    //cat.transformation.rotY -= 1.0f;
     /*cat.transformation.rotX += ((float)rand() / RAND_MAX - 0.5f) * 10;
     cat.transformation.rotY += ((float)rand() / RAND_MAX - 0.5f) * 10;
     cat.transformation.rotZ += ((float)rand() / RAND_MAX - 0.5f) * 10;*/
+
+    cat.animate();
+    cube.animate();
+    ball.animate();
+    plane.animate();
 }
 
 // --- OpenGL drawing
@@ -208,7 +217,7 @@ void MainView::setRotation(int rotateX, int rotateY, int rotateZ)
     //Q_UNIMPLEMENTED();
     update();
 
-    QMatrix4x4 view = transformView.getMatrix();
+    //QMatrix4x4 view = transformView.getMatrix();
 }
 
 void MainView::setScale(int scale)
@@ -279,6 +288,33 @@ void MainView::setTexture(solid_mesh *mesh, const char *path){
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR); //default
 
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, 512, 1024, 0, GL_RGBA, GL_UNSIGNED_BYTE, diff_mesh.data());
+}
+
+void MainView::initAnimations(){
+    //setting cat animation
+    (cat.anim).go(0.1f,0.0f,0.0f,60);
+    (cat.anim).rotate(0.0f,-1.0f,0.0f,90);
+    (cat.anim).go(0.0f, 0.0f, 0.1f, 70);
+    (cat.anim).rotate(0.0f,-1.0f,0.0f,90);
+    (cat.anim).go(-0.1f,0.0f, 0.0f, 60);
+    (cat.anim).rotate(0.0f,-1.0f,0.0f,90);
+    (cat.anim).go(0.0f, 0.0f, -0.1f, 70);
+    (cat.anim).rotate(0.0f,-1.0f,0.0f,90);
+
+    //setting cube animation
+    (cube.anim).go(0.0f,0.1f,0.0f,80);
+    (cube.anim).rotate(1.0f,1.0f,0.0f,0,true);
+    (cube.anim).go(0.0f,-0.1f,0.0f,80);
+    (cube.anim).rotate(-1.0f,-1.0f,0.0f,0,true);
+
+    //setting ball animation
+    (ball.anim).rotate(1.0f,0.0f,1.0f,1);
+    //(ball.anim).go(0.0f,0.0f,-0.1f,30,true);
+    //(ball.anim).rotate(-1.0f,0.0f,0.0f,30);
+    //(ball.anim).go(0.0f,0.0f,0.1f,30,true);
+
+    //setting plane animation
+    (plane.anim).rotate(0.0f,1.0f,0.0f,1);
 }
 
 void MainView::renderBuffer(solid_mesh *mesh){

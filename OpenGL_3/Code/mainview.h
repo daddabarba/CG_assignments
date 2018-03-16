@@ -16,6 +16,7 @@
 #include "geoms.h"
 #include "transform.h"
 #include "solid_mesh.h"
+#include "animation.h"
 
 #include "shaderwrapper.h"
 
@@ -65,6 +66,8 @@ class MainView : public QOpenGLWidget, protected QOpenGLFunctions_3_3_Core {
         shaderWrapper shaderProgram_Normal;
         shaderWrapper shaderProgram_Gouraud;
         shaderWrapper shaderProgram_Phong;
+
+        void initAnimations();
 
         vertex lightSource;
 

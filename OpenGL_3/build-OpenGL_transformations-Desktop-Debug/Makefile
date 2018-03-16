@@ -56,7 +56,8 @@ SOURCES       = ../Code/main.cpp \
 		../Code/geoms.cpp \
 		../Code/transform.cpp \
 		../Code/solid_mesh.cpp \
-		../Code/shaderwrapper.cpp qrc_resources.cpp \
+		../Code/shaderwrapper.cpp \
+		../Code/animation.cpp qrc_resources.cpp \
 		moc_mainwindow.cpp \
 		moc_mainview.cpp
 OBJECTS       = main.o \
@@ -68,6 +69,7 @@ OBJECTS       = main.o \
 		transform.o \
 		solid_mesh.o \
 		shaderwrapper.o \
+		animation.o \
 		qrc_resources.o \
 		moc_mainwindow.o \
 		moc_mainview.o
@@ -136,7 +138,8 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		../Code/colors.h \
 		../Code/transform.h \
 		../Code/solid_mesh.h \
-		../Code/shaderwrapper.h ../Code/main.cpp \
+		../Code/shaderwrapper.h \
+		../Code/animation.h ../Code/main.cpp \
 		../Code/mainwindow.cpp \
 		../Code/mainview.cpp \
 		../Code/user_input.cpp \
@@ -144,7 +147,8 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		../Code/geoms.cpp \
 		../Code/transform.cpp \
 		../Code/solid_mesh.cpp \
-		../Code/shaderwrapper.cpp
+		../Code/shaderwrapper.cpp \
+		../Code/animation.cpp
 QMAKE_TARGET  = OpenGL_transformations
 DESTDIR       = #avoid trailing-slash linebreak
 TARGET        = OpenGL_transformations
@@ -317,8 +321,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../Code/resources.qrc $(DISTDIR)/
-	$(COPY_FILE) --parents ../Code/mainwindow.h ../Code/mainview.h ../Code/model.h ../Code/geoms.h ../Code/colors.h ../Code/transform.h ../Code/solid_mesh.h ../Code/shaderwrapper.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../Code/main.cpp ../Code/mainwindow.cpp ../Code/mainview.cpp ../Code/user_input.cpp ../Code/model.cpp ../Code/geoms.cpp ../Code/transform.cpp ../Code/solid_mesh.cpp ../Code/shaderwrapper.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../Code/mainwindow.h ../Code/mainview.h ../Code/model.h ../Code/geoms.h ../Code/colors.h ../Code/transform.h ../Code/solid_mesh.h ../Code/shaderwrapper.h ../Code/animation.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../Code/main.cpp ../Code/mainwindow.cpp ../Code/mainview.cpp ../Code/user_input.cpp ../Code/model.cpp ../Code/geoms.cpp ../Code/transform.cpp ../Code/solid_mesh.cpp ../Code/shaderwrapper.cpp ../Code/animation.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../Code/mainwindow.ui $(DISTDIR)/
 
 
@@ -357,6 +361,7 @@ qrc_resources.cpp: ../Code/resources.qrc \
 		../Code/models/cat.obj \
 		../Code/models/sphere.obj \
 		../Code/textures/cat_diff.png \
+		../Code/textures/earthmap1k.png \
 		../Code/textures/rug_logo.png \
 		../Code/textures/cat_spec.png \
 		../Code/textures/cat_norm.png
@@ -373,6 +378,7 @@ moc_mainview.cpp: ../Code/model.h \
 		../Code/transform.h \
 		../Code/solid_mesh.h \
 		../Code/colors.h \
+		../Code/animation.h \
 		../Code/shaderwrapper.h \
 		../Code/mainview.h
 	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/s3090078/Documents/CG_assignments/OpenGL_3/Code -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../Code/mainview.h -o moc_mainview.cpp
@@ -389,6 +395,7 @@ ui_mainwindow.h: ../Code/mainwindow.ui \
 		../Code/transform.h \
 		../Code/solid_mesh.h \
 		../Code/colors.h \
+		../Code/animation.h \
 		../Code/shaderwrapper.h
 	/usr/lib/x86_64-linux-gnu/qt5/bin/uic ../Code/mainwindow.ui -o ui_mainwindow.h
 
@@ -406,7 +413,15 @@ main.o: ../Code/main.cpp ../Code/mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../Code/main.cpp
 
 mainwindow.o: ../Code/mainwindow.cpp ../Code/mainwindow.h \
-		ui_mainwindow.h
+		ui_mainwindow.h \
+		../Code/mainview.h \
+		../Code/model.h \
+		../Code/geoms.h \
+		../Code/transform.h \
+		../Code/solid_mesh.h \
+		../Code/colors.h \
+		../Code/animation.h \
+		../Code/shaderwrapper.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../Code/mainwindow.cpp
 
 mainview.o: ../Code/mainview.cpp ../Code/mainview.h \
@@ -415,6 +430,7 @@ mainview.o: ../Code/mainview.cpp ../Code/mainview.h \
 		../Code/transform.h \
 		../Code/solid_mesh.h \
 		../Code/colors.h \
+		../Code/animation.h \
 		../Code/shaderwrapper.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainview.o ../Code/mainview.cpp
 
@@ -424,6 +440,7 @@ user_input.o: ../Code/user_input.cpp ../Code/mainview.h \
 		../Code/transform.h \
 		../Code/solid_mesh.h \
 		../Code/colors.h \
+		../Code/animation.h \
 		../Code/shaderwrapper.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o user_input.o ../Code/user_input.cpp
 
@@ -441,12 +458,18 @@ solid_mesh.o: ../Code/solid_mesh.cpp ../Code/solid_mesh.h \
 		../Code/geoms.h \
 		../Code/transform.h \
 		../Code/colors.h \
-		../Code/model.h
+		../Code/model.h \
+		../Code/animation.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o solid_mesh.o ../Code/solid_mesh.cpp
 
 shaderwrapper.o: ../Code/shaderwrapper.cpp ../Code/shaderwrapper.h \
 		../Code/geoms.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o shaderwrapper.o ../Code/shaderwrapper.cpp
+
+animation.o: ../Code/animation.cpp ../Code/animation.h \
+		../Code/transform.h \
+		../Code/geoms.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o animation.o ../Code/animation.cpp
 
 qrc_resources.o: qrc_resources.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_resources.o qrc_resources.cpp

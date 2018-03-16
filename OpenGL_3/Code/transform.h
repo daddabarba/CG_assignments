@@ -17,6 +17,8 @@ public:
     void setScale(float s);                      //change (uniform) scaling
 
     QMatrix4x4 getMatrix();   //generate QMatrix4x4 applying the above defined tranformation
+
+    Transform operator+(const Transform &t) const;
 };
 
 class TurntableTransform : public Transform {
