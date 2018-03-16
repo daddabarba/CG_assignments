@@ -18,5 +18,7 @@
         <file>models/plane.obj</file>
         <file>textures/earthmap1k.png</file>
         <file>textures/milkyway3k.png</file>
+        <file>models/sphere_inverse.obj</file>
+        <file>models/suzanne.obj</file>
     </qresource>
 </RCC>
