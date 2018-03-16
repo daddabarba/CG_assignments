@@ -2,10 +2,12 @@
 #CURRENT CHANGES#
 #################
 
--added view transformation
--dials rotate camera now
+#TEMPORARY#
+-view transformation matrix uniform
 -view transformation normal matrix uniform
 -camera position uniform
+-turntable style camera
+-dials rotate camera now (pitch / yaw / roll)
 
 #####################
 #CHANGES IN OPENGL 2#

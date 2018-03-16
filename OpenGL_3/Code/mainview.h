@@ -39,6 +39,7 @@ class MainView : public QOpenGLWidget, protected QOpenGLFunctions_3_3_Core {
     protected:
         void initializeGL();
         void resizeGL(int newWidth, int newHeight);
+        void updateAnimations();
         void paintGL();
 
         // Functions for keyboard input events
@@ -58,6 +59,8 @@ class MainView : public QOpenGLWidget, protected QOpenGLFunctions_3_3_Core {
     private:
         solid_mesh cat;
         solid_mesh ball;
+        solid_mesh cube;
+        solid_mesh plane;
 
         shaderWrapper shaderProgram_Normal;
         shaderWrapper shaderProgram_Gouraud;
@@ -69,7 +72,7 @@ class MainView : public QOpenGLWidget, protected QOpenGLFunctions_3_3_Core {
         ShadingMode currentShader;
 
         QOpenGLDebugLogger *debugLogger;
-        QTimer timer; // timer used for animation
+        QTimer timer; // timer used for updating
 
         QMatrix4x4 transformProjection; //Matrix for projection transformation
         TurntableTransform transformView;

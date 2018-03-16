@@ -14,5 +14,7 @@
         <file>shaders/vertshader_gouraud.glsl</file>
         <file>shaders/vertshader_normal.glsl</file>
         <file>shaders/vertshader_phong.glsl</file>
+        <file>models/cube2.obj</file>
+        <file>models/plane.obj</file>
     </qresource>
 </RCC>

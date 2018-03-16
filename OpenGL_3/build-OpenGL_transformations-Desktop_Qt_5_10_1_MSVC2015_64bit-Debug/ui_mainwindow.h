@@ -89,7 +89,7 @@ public:
         verticalLayout_4->setObjectName(QStringLiteral("verticalLayout_4"));
         ScaleSlider = new QSlider(scalingBox);
         ScaleSlider->setObjectName(QStringLiteral("ScaleSlider"));
-        ScaleSlider->setMinimum(1);
+        ScaleSlider->setMinimum(50);
         ScaleSlider->setMaximum(200);
         ScaleSlider->setValue(100);
         ScaleSlider->setOrientation(Qt::Horizontal);
@@ -161,8 +161,10 @@ public:
 
         RotationDialY = new QDial(rotationBox);
         RotationDialY->setObjectName(QStringLiteral("RotationDialY"));
-        RotationDialY->setMaximum(359);
-        RotationDialY->setWrapping(true);
+        RotationDialY->setMinimum(-89);
+        RotationDialY->setMaximum(89);
+        RotationDialY->setInvertedControls(false);
+        RotationDialY->setWrapping(false);
         RotationDialY->setNotchTarget(12);
         RotationDialY->setNotchesVisible(true);
 

@@ -48,6 +48,7 @@ QVector3D TurntableTransform::getCameraPosition() {
     QMatrix4x4 pitchYaw;
     pitchYaw.rotate(rotX, 0, 1, 0);
     pitchYaw.rotate(rotY, 1, 0, 0);
+    pitchYaw.scale(scale);
     return QVector3D(pitchYaw.map(QVector4D(-posX, -posY, -posZ, 1.0f)));
 }
 

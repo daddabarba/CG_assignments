@@ -15,8 +15,10 @@
  */
 MainView::MainView(QWidget *parent) :
     QOpenGLWidget(parent),
-    cat(":/models/cat.obj", set_point(0.0,0.0,0.0), 1.0f, set_color(1.0f,1.0f,1.0f), set_material(0.2f,1.0f,0.5f,2)),
-    ball(":/models/sphere.obj", set_point(4.0,0.0,-4.0), 1.0f, set_color(1.0f,0.0f,0.2f), set_material(0.2f,1.0f,1.0f,8)),
+    cat(":/models/cat.obj", set_point(0.0f,0.0f,0.0f), 1.0f, set_color(1.0f,1.0f,1.0f), set_material(0.2f,1.0f,0.5f,2)),
+    ball(":/models/sphere.obj", set_point(4.0f,0.0f,-4.0f), 2.0f, set_color(1.0f,0.0f,0.2f), set_material(0.2f,1.0f,1.0f,8)),
+    cube(":/models/cube.obj", set_point(-4.0f,0.0f,-4.0f), 2.0f, set_color(0.5f,1.0f,0.0f), set_material(0.2f,1.0f,0.75f,4)),
+    plane(":/models/cube2.obj", set_point(0.0f,-3.0f,0.0f), 1.0f, set_color(0.8f,0.8f,0.5f), set_material(0.2f,1.0f,0.2f,8)),
     shaderProgram_Normal(),
     shaderProgram_Gouraud(),
     shaderProgram_Phong()
@@ -24,9 +26,9 @@ MainView::MainView(QWidget *parent) :
     qDebug() << "MainView constructor";
 
     //Setting light source (position and color)
-    lightSource = set_vertex(set_point(50.0,50.0,130.0), set_color(1.0,1.0,1.0));
+    lightSource = set_vertex(set_point(5.0,5.0,13.0), set_color(1.0,1.0,1.0));
 
-    transformView.setPosition(0.0f, 0.0f, -8.0f);
+    transformView.setPosition(0.0f, 0.0f, -10.0f);
 
     connect(&timer, SIGNAL(timeout()), this, SLOT(update()));
     qDebug() << "Connected";
@@ -45,6 +47,8 @@ MainView::~MainView() {
 
     destroyMesh(&cat);
     destroyMesh(&ball);
+    destroyMesh(&cube);
+    destroyMesh(&plane);
 
     qDebug() << "MainView destructor";
 }
@@ -105,8 +109,9 @@ void MainView::initializeGL() {
 
     //SETTING CAT FIGURE ON GPU
     setBuffer(&cat);
-    qDebug() << "cat mesh uploaded";
     setBuffer(&ball);
+    setBuffer(&cube);
+    setBuffer(&plane);
 
     //SETTING PROJECTION TRANSFORMATION MATRIX
     transformProjection.perspective(60, 1, 0.1f, 100.0);
@@ -114,7 +119,6 @@ void MainView::initializeGL() {
     timer.start(1000.0 / 60.0);
 
 }
-
 
 void MainView::createShaderProgram()
 {
@@ -128,6 +132,13 @@ void MainView::createShaderProgram()
     shaderProgram_Phong.create(":/shaders/vertshader_phong.glsl", ":/shaders/fragshader_phong.glsl");
 }
 
+void MainView::updateAnimations() {
+    cat.transformation.rotY -= 1.0f;
+    /*cat.transformation.rotX += ((float)rand() / RAND_MAX - 0.5f) * 10;
+    cat.transformation.rotY += ((float)rand() / RAND_MAX - 0.5f) * 10;
+    cat.transformation.rotZ += ((float)rand() / RAND_MAX - 0.5f) * 10;*/
+}
+
 // --- OpenGL drawing
 
 /**
@@ -137,8 +148,11 @@ void MainView::createShaderProgram()
  *
  */
 void MainView::paintGL() {
-    // Clear the screen before rendering
+    //Clear the screen before rendering
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+    //Update models' animations
+    updateAnimations();
 
     getShader()->bind();
 
@@ -161,12 +175,15 @@ void MainView::paintGL() {
         glUniform3f(getShader()->uniformLightCol, (lightSource.color).r, (lightSource.color).g, (lightSource.color).b);
     }
 
+    //Rendering cat
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, tex);
-
-    //RENDERING CAT
     renderBuffer(&cat);
+    //Rendering other objects
+    //glDisable(GL_TEXTURE_2D); //gives me an error?
     renderBuffer(&ball);
+    renderBuffer(&cube);
+    renderBuffer(&plane);
 
     getShader()->release();
 }
@@ -193,7 +210,7 @@ void MainView::resizeGL(int newWidth, int newHeight)
 void MainView::setRotation(int rotateX, int rotateY, int rotateZ)
 {
     //Change view transform rotation
-    transformView.setRotation(rotateX, rotateY, rotateZ);
+    transformView.setRotation(rotateX, -rotateY, rotateZ);
 
     qDebug() << "Rotation changed to (" << rotateX << "," << rotateY << "," << rotateZ << ")";
     //Q_UNIMPLEMENTED();
@@ -205,7 +222,7 @@ void MainView::setRotation(int rotateX, int rotateY, int rotateZ)
 void MainView::setScale(int scale)
 {
     //Change view transform translation
-    transformView.scale = scale / 100.0f;
+    transformView.scale = 100.0f / scale;
     //alternatively,
     //transformView.posZ = -8.0f * 100.0f / scale; //also works
 
