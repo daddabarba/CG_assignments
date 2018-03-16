@@ -61,5 +61,10 @@ triangle set_triangle(vertex v1, vertex v2, vertex v3);
 cube set_cube(float side_length, RGB_color c1, RGB_color c2, RGB_color c3, RGB_color c4, RGB_color c5, RGB_color c6, RGB_color c7, RGB_color c8 );
 pyramid set_pyramid(float side_length, float height, RGB_color c1, RGB_color c2, RGB_color c3, RGB_color c4, RGB_color c5 );
 
+double point_distance(point p);
+
+point scale_point(point p, double factor);
+point add_point(point p, point t);
+
 #endif // GEOMS
 

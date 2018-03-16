@@ -17,6 +17,7 @@
 #include "transform.h"
 #include "solid_mesh.h"
 #include "animation.h"
+#include "parametricanimations.h"
 
 #include "shaderwrapper.h"
 
@@ -68,6 +69,8 @@ class MainView : public QOpenGLWidget, protected QOpenGLFunctions_3_3_Core {
         shaderWrapper shaderProgram_Phong;
 
         void initAnimations();
+        ellipse sphere_orbit;
+        ellipse cube_orbit;
 
         vertex lightSource;
 

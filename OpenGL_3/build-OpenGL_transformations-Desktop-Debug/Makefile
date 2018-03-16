@@ -57,7 +57,8 @@ SOURCES       = ../Code/main.cpp \
 		../Code/transform.cpp \
 		../Code/solid_mesh.cpp \
 		../Code/shaderwrapper.cpp \
-		../Code/animation.cpp qrc_resources.cpp \
+		../Code/animation.cpp \
+		../Code/parametricanimations.cpp qrc_resources.cpp \
 		moc_mainwindow.cpp \
 		moc_mainview.cpp
 OBJECTS       = main.o \
@@ -70,6 +71,7 @@ OBJECTS       = main.o \
 		solid_mesh.o \
 		shaderwrapper.o \
 		animation.o \
+		parametricanimations.o \
 		qrc_resources.o \
 		moc_mainwindow.o \
 		moc_mainview.o
@@ -139,7 +141,8 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		../Code/transform.h \
 		../Code/solid_mesh.h \
 		../Code/shaderwrapper.h \
-		../Code/animation.h ../Code/main.cpp \
+		../Code/animation.h \
+		../Code/parametricanimations.h ../Code/main.cpp \
 		../Code/mainwindow.cpp \
 		../Code/mainview.cpp \
 		../Code/user_input.cpp \
@@ -148,7 +151,8 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		../Code/transform.cpp \
 		../Code/solid_mesh.cpp \
 		../Code/shaderwrapper.cpp \
-		../Code/animation.cpp
+		../Code/animation.cpp \
+		../Code/parametricanimations.cpp
 QMAKE_TARGET  = OpenGL_transformations
 DESTDIR       = #avoid trailing-slash linebreak
 TARGET        = OpenGL_transformations
@@ -321,8 +325,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../Code/resources.qrc $(DISTDIR)/
-	$(COPY_FILE) --parents ../Code/mainwindow.h ../Code/mainview.h ../Code/model.h ../Code/geoms.h ../Code/colors.h ../Code/transform.h ../Code/solid_mesh.h ../Code/shaderwrapper.h ../Code/animation.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../Code/main.cpp ../Code/mainwindow.cpp ../Code/mainview.cpp ../Code/user_input.cpp ../Code/model.cpp ../Code/geoms.cpp ../Code/transform.cpp ../Code/solid_mesh.cpp ../Code/shaderwrapper.cpp ../Code/animation.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../Code/mainwindow.h ../Code/mainview.h ../Code/model.h ../Code/geoms.h ../Code/colors.h ../Code/transform.h ../Code/solid_mesh.h ../Code/shaderwrapper.h ../Code/animation.h ../Code/parametricanimations.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../Code/main.cpp ../Code/mainwindow.cpp ../Code/mainview.cpp ../Code/user_input.cpp ../Code/model.cpp ../Code/geoms.cpp ../Code/transform.cpp ../Code/solid_mesh.cpp ../Code/shaderwrapper.cpp ../Code/animation.cpp ../Code/parametricanimations.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../Code/mainwindow.ui $(DISTDIR)/
 
 
@@ -470,6 +474,11 @@ animation.o: ../Code/animation.cpp ../Code/animation.h \
 		../Code/transform.h \
 		../Code/geoms.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o animation.o ../Code/animation.cpp
+
+parametricanimations.o: ../Code/parametricanimations.cpp ../Code/parametricanimations.h \
+		../Code/geoms.h \
+		../Code/transform.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o parametricanimations.o ../Code/parametricanimations.cpp
 
 qrc_resources.o: qrc_resources.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_resources.o qrc_resources.cpp

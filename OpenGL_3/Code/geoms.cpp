@@ -1,5 +1,7 @@
 #include "geoms.h"
 
+#include <cmath>
+
 RGB_color set_color(float r, float g, float b){//Given red, blue and green values, return a RGB_color struct
     RGB_color ret;
 
@@ -123,4 +125,16 @@ pyramid set_pyramid(float side_length, float height, RGB_color c1, RGB_color c2,
     ret.f4 = set_triangle(v4,v3,v5); //Side face 4
 
     return ret;
+}
+
+double point_distance(point p){
+    return sqrt(p.x*p.x + p.y*p.y + p.z*p.z);
+}
+
+point scale_point(point p, double factor){
+    return set_point(p.x*factor, p.y*factor, p.z*factor);
+}
+
+point add_point(point p, point t){
+    return set_point(p.x+t.x, p.y+t.y, p.z+t.z);
 }

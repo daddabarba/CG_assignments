@@ -21,7 +21,8 @@ SOURCES += main.cpp\
     transform.cpp \
     solid_mesh.cpp \
     shaderwrapper.cpp \
-    animation.cpp
+    animation.cpp \
+    parametricanimations.cpp
 
 HEADERS  += mainwindow.h \
     mainview.h \
@@ -31,7 +32,8 @@ HEADERS  += mainwindow.h \
     transform.h \
     solid_mesh.h \
     shaderwrapper.h \
-    animation.h
+    animation.h \
+    parametricanimations.h
 
 FORMS    += mainwindow.ui
 

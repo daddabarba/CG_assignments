@@ -15,13 +15,15 @@
  */
 MainView::MainView(QWidget *parent) :
     QOpenGLWidget(parent),
-    cat(":/models/cat.obj", set_point(0.0f,0.0f,0.0f), 1.0f, set_color(1.0f,1.0f,1.0f), set_material(0.2f,1.0f,0.5f,2)),
+    cat(":/models/cat.obj", set_point(0.0f,0.8f,0.0f), 1.0f, set_color(1.0f,1.0f,1.0f), set_material(0.2f,1.0f,0.5f,2)),
     ball(":/models/sphere.obj", set_point(4.0f,0.0f,-4.0f), 2.0f, set_color(1.0f,0.0f,0.2f), set_material(0.2f,1.0f,1.0f,8)),
     cube(":/models/cube.obj", set_point(-4.0f,0.0f,-4.0f), 2.0f, set_color(0.5f,1.0f,0.0f), set_material(0.2f,1.0f,0.75f,4)),
     plane(":/models/cube2.obj", set_point(0.0f,-3.0f,0.0f), 1.0f, set_color(0.1f,0.1f,0.8f), set_material(0.2f,1.0f,0.2f,8)),
     shaderProgram_Normal(),
     shaderProgram_Gouraud(),
-    shaderProgram_Phong()
+    shaderProgram_Phong(),
+    sphere_orbit(set_point(0.0,1.0,0.0), set_point(1.0,0.8,0.0), set_point(0.0,0.0,1.0), 20.0f, 12.0f, 0.01f),
+    cube_orbit(set_point(0.0,1.0,0.2), set_point(1.0,0.8,-0.4), set_point(0.0,0.0,1.0), 6.0f, 10.0f, 0.1f, 100.0f)
 {
     qDebug() << "MainView constructor";
 
@@ -131,15 +133,15 @@ void MainView::createShaderProgram()
 }
 
 void MainView::updateAnimations() {
-    //cat.transformation.rotY -= 1.0f;
-    /*cat.transformation.rotX += ((float)rand() / RAND_MAX - 0.5f) * 10;
-    cat.transformation.rotY += ((float)rand() / RAND_MAX - 0.5f) * 10;
-    cat.transformation.rotZ += ((float)rand() / RAND_MAX - 0.5f) * 10;*/
-
     cat.animate();
-    cube.animate();
-    ball.animate();
+    //cube.animate();
+    //ball.animate();
     plane.animate();
+
+    sphere_orbit.apply(&(ball.transformation));
+
+    cube_orbit.move_center(sphere_orbit.current_pos());
+    cube_orbit.apply(&(cube.transformation));
 }
 
 // --- OpenGL drawing
@@ -302,16 +304,13 @@ void MainView::initAnimations(){
     (cat.anim).rotate(0.0f,-1.0f,0.0f,90);
 
     //setting cube animation
-    (cube.anim).go(0.0f,0.1f,0.0f,80);
+    /*(cube.anim).go(0.0f,0.1f,0.0f,80);
     (cube.anim).rotate(1.0f,1.0f,0.0f,0,true);
     (cube.anim).go(0.0f,-0.1f,0.0f,80);
-    (cube.anim).rotate(-1.0f,-1.0f,0.0f,0,true);
+    (cube.anim).rotate(-1.0f,-1.0f,0.0f,0,true);*/
 
     //setting ball animation
-    (ball.anim).rotate(1.0f,0.0f,1.0f,1);
-    //(ball.anim).go(0.0f,0.0f,-0.1f,30,true);
-    //(ball.anim).rotate(-1.0f,0.0f,0.0f,30);
-    //(ball.anim).go(0.0f,0.0f,0.1f,30,true);
+    //(ball.anim).rotate(1.0f,0.0f,1.0f,1);
 
     //setting plane animation
     (plane.anim).rotate(0.0f,1.0f,0.0f,1);
