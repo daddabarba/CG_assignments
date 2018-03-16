@@ -15,22 +15,23 @@
  */
 MainView::MainView(QWidget *parent) :
     QOpenGLWidget(parent),
-    cat(":/models/cat.obj", set_point(0.0f,0.8f,0.0f), 1.0f, set_color(1.0f,1.0f,1.0f), set_material(0.2f,1.0f,0.5f,2)),
-    ball(":/models/sphere.obj", set_point(4.0f,0.0f,-4.0f), 2.0f, set_color(1.0f,0.0f,0.2f), set_material(0.2f,1.0f,1.0f,8)),
-    cube(":/models/cube.obj", set_point(-4.0f,0.0f,-4.0f), 2.0f, set_color(0.5f,1.0f,0.0f), set_material(0.2f,1.0f,0.75f,4)),
-    plane(":/models/cube2.obj", set_point(0.0f,-3.0f,0.0f), 1.0f, set_color(0.1f,0.1f,0.8f), set_material(0.2f,1.0f,0.2f,8)),
+    cat(":/models/cat.obj", set_point(0.0f,0.8f,0.0f), 4.0f, set_color(1.0f,1.0f,1.0f), set_material(0.2f,1.0f,0.5f,2)),
+    earth(":/models/sphere.obj", set_point(4.0f,0.0f,-4.0f), 2.0f, set_color(1.0f,1.0f,1.0f), set_material(0.2f,1.0f,1.0f,8)),
+    cube(":/models/cube.obj", set_point(-4.0f,0.0f,-4.0f), 1.0f, set_color(0.8f,1.0f,0.5f), set_material(0.2f,1.0f,0.75f,4)),
+    plane(":/models/plane.obj", set_point(0.0f,-2.5f,0.0f), 5.0f, set_color(0.25f,0.25f,0.8f), set_material(0.2f,1.0f,0.2f,8)),
+    skybox(":/models/sphere_inverse.obj", set_point(4.0f,0.0f,-4.0f), 1.0f, set_color(1.0f,1.0f,1.0f), set_material(1.0f,0.0f,0.0f,1)),
     shaderProgram_Normal(),
     shaderProgram_Gouraud(),
     shaderProgram_Phong(),
-    sphere_orbit(set_point(0.0f,1.0f,0.0f), set_point(1.0f,0.8f,0.0f), set_point(0.0,0.0,1.0), 20.0f, 12.0f, 0.01f),
-    cube_orbit(set_point(0.0f,1.0f,0.2f), set_point(1.0f,0.8f,-0.4f), set_point(0.0,0.0,1.0), 6.0f, 10.0f, 0.1f, 100.0f)
+    sphere_orbit(set_point(0.0f,1.0f,0.0f), set_point(1.0f,0.8f,0.0f), set_point(0.0,0.0,1.0), 20.0f, 12.0f, 0.01f, 2.5f),
+    cube_orbit(set_point(0.0f,1.0f,0.2f), set_point(1.0f,0.8f,-0.4f), set_point(0.0,0.0,1.0), 6.0f, 10.0f, 0.03f, 1.0f)
 {
     qDebug() << "MainView constructor";
 
     //Setting light source (position and color)
     lightSource = set_vertex(set_point(5.0,5.0,13.0), set_color(1.0,1.0,1.0));
 
-    transformView.setPosition(0.0f, 0.0f, -10.0f);
+    transformView.setPosition(0.0f, 0.0f, -20.0f);
 
     connect(&timer, SIGNAL(timeout()), this, SLOT(update()));
     qDebug() << "Connected";
@@ -48,9 +49,10 @@ MainView::~MainView() {
     debugLogger->stopLogging();
 
     destroyMesh(&cat);
-    destroyMesh(&ball);
+    destroyMesh(&earth);
     destroyMesh(&cube);
     destroyMesh(&plane);
+    destroyMesh(&skybox);
 
     qDebug() << "MainView destructor";
 }
@@ -99,15 +101,17 @@ void MainView::initializeGL() {
 
     //SETTING CAT FIGURE ON GPU
     setBuffer(&cat);
-    setBuffer(&ball);
+    setBuffer(&earth);
     setBuffer(&cube);
     setBuffer(&plane);
+    setBuffer(&skybox);
 
 
     setTexture(&cat, ":/textures/cat_diff.png");
-    setTexture(&ball, ":/textures/earthmap1k.png");
+    setTexture(&earth, ":/textures/earthmap1k.png");
     setTexture(&cube, ":/textures/rug_logo.png");
     setTexture(&plane, ":/textures/rug_logo.png");
+    setTexture(&skybox, ":/textures/milkyway3k.png");
 
 
 
@@ -138,7 +142,7 @@ void MainView::updateAnimations() {
     //ball.animate();
     plane.animate();
 
-    sphere_orbit.apply(&(ball.transformation));
+    sphere_orbit.apply(&(earth.transformation));
 
     cube_orbit.move_center(sphere_orbit.current_pos());
     cube_orbit.apply(&(cube.transformation));
@@ -184,9 +188,10 @@ void MainView::paintGL() {
     renderBuffer(&cat);
     //Rendering other objects
     //glDisable(GL_TEXTURE_2D); //gives me an error?
-    renderBuffer(&ball);
+    renderBuffer(&earth);
     renderBuffer(&cube);
     renderBuffer(&plane);
+    renderBuffer(&skybox);
 
     getShader()->release();
 }
@@ -294,13 +299,13 @@ void MainView::setTexture(solid_mesh *mesh, const char *path){
 
 void MainView::initAnimations(){
     //setting cat animation
-    (cat.anim).go(0.1f,0.0f,0.0f,60);
+    (cat.anim).go(0.1f,0.0f,0.0f,50);
     (cat.anim).rotate(0.0f,-1.0f,0.0f,90);
-    (cat.anim).go(0.0f, 0.0f, 0.1f, 70);
+    (cat.anim).go(0.0f, 0.0f, 0.1f, 50);
     (cat.anim).rotate(0.0f,-1.0f,0.0f,90);
-    (cat.anim).go(-0.1f,0.0f, 0.0f, 60);
+    (cat.anim).go(-0.1f,0.0f, 0.0f, 50);
     (cat.anim).rotate(0.0f,-1.0f,0.0f,90);
-    (cat.anim).go(0.0f, 0.0f, -0.1f, 70);
+    (cat.anim).go(0.0f, 0.0f, -0.1f, 50);
     (cat.anim).rotate(0.0f,-1.0f,0.0f,90);
 
     //setting cube animation
@@ -313,7 +318,7 @@ void MainView::initAnimations(){
     //(ball.anim).rotate(1.0f,0.0f,1.0f,1);
 
     //setting plane animation
-    (plane.anim).rotate(0.0f,1.0f,0.0f,1);
+    //(plane.anim).rotate(0.0f,1.0f,0.0f,1);
 }
 
 void MainView::renderBuffer(solid_mesh *mesh){

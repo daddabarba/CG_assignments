@@ -60,9 +60,10 @@ class MainView : public QOpenGLWidget, protected QOpenGLFunctions_3_3_Core {
 
     private:
         solid_mesh cat;
-        solid_mesh ball;
+        solid_mesh earth;
         solid_mesh cube;
         solid_mesh plane;
+        solid_mesh skybox;
 
         shaderWrapper shaderProgram_Normal;
         shaderWrapper shaderProgram_Gouraud;

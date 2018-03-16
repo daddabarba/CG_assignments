@@ -89,8 +89,8 @@ public:
         verticalLayout_4->setObjectName(QStringLiteral("verticalLayout_4"));
         ScaleSlider = new QSlider(scalingBox);
         ScaleSlider->setObjectName(QStringLiteral("ScaleSlider"));
-        ScaleSlider->setMinimum(50);
-        ScaleSlider->setMaximum(200);
+        ScaleSlider->setMinimum(25);
+        ScaleSlider->setMaximum(250);
         ScaleSlider->setValue(100);
         ScaleSlider->setOrientation(Qt::Horizontal);
         ScaleSlider->setInvertedAppearance(false);

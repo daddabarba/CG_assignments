@@ -17,5 +17,6 @@
         <file>models/cube2.obj</file>
         <file>models/plane.obj</file>
         <file>textures/earthmap1k.png</file>
+        <file>textures/milkyway3k.png</file>
     </qresource>
 </RCC>

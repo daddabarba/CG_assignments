@@ -87,7 +87,7 @@ void Model::unitize() {
 
     float left = 0.0f, right = 0.0f, top = 0.0f, bottom = 0.0f, front = 0.0f, back = 0.0f;
 
-    for ( int i = 0; i != indices.size(); ++i ) {
+    for (int i = 0; i != indices.size(); i++) {
         if (vertices[i].x() < left) left = vertices[i].x();
         else if (vertices[i].x() > right) right = vertices[i].x();
         if (vertices[i].y() < bottom) bottom = vertices[i].y();
@@ -95,15 +95,16 @@ void Model::unitize() {
         if (vertices[i].z() < back) back = vertices[i].z();
         else if (vertices[i].z() > front) front = vertices[i].z();
     }
-    float tx = (right + left) / 2;
-    float ty = (top + bottom) / 2;
-    float tz = (front + back) / 2;
-    float sx = 2.0 / (fabs(right) + fabs(left));
-    float sy = 2.0 / (fabs(top) + fabs(bottom));
-    float sz = 2.0 / (fabs(front) + fabs(back));
+    float tx = (right + left) / 2.0f;
+    float ty = (top + bottom) / 2.0f;
+    float tz = (front + back) / 2.0f;
+    float sx = fabs(right) + fabs(left);
+    float sy = fabs(top) + fabs(bottom);
+    float sz = fabs(front) + fabs(back);
     float s = (sx > sy) ? ((sx > sz) ? sx : sz) : ((sy > sz) ? sy : sz);
+    s = 2.0f / s;
 
-    for ( int i = 0; i != indices.size(); ++i ) {
+    for (int i = 0; i != indices.size(); i++) {
         vertices[i].setX((vertices[i].x() - tx) * s);
         vertices[i].setY((vertices[i].y() - ty) * s);
         vertices[i].setZ((vertices[i].z() - tz) * s);
