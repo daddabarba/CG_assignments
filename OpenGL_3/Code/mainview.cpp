@@ -15,16 +15,17 @@
  */
 MainView::MainView(QWidget *parent) :
     QOpenGLWidget(parent),
-    cat(":/models/cat.obj", set_point(0.0f,0.8f,0.0f), 4.0f, set_color(1.0f,1.0f,1.0f), set_material(0.2f,1.0f,0.5f,2)),
+    cat(":/models/cat.obj", set_point(-5.0f,0.8f,-5.0f), 4.0f, set_color(1.0f,1.0f,1.0f), set_material(0.2f,1.0f,0.5f,2)),
     earth(":/models/sphere.obj", set_point(4.0f,0.0f,-4.0f), 2.0f, set_color(1.0f,1.0f,1.0f), set_material(0.2f,1.0f,1.0f,8)),
-    cube(":/models/cube.obj", set_point(-4.0f,0.0f,-4.0f), 1.0f, set_color(0.8f,1.0f,0.5f), set_material(0.2f,1.0f,0.75f,4)),
-    plane(":/models/plane.obj", set_point(0.0f,-2.0f,0.0f), 5.0f, set_color(0.25f,0.25f,0.8f), set_material(0.2f,1.0f,0.2f,8)),
-    skybox(":/models/sphere_inverse.obj", set_point(0.0f,0.0f,0.0f), 50.0f, set_color(1.0f,1.0f,1.0f), set_material(0.5f,0.0f,0.0f,1)),
+    moon(":/models/cat.obj", set_point(-4.0f,0.0f,-4.0f), 2.0f, set_color(0.8f,0.8f,0.8f), set_material(0.2f,1.0f,1.0f,64)),
+    box(":/models/cube.obj", set_point(0.0f,-7.0f,0.0f), 5.0f, set_color(0.25f,0.25f,0.8f), set_material(0.2f,1.0f,0.2f,8)),
+    skybox(":/models/sphere_inverse.obj", set_point(0.0f,0.0f,0.0f), 500.0f, set_color(1.0f,1.0f,1.0f), set_material(0.5f,0.0f,0.0f,1)),
+    bouncybox(":/models/cube.obj", set_point(0.0f,0.0f,0.0f), 2.0f, set_color(1.0f,0.5f,0.0f), set_material(0.2f,1.0f,0.2f,8)),
     shaderProgram_Normal(),
     shaderProgram_Gouraud(),
     shaderProgram_Phong(),
     sphere_orbit(set_point(0.0f,1.0f,0.0f), set_point(1.0f,0.8f,0.0f), set_point(0.0,0.0,1.0), 20.0f, 12.0f, 0.01f, 2.5f),
-    cube_orbit(set_point(0.0f,1.0f,0.2f), set_point(1.0f,0.8f,-0.4f), set_point(0.0,0.0,1.0), 6.0f, 10.0f, 0.03f, 1.0f)
+    cube_orbit(set_point(0.0f,1.0f,0.2f), set_point(1.0f,0.8f,-0.4f), set_point(0.0,0.0,1.0), 6.0f, 10.0f, 0.03f, 1.5f)
 {
     qDebug() << "MainView constructor";
 
@@ -50,9 +51,10 @@ MainView::~MainView() {
 
     destroyMesh(&cat);
     destroyMesh(&earth);
-    destroyMesh(&cube);
-    destroyMesh(&plane);
+    destroyMesh(&moon);
+    destroyMesh(&box);
     destroyMesh(&skybox);
+    destroyMesh(&bouncybox);
 
     qDebug() << "MainView destructor";
 }
@@ -102,25 +104,28 @@ void MainView::initializeGL() {
     //SETTING CAT FIGURE ON GPU
     setBuffer(&cat);
     setBuffer(&earth);
-    setBuffer(&cube);
-    setBuffer(&plane);
+    setBuffer(&moon);
+    setBuffer(&box);
     setBuffer(&skybox);
+    setBuffer(&bouncybox);
 
 
     setTexture(&cat, ":/textures/cat_diff.png");
     setTexture(&earth, ":/textures/earthmap1k.png");
-    setTexture(&cube, ":/textures/rug_logo.png");
-    setTexture(&plane, ":/textures/rug_logo.png");
+    setTexture(&moon, ":/textures/rug_logo.png");
+    setTexture(&box, ":/textures/rug_logo.png");
     setTexture(&skybox, ":/textures/milkyway3k.png");
+    setTexture(&bouncybox, ":/textures/rug_logo.png");
 
 
 
     initAnimations();
 
     //SETTING PROJECTION TRANSFORMATION MATRIX
-    transformProjection.perspective(60, 1, 0.1f, 100.0);
+    transformProjection.perspective(60, 1, 0.1f, 1000.0f);
 
     timer.start(1000.0 / 60.0);
+    elapsedTime.start();
 
 }
 
@@ -138,14 +143,18 @@ void MainView::createShaderProgram()
 
 void MainView::updateAnimations() {
     cat.animate();
-    //cube.animate();
-    //ball.animate();
-    plane.animate();
 
     sphere_orbit.apply(&(earth.transformation));
 
     cube_orbit.move_center(sphere_orbit.current_pos());
-    cube_orbit.apply(&(cube.transformation));
+    cube_orbit.apply(&(moon.transformation));
+
+    QVector3D cameraPos = transformView.getCameraPosition();
+    skybox.transformation.setPosition(cameraPos.x(), cameraPos.y(), cameraPos.z());
+
+    box.transformation.rotY += 1.0f;
+
+    bouncybox.transformation.posY = fabs(sin((elapsedTime.elapsed() / 400.0f))) * 4.0f;
 }
 
 // --- OpenGL drawing
@@ -189,9 +198,10 @@ void MainView::paintGL() {
     //Rendering other objects
     //glDisable(GL_TEXTURE_2D); //gives me an error?
     renderBuffer(&earth);
-    renderBuffer(&cube);
-    renderBuffer(&plane);
+    renderBuffer(&moon);
+    renderBuffer(&box);
     renderBuffer(&skybox);
+    renderBuffer(&bouncybox);
 
     getShader()->release();
 }
@@ -209,7 +219,7 @@ void MainView::resizeGL(int newWidth, int newHeight)
     //Re-setting matrix, otherwise both projection (old and new) transformation are applied consecutively
     transformProjection.setToIdentity();
     //Updating projection matrix (according to new window ratio)
-    transformProjection.perspective(60, (float)newWidth / newHeight, 0.1f, 100);
+    transformProjection.perspective(60, (float)newWidth / newHeight, 0.1f, 1000.0f);
 
 }
 
@@ -299,26 +309,14 @@ void MainView::setTexture(solid_mesh *mesh, const char *path){
 
 void MainView::initAnimations(){
     //setting cat animation
-    (cat.anim).go(0.1f,0.0f,0.0f,50);
+    (cat.anim).go(0.1f,0.0f,0.0f,100);
     (cat.anim).rotate(0.0f,-1.0f,0.0f,90);
-    (cat.anim).go(0.0f, 0.0f, 0.1f, 50);
+    (cat.anim).go(0.0f, 0.0f, 0.1f, 100);
     (cat.anim).rotate(0.0f,-1.0f,0.0f,90);
-    (cat.anim).go(-0.1f,0.0f, 0.0f, 50);
+    (cat.anim).go(-0.1f,0.0f, 0.0f, 100);
     (cat.anim).rotate(0.0f,-1.0f,0.0f,90);
-    (cat.anim).go(0.0f, 0.0f, -0.1f, 50);
+    (cat.anim).go(0.0f, 0.0f, -0.1f, 100);
     (cat.anim).rotate(0.0f,-1.0f,0.0f,90);
-
-    //setting cube animation
-    /*(cube.anim).go(0.0f,0.1f,0.0f,80);
-    (cube.anim).rotate(1.0f,1.0f,0.0f,0,true);
-    (cube.anim).go(0.0f,-0.1f,0.0f,80);
-    (cube.anim).rotate(-1.0f,-1.0f,0.0f,0,true);*/
-
-    //setting ball animation
-    //(ball.anim).rotate(1.0f,0.0f,1.0f,1);
-
-    //setting plane animation
-    //(plane.anim).rotate(0.0f,1.0f,0.0f,1);
 }
 
 void MainView::renderBuffer(solid_mesh *mesh){

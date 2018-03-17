@@ -10,6 +10,7 @@
 #include <QOpenGLDebugLogger>
 #include <QOpenGLShaderProgram>
 #include <QTimer>
+#include <QElapsedTimer>
 #include <QVector3D>
 #include <memory>
 
@@ -61,9 +62,10 @@ class MainView : public QOpenGLWidget, protected QOpenGLFunctions_3_3_Core {
     private:
         solid_mesh cat;
         solid_mesh earth;
-        solid_mesh cube;
-        solid_mesh plane;
+        solid_mesh moon;
+        solid_mesh box;
         solid_mesh skybox;
+        solid_mesh bouncybox;
 
         shaderWrapper shaderProgram_Normal;
         shaderWrapper shaderProgram_Gouraud;
@@ -80,6 +82,7 @@ class MainView : public QOpenGLWidget, protected QOpenGLFunctions_3_3_Core {
 
         QOpenGLDebugLogger *debugLogger;
         QTimer timer; // timer used for updating
+        QElapsedTimer elapsedTime; //timer used for bounce animation
 
         QMatrix4x4 transformProjection; //Matrix for projection transformation
         TurntableTransform transformView;
