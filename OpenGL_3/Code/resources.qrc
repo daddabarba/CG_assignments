@@ -20,5 +20,7 @@
         <file>textures/milkyway3k.png</file>
         <file>models/sphere_inverse.obj</file>
         <file>models/suzanne.obj</file>
+        <file>shaders/fragshader_wave.glsl</file>
+        <file>shaders/vertshader_wave.glsl</file>
     </qresource>
 </RCC>
