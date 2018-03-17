@@ -67,7 +67,7 @@ void solid_mesh::animate(){
 
 
 
-solid_wave::solid_wave(const char* file, point positon, float scale, RGB_color col=blue, phong_mat kPar=set_material(1.0,1.0,1.0,16)){
+solid_wave::solid_wave(const char* file, point positon, float scale, RGB_color col, phong_mat kPar){
     solid_mesh::solid_mesh(file, position, scale, col, kPar);
 }
 
@@ -77,12 +77,12 @@ solid_wave::~solid_wave(){
     free(omega);
 }
 
-void solid_wave::set_wave(int size, std::initializer_list<GLfloat> amplitudes, std::initializer_list<GLfloat> frequencies, std::initializer_list<GLfloat> phases){
+void solid_wave::set_wave(int size, GLfloat amplitudes[], GLfloat frequencies[], GLfloat phases[]){
     nWaves = size;
 
-    amplitude = calloc(size, sizeof(GLfloat));
-    omega = calloc(size, sizeof(GLfloat));
-    phi = calloc(size, sizeof(GLfloat));
+    amplitude = (GLfloat *)calloc(size, sizeof(GLfloat));
+    omega = (GLfloat *)calloc(size, sizeof(GLfloat));
+    phi = (GLfloat *)calloc(size, sizeof(GLfloat));
 
     for(int i=0; i<size; i++){
         amplitude[i] = amplitudes[i];

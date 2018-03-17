@@ -46,6 +46,6 @@ public:
 
 private:
     void getUniLoc() override;
-}
+};
 
 #endif // SHADERWRAPPER_H
