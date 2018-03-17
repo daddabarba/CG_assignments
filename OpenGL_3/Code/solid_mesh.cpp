@@ -53,7 +53,6 @@ void solid_mesh::setScale(float s) {
     transformation.setScale(s*base_scale);
 }
 
-
 QMatrix3x3 solid_mesh::getNormalMatrix(){
     return (transformation.getMatrix()).normalMatrix();
 }
@@ -65,3 +64,30 @@ void solid_mesh::discard_vertices(){
 void solid_mesh::animate(){
     anim.apply(&(transformation));
 }
+
+
+
+solid_wave::solid_wave(const char* file, point positon, float scale, RGB_color col=blue, phong_mat kPar=set_material(1.0,1.0,1.0,16)){
+    solid_mesh::solid_mesh(file, position, scale, col, kPar);
+}
+
+solid_wave::~solid_wave(){
+    free(amplitude);
+    free(phi);
+    free(omega);
+}
+
+void solid_wave::set_wave(int size, std::initializer_list<GLfloat> amplitudes, std::initializer_list<GLfloat> frequencies, std::initializer_list<GLfloat> phases){
+    nWaves = size;
+
+    amplitude = calloc(size, sizeof(GLfloat));
+    omega = calloc(size, sizeof(GLfloat));
+    phi = calloc(size, sizeof(GLfloat));
+
+    for(int i=0; i<size; i++){
+        amplitude[i] = amplitudes[i];
+        omega[i] = frequencies[i];
+        phi[i] = phases[i];
+    }
+}
+

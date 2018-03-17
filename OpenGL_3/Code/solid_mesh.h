@@ -44,4 +44,19 @@ public:
 
 };
 
+class solid_wave : public solid_mesh
+{
+public:
+    solid_wave(const char* file, point positon, float scale, RGB_color col=blue, phong_mat kPar=set_material(1.0,1.0,1.0,16));
+    ~solid_wave();
+
+    void set_wave(int size, std::initializer_list<GLfloat> amplitudes, std::initializer_list<GLfloat> frequencies, std::initializer_list<GLfloat> phases);
+
+    GLfloat *amplitude;
+    GLfloat *phi;
+    GLfloat *omega;
+
+    int nWaves;
+}
+
 #endif // SOLID_MESH_H

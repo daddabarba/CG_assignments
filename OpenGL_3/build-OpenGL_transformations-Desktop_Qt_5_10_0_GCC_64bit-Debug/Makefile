@@ -240,6 +240,7 @@ DIST          = ../../../../App/QTCreator/5.10.0/gcc_64/mkspecs/features/spec_pr
 		../../../../App/QTCreator/5.10.0/gcc_64/mkspecs/features/qt_config.prf \
 		../../../../App/QTCreator/5.10.0/gcc_64/mkspecs/linux-g++/qmake.conf \
 		../../../../App/QTCreator/5.10.0/gcc_64/mkspecs/features/spec_post.prf \
+		../Code/.qmake.stash \
 		../../../../App/QTCreator/5.10.0/gcc_64/mkspecs/features/exclusive_builds.prf \
 		../../../../App/QTCreator/5.10.0/gcc_64/mkspecs/features/toolchain.prf \
 		../../../../App/QTCreator/5.10.0/gcc_64/mkspecs/features/default_pre.prf \
@@ -453,6 +454,7 @@ Makefile: ../Code/OpenGL_transformations.pro ../../../../App/QTCreator/5.10.0/gc
 		../../../../App/QTCreator/5.10.0/gcc_64/mkspecs/features/qt_config.prf \
 		../../../../App/QTCreator/5.10.0/gcc_64/mkspecs/linux-g++/qmake.conf \
 		../../../../App/QTCreator/5.10.0/gcc_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		../../../../App/QTCreator/5.10.0/gcc_64/mkspecs/features/exclusive_builds.prf \
 		../../../../App/QTCreator/5.10.0/gcc_64/mkspecs/features/toolchain.prf \
 		../../../../App/QTCreator/5.10.0/gcc_64/mkspecs/features/default_pre.prf \
@@ -641,6 +643,7 @@ Makefile: ../Code/OpenGL_transformations.pro ../../../../App/QTCreator/5.10.0/gc
 ../../../../App/QTCreator/5.10.0/gcc_64/mkspecs/features/qt_config.prf:
 ../../../../App/QTCreator/5.10.0/gcc_64/mkspecs/linux-g++/qmake.conf:
 ../../../../App/QTCreator/5.10.0/gcc_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 ../../../../App/QTCreator/5.10.0/gcc_64/mkspecs/features/exclusive_builds.prf:
 ../../../../App/QTCreator/5.10.0/gcc_64/mkspecs/features/toolchain.prf:
 ../../../../App/QTCreator/5.10.0/gcc_64/mkspecs/features/default_pre.prf:
@@ -714,6 +717,8 @@ qrc_resources.cpp: ../Code/resources.qrc \
 		../../../../App/QTCreator/5.10.0/gcc_64/bin/rcc \
 		../Code/shaders/fragshader_normal.glsl \
 		../Code/shaders/vertshader_normal.glsl \
+		../Code/shaders/vertshader_wave.glsl \
+		../Code/shaders/fragshader_wave.glsl \
 		../Code/shaders/fragshader_gouraud.glsl \
 		../Code/shaders/vertshader_phong.glsl \
 		../Code/shaders/fragshader_phong.glsl \
@@ -1402,7 +1407,103 @@ mainwindow.o: ../Code/mainwindow.cpp ../Code/mainwindow.h \
 		../../../../App/QTCreator/5.10.0/gcc_64/include/QtGui/qtouchdevice.h \
 		../../../../App/QTCreator/5.10.0/gcc_64/include/QtWidgets/qtabwidget.h \
 		../../../../App/QTCreator/5.10.0/gcc_64/include/QtGui/qicon.h \
-		ui_mainwindow.h
+		ui_mainwindow.h \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtCore/QVariant \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtWidgets/QAction \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtWidgets/qaction.h \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtWidgets/qactiongroup.h \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtWidgets/QApplication \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtWidgets/qapplication.h \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtCore/qcoreapplication.h \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtCore/qeventloop.h \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtGui/qguiapplication.h \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtGui/qinputmethod.h \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtWidgets/QButtonGroup \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtWidgets/qbuttongroup.h \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtWidgets/QDial \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtWidgets/qdial.h \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtWidgets/qabstractslider.h \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtWidgets/QFormLayout \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtWidgets/qformlayout.h \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtWidgets/QLayout \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtWidgets/qlayout.h \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtWidgets/qlayoutitem.h \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtWidgets/qboxlayout.h \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtWidgets/qgridlayout.h \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtWidgets/QGroupBox \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtWidgets/qgroupbox.h \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtWidgets/qframe.h \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtWidgets/QHBoxLayout \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtWidgets/QHeaderView \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtWidgets/qheaderview.h \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtWidgets/qabstractitemview.h \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtCore/qabstractitemmodel.h \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtCore/qitemselectionmodel.h \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtWidgets/qstyleoption.h \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtGui/qvalidator.h \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtCore/qregularexpression.h \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtWidgets/qslider.h \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtWidgets/qstyle.h \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtWidgets/qtabbar.h \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtWidgets/qrubberband.h \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtWidgets/QPushButton \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtWidgets/qpushbutton.h \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtWidgets/qabstractbutton.h \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtWidgets/QRadioButton \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtWidgets/qradiobutton.h \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtWidgets/QSlider \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtWidgets/QVBoxLayout \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtWidgets/QWidget \
+		../Code/mainview.h \
+		../Code/model.h \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtCore/QString \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtCore/QStringList \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtCore/QVector \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtGui/QVector2D \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtGui/QVector3D \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtGui/qvector3d.h \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtGui/QKeyEvent \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtGui/QMouseEvent \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtWidgets/QOpenGLWidget \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtWidgets/qopenglwidget.h \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtGui/QSurfaceFormat \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtGui/qsurfaceformat.h \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtGui/qopengl.h \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtCore/qt_windows.h \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtGui/qopengles2ext.h \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtGui/qopenglext.h \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtGui/QOpenGLFunctions_3_3_Core \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtGui/qopenglfunctions_3_3_core.h \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtGui/QOpenGLVersionFunctions \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtGui/qopenglversionfunctions.h \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtGui/qopenglcontext.h \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtCore/QObject \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtCore/QScopedPointer \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtGui/QOpenGLDebugLogger \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtGui/qopengldebug.h \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtGui/QOpenGLShaderProgram \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtGui/qopenglshaderprogram.h \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtGui/qvector4d.h \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtGui/qmatrix4x4.h \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtGui/qquaternion.h \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtGui/qgenericmatrix.h \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtCore/QTimer \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtCore/qtimer.h \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtCore/qbasictimer.h \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtCore/QElapsedTimer \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtCore/qelapsedtimer.h \
+		../Code/geoms.h \
+		../Code/transform.h \
+		../../../../App/QTCreator/5.10.0/gcc_64/include/QtGui/QMatrix4x4 \
+		../Code/solid_mesh.h \
+		../Code/colors.h \
+		../Code/animation.h \
+		../Code/parametricanimations.h \
+		../Code/shaderwrapper.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../Code/mainwindow.cpp
 
 mainview.o: ../Code/mainview.cpp ../Code/mainview.h \
