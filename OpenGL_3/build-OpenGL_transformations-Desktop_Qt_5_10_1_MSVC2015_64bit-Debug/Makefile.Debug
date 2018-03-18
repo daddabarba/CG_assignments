@@ -207,16 +207,21 @@ debug\qrc_resources.cpp: ..\Code\resources.qrc \
 		D:\Qt\5.10.1\msvc2015_64\bin\rcc.exe \
 		..\Code\shaders\fragshader_normal.glsl \
 		..\Code\shaders\vertshader_normal.glsl \
+		..\Code\shaders\vertshader_wave.glsl \
+		..\Code\shaders\fragshader_wave.glsl \
 		..\Code\shaders\fragshader_gouraud.glsl \
 		..\Code\shaders\vertshader_phong.glsl \
 		..\Code\shaders\fragshader_phong.glsl \
 		..\Code\shaders\vertshader_gouraud.glsl \
 		..\Code\models\flat_surface.obj \
+		..\Code\models\suzanne.obj \
+		..\Code\models\sphere_inverse.obj \
 		..\Code\models\cube2.obj \
 		..\Code\models\cube.obj \
 		..\Code\models\plane.obj \
 		..\Code\models\cat.obj \
 		..\Code\models\sphere.obj \
+		..\Code\textures\milkyway3k.png \
 		..\Code\textures\cat_diff.png \
 		..\Code\textures\earthmap1k.png \
 		..\Code\textures\rug_logo.png \
@@ -487,6 +492,8 @@ debug\moc_mainview.cpp: ..\Code\model.h \
 		D:\Qt\5.10.1\msvc2015_64\include\QtCore\QTimer \
 		D:\Qt\5.10.1\msvc2015_64\include\QtCore\qtimer.h \
 		D:\Qt\5.10.1\msvc2015_64\include\QtCore\qbasictimer.h \
+		D:\Qt\5.10.1\msvc2015_64\include\QtCore\QElapsedTimer \
+		D:\Qt\5.10.1\msvc2015_64\include\QtCore\qelapsedtimer.h \
 		..\Code\geoms.h \
 		..\Code\transform.h \
 		D:\Qt\5.10.1\msvc2015_64\include\QtGui\QMatrix4x4 \
@@ -653,6 +660,8 @@ ui_mainwindow.h: ..\Code\mainwindow.ui \
 		D:\Qt\5.10.1\msvc2015_64\include\QtCore\QTimer \
 		D:\Qt\5.10.1\msvc2015_64\include\QtCore\qtimer.h \
 		D:\Qt\5.10.1\msvc2015_64\include\QtCore\qbasictimer.h \
+		D:\Qt\5.10.1\msvc2015_64\include\QtCore\QElapsedTimer \
+		D:\Qt\5.10.1\msvc2015_64\include\QtCore\qelapsedtimer.h \
 		..\Code\geoms.h \
 		..\Code\transform.h \
 		D:\Qt\5.10.1\msvc2015_64\include\QtGui\QMatrix4x4 \
@@ -1045,6 +1054,8 @@ debug\mainview.obj: ..\Code\mainview.cpp ../Code/mainview.h \
 		D:\Qt\5.10.1\msvc2015_64\include\QtCore\QTimer \
 		D:\Qt\5.10.1\msvc2015_64\include\QtCore\qtimer.h \
 		D:\Qt\5.10.1\msvc2015_64\include\QtCore\qbasictimer.h \
+		D:\Qt\5.10.1\msvc2015_64\include\QtCore\QElapsedTimer \
+		D:\Qt\5.10.1\msvc2015_64\include\QtCore\qelapsedtimer.h \
 		../Code/geoms.h \
 		../Code/transform.h \
 		D:\Qt\5.10.1\msvc2015_64\include\QtGui\QMatrix4x4 \
@@ -1200,6 +1211,8 @@ debug\user_input.obj: ..\Code\user_input.cpp ../Code/mainview.h \
 		D:\Qt\5.10.1\msvc2015_64\include\QtCore\QTimer \
 		D:\Qt\5.10.1\msvc2015_64\include\QtCore\qtimer.h \
 		D:\Qt\5.10.1\msvc2015_64\include\QtCore\qbasictimer.h \
+		D:\Qt\5.10.1\msvc2015_64\include\QtCore\QElapsedTimer \
+		D:\Qt\5.10.1\msvc2015_64\include\QtCore\qelapsedtimer.h \
 		../Code/geoms.h \
 		../Code/transform.h \
 		D:\Qt\5.10.1\msvc2015_64\include\QtGui\QMatrix4x4 \

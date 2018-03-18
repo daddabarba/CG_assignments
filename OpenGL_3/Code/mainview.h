@@ -28,7 +28,7 @@ class MainView : public QOpenGLWidget, protected QOpenGLFunctions_3_3_Core {
     public:
         enum ShadingMode : GLuint
         {
-            PHONG = 0, NORMAL, GOURAUD
+            PHONG = 0, NORMAL, GOURAUD, WAVE
         };
 
         MainView(QWidget *parent = 0);
@@ -66,10 +66,12 @@ class MainView : public QOpenGLWidget, protected QOpenGLFunctions_3_3_Core {
         solid_mesh box;
         solid_mesh skybox;
         solid_mesh bouncybox;
+        solid_mesh wave;
 
         shaderWrapper shaderProgram_Normal;
         shaderWrapper shaderProgram_Gouraud;
         shaderWrapper shaderProgram_Phong;
+        shaderWrapper shaderProgram_Wave;
 
         void initAnimations();
         ellipse sphere_orbit;

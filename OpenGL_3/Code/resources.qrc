@@ -22,5 +22,6 @@
         <file>models/suzanne.obj</file>
         <file>shaders/fragshader_wave.glsl</file>
         <file>shaders/vertshader_wave.glsl</file>
+        <file>models/grid.obj</file>
     </qresource>
 </RCC>

@@ -44,6 +44,7 @@ public:
     QRadioButton *PhongButton;
     QRadioButton *NormalButton;
     QRadioButton *GouraudButton;
+    QRadioButton *WaveButton;
     QGroupBox *rotationBox;
     QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout_2;
@@ -134,6 +135,11 @@ public:
 
         verticalLayout_2->addWidget(GouraudButton);
 
+        WaveButton = new QRadioButton(shadingBox);
+        WaveButton->setObjectName(QStringLiteral("WaveButton"));
+
+        verticalLayout_2->addWidget(WaveButton);
+
 
         formLayout->setWidget(2, QFormLayout::LabelRole, shadingBox);
 
@@ -215,6 +221,7 @@ public:
         PhongButton->setText(QApplication::translate("MainWindow", "Pho&ng", nullptr));
         NormalButton->setText(QApplication::translate("MainWindow", "Nor&mal", nullptr));
         GouraudButton->setText(QApplication::translate("MainWindow", "&Gouraud", nullptr));
+        WaveButton->setText(QApplication::translate("MainWindow", "Wave", nullptr));
         rotationBox->setTitle(QApplication::translate("MainWindow", "Rotation", nullptr));
 #ifndef QT_NO_TOOLTIP
         RotationDialX->setToolTip(QApplication::translate("MainWindow", "<html><head/><body><p>Rotation along the X-axis</p></body></html>", nullptr));

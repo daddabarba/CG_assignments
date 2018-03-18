@@ -17,11 +17,10 @@ uniform mat3 viewTransformNormal;
 uniform mat3 normalMatrix;
 
 uniform int num_waves;
-uniform float amplitude[(num_waves)];
-uniform float phi[(num_waves)];
-uniform float omega[(num_waves)];
-
-uniform float time = 0.0;
+uniform float amplitude[4];
+uniform float phi[4];
+uniform float omega[4];
+uniform float time;
 
 // Specify the output of the vertex stage
 out vec3 vertCoord;
@@ -32,7 +31,7 @@ out vec2 texCoord;
 //double phi = 3.14; //NORMALS
 //double omega = 6.28; //NORMALS
 
-double du, dv=0;
+float du = 0.0f, dv = 0.0f;
 
 float waveHeight(int waveIdx, float uValue){
     return amplitude[waveIdx]*sin(omega[waveIdx]*uValue + phi[waveIdx] + time);
@@ -60,7 +59,7 @@ void main()
     //return position after adding projection transformation
     gl_Position = projection * viewTransform * vertCoord_transformed;
 
-    //trasnformed vertex coordinates for fragment shader
+    //transformed vertex coordinates for fragment shader
     vertCoord = vec3(vertCoord_transformed);
 
     //du = A*cos(omega*vertTexCoord_in.x + phi)*omega; //NORMALS

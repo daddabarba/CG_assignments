@@ -15,15 +15,17 @@
  */
 MainView::MainView(QWidget *parent) :
     QOpenGLWidget(parent),
-    cat(":/models/cat.obj", set_point(-5.0f,0.8f,-5.0f), 4.0f, set_color(1.0f,1.0f,1.0f), set_material(0.2f,1.0f,0.5f,2)),
-    earth(":/models/sphere.obj", set_point(4.0f,0.0f,-4.0f), 2.0f, set_color(1.0f,1.0f,1.0f), set_material(0.2f,1.0f,1.0f,8)),
-    moon(":/models/cat.obj", set_point(-4.0f,0.0f,-4.0f), 2.0f, set_color(0.8f,0.8f,0.8f), set_material(0.2f,1.0f,1.0f,64)),
-    box(":/models/cube.obj", set_point(0.0f,-7.0f,0.0f), 5.0f, set_color(0.25f,0.25f,0.8f), set_material(0.2f,1.0f,0.2f,8)),
-    skybox(":/models/sphere_inverse.obj", set_point(0.0f,0.0f,0.0f), 500.0f, set_color(1.0f,1.0f,1.0f), set_material(0.5f,0.0f,0.0f,1)),
-    bouncybox(":/models/cube.obj", set_point(0.0f,0.0f,0.0f), 2.0f, set_color(1.0f,0.5f,0.0f), set_material(0.2f,1.0f,0.2f,8)),
+    cat(":/models/cat.obj", set_point(-5.0f,0.8f,-5.0f), 4.0f, set_material(0.2f,1.0f,0.5f,2)),
+    earth(":/models/sphere.obj", set_point(4.0f,0.0f,-4.0f), 2.0f, set_material(0.2f,1.0f,1.0f,8)),
+    moon(":/models/cat.obj", set_point(-4.0f,0.0f,-4.0f), 2.0f, set_material(0.2f,1.0f,1.0f,64)),
+    box(":/models/cube.obj", set_point(0.0f,-7.0f,0.0f), 5.0f, set_material(0.2f,1.0f,0.2f,8)),
+    skybox(":/models/sphere_inverse.obj", set_point(0.0f,0.0f,0.0f), 500.0f, set_material(0.5f,0.0f,0.0f,1)),
+    bouncybox(":/models/cube.obj", set_point(0.0f,0.0f,0.0f), 2.0f, set_material(0.2f,1.0f,0.2f,8)),
+    wave(":/models/grid.obj", set_point(0.0f,0.0f,0.0f), 8.0f, set_material(0.2f,1.0f,1.0f,32)),
     shaderProgram_Normal(),
     shaderProgram_Gouraud(),
     shaderProgram_Phong(),
+    shaderProgram_Wave(),
     sphere_orbit(set_point(0.0f,1.0f,0.0f), set_point(1.0f,0.8f,0.0f), set_point(0.0,0.0,1.0), 20.0f, 12.0f, 0.01f, 2.5f),
     cube_orbit(set_point(0.0f,1.0f,0.2f), set_point(1.0f,0.8f,-0.4f), set_point(0.0,0.0,1.0), 6.0f, 10.0f, 0.03f, 1.5f)
 {
@@ -33,6 +35,8 @@ MainView::MainView(QWidget *parent) :
     lightSource = set_vertex(set_point(5.0,5.0,13.0), set_color(1.0,1.0,1.0));
 
     transformView.setPosition(0.0f, 0.0f, -20.0f);
+
+    wave.transformation.rotX = -90.0f;
 
     connect(&timer, SIGNAL(timeout()), this, SLOT(update()));
     qDebug() << "Connected";
@@ -55,6 +59,7 @@ MainView::~MainView() {
     destroyMesh(&box);
     destroyMesh(&skybox);
     destroyMesh(&bouncybox);
+    destroyMesh(&wave);
 
     qDebug() << "MainView destructor";
 }
@@ -108,6 +113,7 @@ void MainView::initializeGL() {
     setBuffer(&box);
     setBuffer(&skybox);
     setBuffer(&bouncybox);
+    setBuffer(&wave);
 
 
     setTexture(&cat, ":/textures/cat_diff.png");
@@ -116,6 +122,7 @@ void MainView::initializeGL() {
     setTexture(&box, ":/textures/rug_logo.png");
     setTexture(&skybox, ":/textures/milkyway3k.png");
     setTexture(&bouncybox, ":/textures/rug_logo.png");
+    setTexture(&wave, ":/textures/rug_logo.png");
 
 
 
@@ -139,6 +146,9 @@ void MainView::createShaderProgram()
 
     qDebug() << "Loading phong shader";
     shaderProgram_Phong.create(":/shaders/vertshader_phong.glsl", ":/shaders/fragshader_phong.glsl");
+
+    qDebug() << "Loading wave shader";
+    shaderProgram_Wave.create(":/shaders/vertshader_wave.glsl", ":/shaders/fragshader_wave.glsl");
 }
 
 void MainView::updateAnimations() {
@@ -193,15 +203,29 @@ void MainView::paintGL() {
         glUniform3f(getShader()->uniformLightCol, (lightSource.color).r, (lightSource.color).g, (lightSource.color).b);
     }
 
-    //Rendering cat
-    renderBuffer(&cat);
-    //Rendering other objects
-    //glDisable(GL_TEXTURE_2D); //gives me an error?
-    renderBuffer(&earth);
-    renderBuffer(&moon);
-    renderBuffer(&box);
-    renderBuffer(&skybox);
-    renderBuffer(&bouncybox);
+    glUniform1i(getShader()->uniformNWaves, 4); //Have to change value in shader as well
+    GLfloat amps[4] = {0.04f, 0.02f, 0.03f, 0.025f};
+    GLfloat freqs[4] = {38.0f, 42.0f, 27.0f, 54.0f};
+    GLfloat phases[4] = {0.0f, 0.5f, 1.0f, 0.0f};
+    glUniform1fv(getShader()->uniformAmplitudes, 4, amps);
+    glUniform1fv(getShader()->uniformFrequencies, 4, freqs);
+    glUniform1fv(getShader()->uniformPhases, 4, phases);
+    glUniform1f(getShader()->uniformTime, elapsedTime.elapsed() / 1000.0f);
+
+    if (currentShader == WAVE) {
+        renderBuffer(&wave);
+    }
+    else {
+        //Rendering cat
+        renderBuffer(&cat);
+        //Rendering other objects
+        //glDisable(GL_TEXTURE_2D); //gives me an error?
+        renderBuffer(&earth);
+        renderBuffer(&moon);
+        renderBuffer(&box);
+        renderBuffer(&skybox);
+        renderBuffer(&bouncybox);
+    }
 
     getShader()->release();
 }
@@ -354,6 +378,8 @@ shaderWrapper *MainView::getShader(){
         return &shaderProgram_Gouraud;
     case PHONG:
         return &shaderProgram_Phong;
+    case WAVE:
+        return &shaderProgram_Wave;
     default:
         return &shaderProgram_Normal;
         break;

@@ -31,7 +31,7 @@ void main()
     //return position after adding projection transformation
     gl_Position = projection * viewTransform * vertCoord_transformed;
 
-    //trasnformed vertex coordinates for fragment shader
+    //transformed vertex coordinates for fragment shader
     vertCoord = vec3(vertCoord_transformed);
     //transforming normal
     vertNorm = normalize(normalMatrix * vertNorm_in);

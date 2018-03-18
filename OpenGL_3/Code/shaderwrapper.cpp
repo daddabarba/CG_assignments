@@ -23,24 +23,10 @@ void shaderWrapper::getUniLoc()
     uniformObjCol   = uniformLocation("objCol");
     uniformMaterial = uniformLocation("material");
     uniformSampler = uniformLocation("sampler");
-}
-
-
-void waveShaderWrapper::create(const char*pathVert, const char *pathFrag){
-    shaderWrapper::shaderWrapper(pathVert, pathFrag);
-}
-
-void waveShaderWrapper::getUniLoc(){
-    shaderWrapper::getUniLoc();
 
     uniformAmplitudes = uniformLocation("amplitude");
     uniformPhases = uniformLocation("phi");
     uniformFrequencies = uniformLocation("omega");
-
     uniformNWaves = uniformLocation("num_waves");
-
     uniformTime = uniformLocation("time");
 }
-
-
-

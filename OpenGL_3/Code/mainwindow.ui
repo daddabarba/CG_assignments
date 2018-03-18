@@ -149,6 +149,13 @@
             </property>
            </widget>
           </item>
+          <item>
+           <widget class="QRadioButton" name="WaveButton">
+            <property name="text">
+             <string>Wave</string>
+            </property>
+           </widget>
+          </item>
          </layout>
         </widget>
        </item>

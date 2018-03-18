@@ -1,11 +1,13 @@
 #include "solid_mesh.h"
 
-solid_mesh::solid_mesh(const char* file, point position, float scale, RGB_color col, phong_mat kPar)
+solid_mesh::solid_mesh() {}
+
+solid_mesh::solid_mesh(const char* file, point position, float scale, phong_mat kPar)
 {
     base_scale = scale;
     base_translation = position;
 
-    color = col;
+    color = white;
     material = kPar;
 
     Model mesh_solid(file); //Loading mesh from file
@@ -63,31 +65,5 @@ void solid_mesh::discard_vertices(){
 
 void solid_mesh::animate(){
     anim.apply(&(transformation));
-}
-
-
-
-solid_wave::solid_wave(const char* file, point positon, float scale, RGB_color col, phong_mat kPar){
-    solid_mesh::solid_mesh(file, position, scale, col, kPar);
-}
-
-solid_wave::~solid_wave(){
-    free(amplitude);
-    free(phi);
-    free(omega);
-}
-
-void solid_wave::set_wave(int size, GLfloat amplitudes[], GLfloat frequencies[], GLfloat phases[]){
-    nWaves = size;
-
-    amplitude = (GLfloat *)calloc(size, sizeof(GLfloat));
-    omega = (GLfloat *)calloc(size, sizeof(GLfloat));
-    phi = (GLfloat *)calloc(size, sizeof(GLfloat));
-
-    for(int i=0; i<size; i++){
-        amplitude[i] = amplitudes[i];
-        omega[i] = frequencies[i];
-        phi[i] = phases[i];
-    }
 }
 

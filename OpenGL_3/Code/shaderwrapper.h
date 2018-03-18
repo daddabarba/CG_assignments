@@ -8,7 +8,7 @@
 class shaderWrapper: public QOpenGLShaderProgram
 {
 public:
-    virtual void create(const char *pathVert, const char *pathFrag);
+    void create(const char *pathVert, const char *pathFrag);
 
     GLint uniformModel;
     GLint uniformProjection;
@@ -23,29 +23,18 @@ public:
     GLint uniformMaterial;
     GLint uniformSampler;
 
+    GLint uniformAmplitudes;
+    GLint uniformPhases;
+    GLint uniformFrequencies;
+    GLint uniformNWaves;
+    GLint uniformTime;
+
     void sendMaterial(RGB_color kPar);
     void sendObjectCol(RGB_color color);
     void sendLight(vertex light);
 
 private:
-    virtual void getUniLoc();
-};
-
-class waveShaderWrapper: public shaderWrapper
-{
-public:
-    void create(const char *pathVert, const char *pathFrag) override;
-
-    GLint uniformAmplitudes;
-    GLint uniformPhases;
-    GLint uniformFrequencies;
-
-    GLint uniformNWaves;
-
-    GLint uniformTime;
-
-private:
-    void getUniLoc() override;
+    void getUniLoc();
 };
 
 #endif // SHADERWRAPPER_H
