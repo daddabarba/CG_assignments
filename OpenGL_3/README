@@ -10,6 +10,28 @@
 -dials rotate camera now (pitch / yaw / roll)
 
 #####################
+#CHANGES IN OPENGL 3#
+#####################
+
+	############
+	#ANIMATIONS#
+	############
+
+	For the animation we added two classes. Both classes see animations as a series of commands. Each command is a gradient of the transformation matrix, added to it to get a desired change.
+
+	The first class, named "animation", explicitly scripts said gradients. In "animation" an animation is seen as a list of said commands, where every command also has a duration (number of discrete time-steps or number of times it is added to the transition matrix, before proceeding to the next command). These commands can be added mainly with two methods, which are "go" and "rotate", the first one adds a gradient to the translation part of the transformation matrix, and the latter to the rotation part. An example of a scripted animation could be "go farward in x direction, turn 90 degreess, go farward in z direction...". These scripts are implemented in the "initAnimations" method of the class "mainview".
+
+	Then a second (possibly series of) class can be found in the "parametricAnimation.h" file. Here we define all those animation which whose commands don't have to be listed expicitly, but can be computed (they are parametric function). For now we just implemented an orbital (elliptical) movement. This is done by taking the parametric definition of the ellipse on a 2D plane (u = a*cos(t), v = b*sin(t)), and then 2 axis (and an origin) in R3, defining a plane (on which the ellipse is). Therefore u and v are used to compute the linear combination u*axis1 + v*axis2, and then O is added (for translation). There is also a method to update O. This method can be fed with the parametric function of another orbital animation, having an orbit arround an orbiting object.
+
+	#######
+	#WAVES#
+	#######
+
+	For the second part of the assignment we added two new shaders (fragshader_wave and vertshader_wave), for the waves animation. These have been implemented as required by the assignment (please look at the commented glsl files).
+
+	We then finally added a time counter (so that the wave phases changes with time), and the uniforms for the wave values, as well as definitions and passages of these values in the c++ code, more precisely in the "paintGL" method of the "mainview" class.
+
+#####################
 #CHANGES IN OPENGL 2#
 #####################
 
