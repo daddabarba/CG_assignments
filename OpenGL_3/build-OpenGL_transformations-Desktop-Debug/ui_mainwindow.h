@@ -44,6 +44,7 @@ public:
     QRadioButton *PhongButton;
     QRadioButton *NormalButton;
     QRadioButton *GouraudButton;
+    QRadioButton *WaveButton;
     QGroupBox *rotationBox;
     QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout_2;
@@ -89,8 +90,8 @@ public:
         verticalLayout_4->setObjectName(QStringLiteral("verticalLayout_4"));
         ScaleSlider = new QSlider(scalingBox);
         ScaleSlider->setObjectName(QStringLiteral("ScaleSlider"));
-        ScaleSlider->setMinimum(50);
-        ScaleSlider->setMaximum(200);
+        ScaleSlider->setMinimum(25);
+        ScaleSlider->setMaximum(250);
         ScaleSlider->setValue(100);
         ScaleSlider->setOrientation(Qt::Horizontal);
         ScaleSlider->setInvertedAppearance(false);
@@ -133,6 +134,11 @@ public:
         GouraudButton->setObjectName(QStringLiteral("GouraudButton"));
 
         verticalLayout_2->addWidget(GouraudButton);
+
+        WaveButton = new QRadioButton(shadingBox);
+        WaveButton->setObjectName(QStringLiteral("WaveButton"));
+
+        verticalLayout_2->addWidget(WaveButton);
 
 
         formLayout->setWidget(2, QFormLayout::LabelRole, shadingBox);
@@ -215,6 +221,7 @@ public:
         PhongButton->setText(QApplication::translate("MainWindow", "Pho&ng", 0));
         NormalButton->setText(QApplication::translate("MainWindow", "Nor&mal", 0));
         GouraudButton->setText(QApplication::translate("MainWindow", "&Gouraud", 0));
+        WaveButton->setText(QApplication::translate("MainWindow", "Wave", 0));
         rotationBox->setTitle(QApplication::translate("MainWindow", "Rotation", 0));
 #ifndef QT_NO_TOOLTIP
         RotationDialX->setToolTip(QApplication::translate("MainWindow", "<html><head/><body><p>Rotation along the X-axis</p></body></html>", 0));

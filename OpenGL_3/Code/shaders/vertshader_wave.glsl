@@ -62,10 +62,8 @@ void main()
     //transformed vertex coordinates for fragment shader
     vertCoord = vec3(vertCoord_transformed);
 
-    //du = A*cos(omega*vertTexCoord_in.x + phi)*omega; //NORMALS
-
     //transforming normal
-    vertNorm = normalize(normalMatrix * vec3(-du,-dv, 1.0));
+    vertNorm = normalize(vec3(-du,-dv, 1.0));
 
 
     //texture mapping

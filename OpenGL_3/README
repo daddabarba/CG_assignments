@@ -30,7 +30,13 @@
 	For the second part of the assignment we added two new shaders (fragshader_wave and vertshader_wave), for the waves animation. These have been implemented as required by the assignment (please look at the commented glsl files).
 
 	We then finally added a time counter (so that the wave phases changes with time), and the uniforms for the wave values, as well as definitions and passages of these values in the c++ code, more precisely in the "paintGL" method of the "mainview" class.
-
+	
+	####
+	#PS#
+        ####
+        
+        For the wave screenshots, CULLING was deactivated
+	
 #####################
 #CHANGES IN OPENGL 2#
 #####################

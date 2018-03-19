@@ -51,8 +51,8 @@ void main()
     vec4 waveCol = vec4(mix(0.0f, 1.0f, val), mix(0.2f, 1.0f, val), 1.0f, 1.0f);
     fColor = vec4((IA+ID+IS), 1.0) * waveCol;
 
-    //vertNorm = vertNorm*0.5 + 0.5; //NORMAL
-    //fColor = vec4(vertNorm, 1.0); //NORMAL
+    //vertNormCol = vertNorm*0.5 + 0.5; //NORMAL
+    //fColor = vec4(vertNormCol, 1.0); //NORMAL
 
     //fColor = vec4(texCoord,0.0,1.0);//HEIGHT MAP
 }
