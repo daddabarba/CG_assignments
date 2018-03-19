@@ -34,6 +34,7 @@ MainView::MainView(QWidget *parent) :
     //Setting light source (position and color)
     lightSource = set_vertex(set_point(5.0,5.0,13.0), set_color(1.0,1.0,1.0));
 
+    //initialize view transformation
     transformView.setPosition(0.0f, 0.0f, -20.0f);
 
     wave.transformation.rotX = -90.0f;
@@ -106,7 +107,7 @@ void MainView::initializeGL() {
 
     qDebug() << "Uploading meshes";
 
-    //SETTING CAT FIGURE ON GPU
+    //Setting objects on GPU
     setBuffer(&cat);
     setBuffer(&earth);
     setBuffer(&moon);
@@ -115,7 +116,7 @@ void MainView::initializeGL() {
     setBuffer(&bouncybox);
     setBuffer(&wave);
 
-
+    //Setting object's textures
     setTexture(&cat, ":/textures/cat_diff.png");
     setTexture(&earth, ":/textures/earthmap1k.png");
     setTexture(&moon, ":/textures/rug_logo.png");
@@ -124,13 +125,13 @@ void MainView::initializeGL() {
     setTexture(&bouncybox, ":/textures/rug_logo.png");
     setTexture(&wave, ":/textures/rug_logo.png");
 
-
-
+    //Initalize animations scripts
     initAnimations();
 
-    //SETTING PROJECTION TRANSFORMATION MATRIX
+    //Setting projection transformation matrix
     transformProjection.perspective(60, 1, 0.1f, 1000.0f);
 
+    //Start timer
     timer.start(1000.0 / 60.0);
     elapsedTime.start();
 
@@ -151,19 +152,26 @@ void MainView::createShaderProgram()
     shaderProgram_Wave.create(":/shaders/vertshader_wave.glsl", ":/shaders/fragshader_wave.glsl");
 }
 
+//Compute one discrete step of animations (according to rendering frequency)
 void MainView::updateAnimations() {
+    //apply scripted animation to cat object
     cat.animate();
 
+    //apply parametric elliptic animation to sphere object
     sphere_orbit.apply(&(earth.transformation));
 
+    //orbit cube arround sphere
     cube_orbit.move_center(sphere_orbit.current_pos());
+    //apply parametric elliptic animation to sphere object
     cube_orbit.apply(&(moon.transformation));
 
+    //Transform skybox
     QVector3D cameraPos = transformView.getCameraPosition();
     skybox.transformation.setPosition(cameraPos.x(), cameraPos.y(), cameraPos.z());
 
     box.transformation.rotY += 1.0f;
 
+    //Functional animation
     bouncybox.transformation.posY = fabs(sin((elapsedTime.elapsed() / 400.0f))) * 4.0f;
 }
 
@@ -182,6 +190,7 @@ void MainView::paintGL() {
     //Update models' animations
     updateAnimations();
 
+    //Bind shader
     getShader()->bind();
 
     //Setting PROJECTION transformation matrix (in shader's uniform)
@@ -203,23 +212,25 @@ void MainView::paintGL() {
         glUniform3f(getShader()->uniformLightCol, (lightSource.color).r, (lightSource.color).g, (lightSource.color).b);
     }
 
+    //Set uniform for numbe rof waves
     glUniform1i(getShader()->uniformNWaves, 4); //Have to change value in shader as well
+    //Set waves (amplitudes, frequencies and phases)
     GLfloat amps[4] = {0.04f, 0.02f, 0.03f, 0.025f};
     GLfloat freqs[4] = {38.0f, 42.0f, 27.0f, 54.0f};
     GLfloat phases[4] = {0.0f, 0.5f, 1.0f, 0.0f};
+    //Ssend waves to shader
     glUniform1fv(getShader()->uniformAmplitudes, 4, amps);
     glUniform1fv(getShader()->uniformFrequencies, 4, freqs);
     glUniform1fv(getShader()->uniformPhases, 4, phases);
     glUniform1f(getShader()->uniformTime, elapsedTime.elapsed() / 1000.0f);
 
+    //when wave shader is active, render only wave-able objects
     if (currentShader == WAVE) {
         renderBuffer(&wave);
     }
     else {
-        //Rendering cat
+        //Rendering other (non-wave) objects
         renderBuffer(&cat);
-        //Rendering other objects
-        //glDisable(GL_TEXTURE_2D); //gives me an error?
         renderBuffer(&earth);
         renderBuffer(&moon);
         renderBuffer(&box);
@@ -227,6 +238,7 @@ void MainView::paintGL() {
         renderBuffer(&bouncybox);
     }
 
+    //Release current shader
     getShader()->release();
 }
 
@@ -333,18 +345,19 @@ void MainView::setTexture(solid_mesh *mesh, const char *path){
 
 void MainView::initAnimations(){
     //setting cat animation
-    (cat.anim).go(0.1f,0.0f,0.0f,100);
-    (cat.anim).rotate(0.0f,-1.0f,0.0f,90);
-    (cat.anim).go(0.0f, 0.0f, 0.1f, 100);
-    (cat.anim).rotate(0.0f,-1.0f,0.0f,90);
-    (cat.anim).go(-0.1f,0.0f, 0.0f, 100);
-    (cat.anim).rotate(0.0f,-1.0f,0.0f,90);
-    (cat.anim).go(0.0f, 0.0f, -0.1f, 100);
-    (cat.anim).rotate(0.0f,-1.0f,0.0f,90);
+    (cat.anim).go(0.1f,0.0f,0.0f,100);     //go farward
+    (cat.anim).rotate(0.0f,-1.0f,0.0f,90); //turn right
+    (cat.anim).go(0.0f, 0.0f, 0.1f, 100);  //turn right
+    (cat.anim).rotate(0.0f,-1.0f,0.0f,90); //go farward
+    (cat.anim).go(-0.1f,0.0f, 0.0f, 100);  //turn right
+    (cat.anim).rotate(0.0f,-1.0f,0.0f,90); //go farward
+    (cat.anim).go(0.0f, 0.0f, -0.1f, 100); //turn right
+    (cat.anim).rotate(0.0f,-1.0f,0.0f,90); //go farward
 }
 
 void MainView::renderBuffer(solid_mesh *mesh){
 
+    //Bind texture
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, mesh->tex);
 

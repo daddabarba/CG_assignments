@@ -46,7 +46,7 @@ void main()
 
     //returning color
 
-    //vec4 waveCol = vec4(vertCoord.y + 0.5,1.0,1.0,1.0); //COMPUTE COLOR
+    //Computing water color according to height
     float val = smoothstep(-2.0f, 2.0f, vertCoord.y);
     vec4 waveCol = vec4(mix(0.0f, 1.0f, val), mix(0.2f, 1.0f, val), 1.0f, 1.0f);
     fColor = vec4((IA+ID+IS), 1.0) * waveCol;

@@ -73,7 +73,7 @@ class MainView : public QOpenGLWidget, protected QOpenGLFunctions_3_3_Core {
         shaderWrapper shaderProgram_Phong;
         shaderWrapper shaderProgram_Wave;
 
-        void initAnimations();
+        void initAnimations(); //set animations scripts
         ellipse sphere_orbit;
         ellipse cube_orbit;
 
@@ -87,16 +87,16 @@ class MainView : public QOpenGLWidget, protected QOpenGLFunctions_3_3_Core {
         QElapsedTimer elapsedTime; //timer used for bounce animation
 
         QMatrix4x4 transformProjection; //Matrix for projection transformation
-        TurntableTransform transformView;
+        TurntableTransform transformView; //Matrix for view transformation
 
         void createShaderProgram();
 
-        void setBuffer(solid_mesh *mesh);
-        void setTexture(solid_mesh *mesh, const char *path);
+        void setBuffer(solid_mesh *mesh); //initialize object's VBO and VAO
+        void setTexture(solid_mesh *mesh, const char *path); //initialize object's texture
 
-        void renderBuffer(solid_mesh *mesh);
+        void renderBuffer(solid_mesh *mesh); //render object
 
-        void destroyMesh(solid_mesh *mesh);
+        void destroyMesh(solid_mesh *mesh); //destroy object
 
         QVector<quint8> imageToBytes(QImage image);
 

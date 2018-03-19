@@ -31,17 +31,17 @@ public:
     void setScale(float s);                      //change (uniform) scaling
 
     GLuint VAO, VBO;
-    int size_solid;
+    int size_solid; //number of vertices
 
-    GLuint tex;
+    GLuint tex; //texture location
 
     RGB_color color;
     phong_mat material;
 
     vertex *figure_solid;
 
-    animation anim;
-    void animate();
+    animation anim; //animation
+    void animate(); //apply animation to object model transform
 
 };
 
